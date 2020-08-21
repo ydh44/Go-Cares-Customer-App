@@ -1,5 +1,6 @@
 package com.example.escort;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
@@ -8,6 +9,7 @@ import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 public class CheckoutActivity extends AppCompatActivity {
     private TextView tvDate1;
@@ -38,13 +41,14 @@ public class CheckoutActivity extends AppCompatActivity {
         final int day = cal.get(Calendar.DAY_OF_MONTH);
 
         tvDate1.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         CheckoutActivity.this, android.R.style.Theme_Material_Light_Panel
                         ,mDateSetListener, year, month, day
                 );
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                Objects.requireNonNull(datePickerDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 datePickerDialog.show();
             }
         });
