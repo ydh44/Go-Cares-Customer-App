@@ -26,9 +26,6 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.regex.Pattern;
-
-
 public class RegActivity extends AppCompatActivity {
     Button buttonRegister, buttonLogin;
     EditText emailEt, namaEt, umurEt, teleponEt, alamatEt, password1Et, password2Et;
