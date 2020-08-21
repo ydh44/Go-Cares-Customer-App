@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">escort</string>
+    <string name="email">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="masuk">MASUK</string>
+    <string name="belum_punya_akun">Belum punya akun ?</string>
+    <string name="lupa_password">Lupa password</string>
+</resources>
