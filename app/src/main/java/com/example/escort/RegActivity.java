@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -57,7 +58,7 @@ public class RegActivity extends AppCompatActivity {
         password1Tv = (TextView) findViewById(R.id.pass1TV);
         password2Tv = (TextView) findViewById(R.id.pass2TV);
         kelaminEt = (RadioGroup) findViewById(R.id.genderEdtx);
-        prgbar = (RelativeLayout) findViewById(R.id.progressbar) ;
+        prgbar = (RelativeLayout) findViewById(R.id.progressbar);
         prgbar2 = (ProgressBar) findViewById(R.id.prgs);
 
 
@@ -66,7 +67,7 @@ public class RegActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent = new Intent(RegActivity.this, MainActivity.class);
                 startActivity((android.content.Intent)Intent);
-
+                finish();
             }
         });
         AndroidNetworking.initialize(this);
@@ -112,6 +113,7 @@ public class RegActivity extends AppCompatActivity {
                                     prgbar.setVisibility(View.GONE);
                                     Intent = new Intent(RegActivity.this, MainActivity.class);
                                     startActivity((android.content.Intent)Intent);
+                                    finish();
                                 }
                             }catch (JSONException e){
                                 e.printStackTrace();
