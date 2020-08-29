@@ -1,19 +1,25 @@
 package com.example.escort;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
-
+    Window window;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        int SPLASH_SCREEN_TIME = 500;
+        int SPLASH_SCREEN_TIME = 550;
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -23,5 +29,6 @@ public class SplashActivity extends AppCompatActivity {
                 SplashActivity.this.finish();
             }
         }, SPLASH_SCREEN_TIME);
+
     }
 }

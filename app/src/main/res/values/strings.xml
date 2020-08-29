@@ -5,4 +5,8 @@
     <string name="masuk">MASUK</string>
     <string name="belum_punya_akun">Belum punya akun ?</string>
     <string name="lupa_password">Lupa password</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

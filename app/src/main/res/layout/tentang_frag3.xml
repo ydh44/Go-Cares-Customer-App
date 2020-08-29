@@ -63,7 +63,7 @@
                 android:background="@drawable/backgreen"
                 tools:ignore="MissingConstraints">
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/imageButton2"
                     android:layout_width="63dp"
                     android:layout_height="60dp"
@@ -116,7 +116,7 @@
                 android:background="@drawable/backred2"
                 tools:ignore="MissingConstraints">
 
-                <ImageButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/imageButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

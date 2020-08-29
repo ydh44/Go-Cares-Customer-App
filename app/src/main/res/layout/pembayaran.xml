@@ -74,7 +74,7 @@
             />
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -231,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         app:layout_constraintGuide_percent="0.6" />
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnGalerry"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -261,7 +261,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         app:layout_constraintGuide_percent="0.9" />
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnCamera"
                         android:layout_width="0dp"
                         android:layout_height="0dp"

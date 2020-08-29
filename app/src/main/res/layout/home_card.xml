@@ -1,90 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="150dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginVertical="4dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169"
-        tools:ignore="MissingConstraints">
-
+        app:layout_constraintTop_toTopOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="300dp"
-            android:layout_height="150dp">
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/ver1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintWidth_percent=".2"
+               />
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="80dp"
-                android:layout_height="150dp"
-                android:background="@drawable/profilecg">
-
+                android:id="@+id/imageView1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="3:4"
+                app:layout_constraintWidth_percent=".25"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:background="@drawable/backwhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/ver1"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constrainedWidth="true"
+                    android:src="@drawable/profilecg"
+                    android:scaleType="centerCrop" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <TextView
-                android:id="@+id/CgnameEt"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:textStyle="bold"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1"/>
+            <TextView
+                android:id="@+id/CgNameEt"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".175"
+                android:autoSizeMaxTextSize="40sp"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
+                android:text="NAMA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageView1"
+                app:layout_constraintTop_toBottomOf="@id/cdhor1" />
+            <TextView
+                android:id="@+id/CgCityNameEt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toEndOf="@id/imageView1"
+                app:layout_constraintTop_toBottomOf="@+id/CgNameEt"
+                app:layout_constraintVertical_bias="0.28" />
 
             <TextView
-                android:id="@+id/CitynameEt"
-                android:layout_width="wrap_content"
+                android:id="@+id/CgUmurEt"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textStyle="normal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text=""
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.447"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/escortnameEt"
-                app:layout_constraintVertical_bias="0.0"
-                tools:ignore="SmallSp,UnknownId" />
+                app:layout_constraintStart_toEndOf="@id/imageView1"
+                app:layout_constraintTop_toBottomOf="@+id/CgCityNameEt"
+                app:layout_constraintVertical_bias="0.02" />
 
             <TextView
-                android:id="@+id/CgumurEt"
-                android:layout_width="wrap_content"
+                android:id="@+id/CgRattingEt"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textStyle="normal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.441"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/citynameEt"
-                app:layout_constraintVertical_bias="0.0"
-                tools:ignore="SmallSp,UnknownId" />
+                app:layout_constraintStart_toEndOf="@id/imageView1"
+                app:layout_constraintTop_toBottomOf="@+id/CgUmurEt"
+                app:layout_constraintVertical_bias="0.03" />
 
-            <TextView
-                android:id="@+id/CgratingEt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:textSize="10sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.398"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/escortumurEt"
-                tools:ignore="SmallSp,UnknownId" />
+
+
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
