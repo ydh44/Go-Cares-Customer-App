@@ -1,90 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingVertical="5dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="150dp"
+        android:id="@+id/card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
-        app:cardElevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="5dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169"
-        tools:ignore="MissingConstraints">
-
+        app:layout_constraintBottom_toBottomOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="300dp"
-            android:layout_height="150dp">
-
+            android:background="@drawable/circleblue4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/ver1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintWidth_percent=".2"
+               />
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="80dp"
-                android:layout_height="150dp"
-                android:background="@drawable/profilecg">
-
+                android:id="@+id/imageView1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="3:4"
+                app:layout_constraintWidth_percent=".26"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:background="@drawable/backwhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/ver1"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constrainedWidth="true"
+                    android:src="@drawable/profilecg"
+                    android:scaleType="centerCrop" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <TextView
-                android:id="@+id/CgnameEt"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/CitynameEt"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.115"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdver1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.447"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/escortnameEt"
-                app:layout_constraintVertical_bias="0.0"
-                tools:ignore="SmallSp,UnknownId" />
-
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.315"/>
             <TextView
-                android:id="@+id/CgumurEt"
+                android:id="@+id/CgNameEt"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".185"
+                android:autoSizeMaxTextSize="40sp"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
+                android:textColor="#000"
+                android:fontFamily="@font/helvetica_light"
+                android:text="NAMA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cdver1"
+                app:layout_constraintTop_toBottomOf="@id/cdhor1" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.441"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/citynameEt"
-                app:layout_constraintVertical_bias="0.0"
-                tools:ignore="SmallSp,UnknownId" />
-
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".365"/>
             <TextView
-                android:id="@+id/CgratingEt"
+                android:id="@+id/CgCityNameEt"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".14"
+                app:layout_constraintVertical_bias="0"
+                android:textColor="#000"
+                android:fontFamily="@font/helvetica_thin"
+                android:autoSizeMaxTextSize="40sp"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
+                android:text="Kota"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/cdver1"
+                app:layout_constraintTop_toBottomOf="@+id/cdhor2"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:textSize="10sp"
-                android:textStyle="normal"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".55"/>
+            <TextView
+                android:id="@+id/CgUmurEt"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/helvetica_thin"
+                app:layout_constraintHeight_percent=".135"
+                app:layout_constraintVertical_bias="0"
+                android:autoSizeMaxTextSize="40sp"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
+                android:textColor="#000"
+                android:text="Umur"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cdver1"
+                app:layout_constraintTop_toBottomOf="@+id/cdhor3" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".745"/>
+            <TextView
+                android:id="@+id/CgRattingEt"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".135"
+                app:layout_constraintVertical_bias="0"
+                android:fontFamily="@font/helvetica_thin"
+                android:textColor="#000"
+                android:autoSizeMaxTextSize="40sp"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.398"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/escortumurEt"
-                tools:ignore="SmallSp,UnknownId" />
+                app:layout_constraintStart_toEndOf="@id/cdver1"
+                app:layout_constraintTop_toBottomOf="@+id/cdhor4" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

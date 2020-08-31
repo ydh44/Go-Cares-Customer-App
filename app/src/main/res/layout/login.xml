@@ -257,7 +257,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.70"/>
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/backblue2"
@@ -288,7 +288,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.82"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonreg"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -321,7 +321,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.925"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 style="?android:attr/borderlessButtonStyle"

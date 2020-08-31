@@ -6,4 +6,6 @@
     <color name="colorRed">#FF3450</color>
     <color name="colorBlack">#000</color>
     <color name="colorDarkblue">#00369F</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="white">#fff</color>
 </resources>
