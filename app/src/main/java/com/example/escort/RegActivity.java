@@ -1,48 +1,59 @@
 package com.example.escort;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.google.gson.GsonBuilder;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class RegActivity extends AppCompatActivity {
-    Button buttonRegister, buttonLogin;
+    @OnClick(R.id.buttonlogin)
+            public void pindah(){
+        Intent a = new Intent(RegActivity.this, MainActivity.class);
+        startActivity(a);
+        finish();
+    }
+    @OnClick(R.id.buttonreg)
+            void reg(){
+        register();
+    }
+
+    APIinterface apIinterface;
     EditText emailEt, namaEt, umurEt, teleponEt, alamatEt, password1Et, password2Et;
     TextView emailTv, namaTv, umurTv, teleponTv, alamatTv, password1Tv, password2Tv;
     RadioGroup kelaminEt;
     RelativeLayout prgbar;
     ProgressBar prgbar2;
-    private Object Intent;
+    Window window;
+
     private static final String TAG = "RegActivity";
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reg);
+        ButterKnife.bind(this);
 
-        buttonLogin = (Button) findViewById(R.id.buttonlogin);
-        buttonRegister = (Button) findViewById(R.id.buttonreg);
         emailEt = (EditText) findViewById(R.id.emailEdtx);
         namaEt = (EditText) findViewById(R.id.nameEdtx);
         umurEt = (EditText) findViewById(R.id.ageEdtx);
@@ -60,23 +71,12 @@ public class RegActivity extends AppCompatActivity {
         kelaminEt = (RadioGroup) findViewById(R.id.genderEdtx);
         prgbar = (RelativeLayout) findViewById(R.id.progressbar);
         prgbar2 = (ProgressBar) findViewById(R.id.prgs);
+        window = this.getWindow();
 
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent = new Intent(RegActivity.this, MainActivity.class);
-                startActivity((android.content.Intent)Intent);
-                finish();
-            }
-        });
-        AndroidNetworking.initialize(this);
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                register();
-            }
-        });
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+
+
         cek_form(emailEt, emailTv);
         cek_form(namaEt, namaTv);
         cek_form(umurEt, umurTv);
@@ -85,6 +85,7 @@ public class RegActivity extends AppCompatActivity {
         cek_form(password1Et, password1Tv);
         cek_form(password2Et, password2Tv);
     }
+
     void register()
     {
         if(!validation()){
@@ -92,54 +93,46 @@ public class RegActivity extends AppCompatActivity {
             password2Et.setText(null);
         }else{
             prgbar.setVisibility(View.VISIBLE);
-            AndroidNetworking.post("https://apitestsatu.000webhostapp.com/public/home")
-                    .addBodyParameter("email", emailEt.getText().toString())
-                    .addBodyParameter("nama", namaEt.getText().toString())
-                    .addBodyParameter("umur", umurEt.getText().toString())
-                    .addBodyParameter("kelamin", "pria")
-                    .addBodyParameter("telepon", teleponEt.getText().toString())
-                    .addBodyParameter("alamat", alamatEt.getText().toString())
-                    .addBodyParameter("password", password1Et.getText().toString())
-                    .setTag(this)
-                    .setPriority(Priority.MEDIUM)
-                    .build()
-                    .getAsJSONObject(new JSONObjectRequestListener() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                Log.d(TAG, "onResponse: " + response.getString("status"));
-                                String status = response.getString("status");
-                                if (status.equals("200")){
-                                    prgbar.setVisibility(View.GONE);
-                                    Intent = new Intent(RegActivity.this, MainActivity.class);
-                                    startActivity((android.content.Intent)Intent);
-                                    finish();
-                                }
-                            }catch (JSONException e){
-                                e.printStackTrace();
-                            }
+            //api
+            String email, nama, umur, alamat, telepon, password1, password2;
+            email = emailEt.getText().toString();
+            nama = namaEt.getText().toString();
+            umur = umurEt.getText().toString();
+            telepon = teleponEt.getText().toString();
+            alamat = alamatEt.getText().toString();
+            password1 = password1Et.getText().toString();
+            password2 = password2Et.getText().toString();
+
+            apIinterface = APIClient.GetClient().create(APIinterface.class);
+            Call<ResponseBody> call = apIinterface.register(
+            email, nama, umur, "laki", telepon, alamat, password1, password2);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()){
+                        if(response.code() == 200){
+                            Intent i = new Intent(RegActivity.this, LoginActivity.class);
+                            i.putExtra("status", true);
+                            prgbar.setVisibility(View.INVISIBLE);
+                            startActivity(i);
+                        }else{
+                            Toast.makeText(RegActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                            prgbar.setVisibility(View.INVISIBLE);
                         }
-                        @Override
-                        public void onError(ANError error) {
-                            prgbar.setVisibility(View.GONE);
-                            if (error.getErrorCode() != 0) {
-                                // received error from server
-                                // error.getErrorCode() - the error code from server
-                                // error.getErrorBody() - the error body from server
-                                // error.getErrorDetail() - just an error detail
-                                Toast.makeText(getApplicationContext(), "Error," + error.getErrorDetail(), Toast.LENGTH_LONG).show();
-                                Log.d(TAG, "onError errorCode : " + error.getErrorCode());
-                                Log.d(TAG, "onError errorBody : " + error.getErrorBody());
-                                Log.d(TAG, "onError errorDetail : " + error.getErrorDetail());
-                            } else {
-                                // error.getErrorDetail() : connectionError, parseError, requestCancelledError
-                                Toast.makeText(getApplicationContext(), "Error," + error.getErrorDetail(), Toast.LENGTH_LONG).show();
-                                Log.d(TAG, "onError errorDetail : " + error.getErrorDetail());
-                            }
-                        }
-                    });
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(RegActivity.this, "Jaringan Error", Toast.LENGTH_SHORT).show();
+                    prgbar.setVisibility(View.INVISIBLE);
+                }
+            });
+
+
         }
     }
+
     public boolean validation()
     {
         boolean valid = true;
@@ -173,13 +166,13 @@ public class RegActivity extends AppCompatActivity {
             alamatTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
         }
-        if(password1Et.getText().length()<6){
-            password1Et.setError("Masukan password minimal 6 karakter");
+        if(password1Et.getText().length()<8){
+            password1Et.setError("Masukan password minimal 8 karakter");
             password1Et.setBackgroundResource(R.drawable.borderred);
             password1Tv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
         }
-        if(password2Et.getText().length()<6){
+        if(password2Et.getText().length()<8){
             password2Et.setBackgroundResource(R.drawable.borderred);
             password2Tv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;

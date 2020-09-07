@@ -3,10 +3,11 @@ package com.example.escort;
 import androidx.annotation.NonNull;
 
 public class CGdata {
-    public String nama, umur, kota, gender, rating, gaji;
+    public String urlgambar, nama, umur, kota, gender, rating, gaji;
 
 
-    public CGdata(@NonNull String nama, String umur ,String gender, String kota, String gaji,String rating) {
+    public CGdata(@NonNull String urlgambar, String nama, String umur ,String gender, String kota, String gaji,String rating) {
+        this.urlgambar = urlgambar;
         this.nama = nama;
         this.gender = gender;
         this.kota = kota;
@@ -15,6 +16,7 @@ public class CGdata {
         this.rating = rating;
     }
 
+    public  String getUrlgambar(){return  urlgambar;}
     public String getNama(){ return nama; }
     public  String getUmur() { return umur;}
     public String getKota(){

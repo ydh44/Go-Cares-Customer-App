@@ -17,8 +17,11 @@ import android.widget.ImageButton;
 
 import com.google.android.material.navigation.NavigationView;
 
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 drawerLayout.closeDrawer(navigationView, true);
+                UIUtil.hideKeyboard(MainActivity.this);
             }
         }));
         menu1.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, PesananActivity.class);
                 startActivity(i);
                 drawerLayout.closeDrawer(navigationView2, false);
+
             }
         });
         menu2.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
                 if(!isOpen){
-                    window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+                    window.setStatusBarColor(getResources().getColor(R.color.gray));
                 }else {
                     window.setStatusBarColor(getResources().getColor(R.color.white));
                     drawerLayout.closeDrawer(drawerView, true);
@@ -115,46 +120,38 @@ public class MainActivity extends AppCompatActivity {
                 if(!drawerLayout.isDrawerVisible(drawerView)){
                     window.setStatusBarColor(getResources().getColor(R.color.white));
                 }
-
             }
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
-
                 isOpen = true;
-
             }
 
             @Override
             public void onDrawerClosed(@NonNull View drawerView) {
                 isOpen = false;
-
             }
-
 
             @Override
             public void onDrawerStateChanged(int newState) {
-
             }
         });
 
         items = new ArrayList<>();
-        items.add(new CGdata("Care Giver 1 ", "12", "pria", "sem", "5jt", "4"));
-        items.add(new CGdata("Care Giver 2 ", "13", "pria", "sema", "1jt","3"));
-        items.add(new CGdata("Care Giver 3 ", "14", "pria", "semar", "2jt","45"));
-        items.add(new CGdata("Care Giver 4 ", "15", "pria", "semara", "1jt", "36"));
-        items.add(new CGdata("Care Giver 5 ", "16", "Spria", "semarang", "4jt", "43"));
+        items.add(new CGdata("https://cdn2.tstatic.net/solo/foto/bank/images/12wqdasfg.jpg", "Care Giver 1 ", "12", "pria", "sem", "5jt", "4"));
+        items.add(new CGdata("https://static.republika.co.id/uploads/images/inpicture_slide/teleskop-luar-angkasa-hubble-milik-nasa-menangkap-gambar-luas_200624075257-360.jpg", "Care Giver 2 ", "13", "pria", "sema", "1jt","3"));
+        items.add(new CGdata("https://awsimages.detik.net.id/community/media/visual/2020/02/28/9b4813be-44a3-42e4-b63e-41654bb57018.jpeg?w=700&q=90", "Care Giver 3 ", "14", "pria", "semar", "2jt","45"));
+        items.add(new CGdata("https://cdn2.tstatic.net/solo/foto/bank/images/12wqdasfg.jpg","Care Giver 4 ", "15", "pria", "semara", "1jt", "36"));
+        items.add(new CGdata("https://awsimages.detik.net.id/community/media/visual/2020/02/28/9b4813be-44a3-42e4-b63e-41654bb57018.jpeg?w=700&q=90", "Care Giver 5 ", "16", "Spria", "semarang", "4jt", "43"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new Adapter(this,items);
         recyclerView.setAdapter(adapter);
 
 
-        //SessionLog sessionLog = new SessionLog();
-        //if(sessionLog.GetEmail(this) == null) {
-        //    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-        //   f
-        //   finish();
-        //}
+        if(!SessionLog.GetStatus(this) || SessionLog.GetToken(this) == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+           finish();
+        }
 
     }
 }

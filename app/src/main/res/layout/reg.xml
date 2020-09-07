@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cons"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,7 +16,7 @@
         android:translationZ="20dp"
         android:elevation="30dp"
         android:visibility="gone"
-        android:background="@drawable/backblue"
+        android:background="@drawable/backbluebig3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +85,7 @@
         app:layout_constrainedWidth="true"
         app:cardCornerRadius="15dp"
         app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/cardhor1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/cardver1"
         app:layout_constraintRight_toLeftOf="@id/cardver2"
         app:layout_constraintBottom_toTopOf="@id/cardhor2">
@@ -146,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.144" />
+                app:layout_constraintGuide_percent="0.15" />
             <EditText
                 android:id="@+id/emailEdtx"
                 android:layout_width="0dp"
@@ -154,7 +156,9 @@
                 app:layout_constrainedWidth="true"
                 android:autofillHints="email"
                 android:background="@drawable/borderblue"
-                android:fontFamily="@font/roboto_condensed_regular"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="textEmailAddress"
                 app:layout_constrainedHeight="true"
@@ -207,7 +211,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.274" />
+                app:layout_constraintGuide_percent="0.28" />
 
             <EditText
                 android:id="@+id/nameEdtx"
@@ -216,7 +220,9 @@
                 app:layout_constrainedWidth="true"
                 android:autofillHints="email"
                 android:background="@drawable/borderblue"
-                android:fontFamily="@font/roboto_condensed_regular"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="text"
                 app:layout_constrainedHeight="true"
@@ -269,7 +275,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.4" />
+                app:layout_constraintGuide_percent="0.41" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdver3"
                 android:layout_width="wrap_content"
@@ -286,7 +292,9 @@
                 app:layout_constrainedWidth="true"
                 android:autofillHints="email"
                 android:background="@drawable/borderblue"
-                android:fontFamily="@font/roboto_condensed_regular"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="number"
                 app:layout_constrainedHeight="true"
@@ -392,7 +400,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.53" />
+                app:layout_constraintGuide_percent="0.54" />
             <EditText
                 android:id="@+id/phoneEdtx"
                 android:layout_width="0dp"
@@ -400,7 +408,9 @@
                 app:layout_constrainedWidth="true"
                 android:autofillHints="email"
                 android:background="@drawable/borderblue"
-                android:fontFamily="@font/roboto_condensed_regular"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="phone"
                 app:layout_constrainedHeight="true"
@@ -451,7 +461,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.66" />
+                app:layout_constraintGuide_percent="0.67" />
             <EditText
                 android:id="@+id/addEdtx"
                 android:layout_width="0dp"
@@ -459,7 +469,9 @@
                 app:layout_constrainedWidth="true"
                 android:autofillHints="email"
                 android:background="@drawable/borderblue"
-                android:fontFamily="@font/roboto_condensed_regular"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="textLongMessage"
                 app:layout_constrainedHeight="true"
@@ -530,7 +542,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.79" />
+                app:layout_constraintGuide_percent="0.8" />
             <EditText
                 android:id="@+id/pass1Edtx"
                 android:layout_width="0dp"
@@ -539,7 +551,9 @@
                 app:layout_constrainedWidth="true"
                 android:autofillHints="password"
                 android:background="@drawable/borderblue"
-                android:fontFamily="@font/roboto_condensed_regular"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="textPassword"
                 app:layout_constrainedHeight="true"
@@ -555,7 +569,9 @@
                 app:layout_constrainedWidth="true"
                 android:autofillHints="password"
                 android:background="@drawable/borderblue"
-                android:fontFamily="@font/roboto_condensed_regular"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="textPassword"
                 app:layout_constrainedHeight="true"
@@ -574,55 +590,66 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.90" />
-            <androidx.appcompat.widget.AppCompatButton
+                app:layout_constraintGuide_percent="0.95" />
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/buttonreg"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/backblue2"
+                app:layout_constraintDimensionRatio="1:1"
                 android:fontFamily="@font/roboto_bold"
+                app:layout_constrainedWidth="true"
+                app:layout_constrainedHeight="true"
+                android:paddingHorizontal="88dp"
+                app:layout_constraintRight_toLeftOf="@id/cdver2"
+                app:layout_constraintTop_toBottomOf="@id/cdhor25"
+                app:layout_constraintBottom_toTopOf="@id/cdhor26"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/helvetica_bold"
+                app:layout_constraintHeight_percent=".029"
+                android:gravity="center"
+                android:textAlignment="center"
                 android:text="DAFTAR"
                 android:textColor="#FFFFFF"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="16sp"
                 android:autoSizeMinTextSize="8sp"
-                app:layout_constrainedWidth="true"
-                app:layout_constrainedHeight="true"
-                android:paddingHorizontal="88dp"
-                app:layout_constraintTop_toBottomOf="@id/cdhor25"
-                app:layout_constraintLeft_toRightOf="@id/cdver1"
-                app:layout_constraintRight_toLeftOf="@id/cdver2"
-                app:layout_constraintBottom_toTopOf="@id/cdhor26"/>
+                app:layout_constraintLeft_toLeftOf="@id/buttonreg"
+                app:layout_constraintRight_toRightOf="@id/buttonreg"
+                app:layout_constraintTop_toTopOf="@id/buttonreg"
+                app:layout_constraintBottom_toBottomOf="@id/buttonreg"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdhor27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.93"/>
+                app:layout_constraintGuide_percent="0.862"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdhor28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.965"/>
+                app:layout_constraintGuide_percent="0.927"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonlogin"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 style="?android:attr/borderlessButtonStyle"
                 android:padding="0dp"
                 app:layout_constrainedHeight="true"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:fontFamily="@font/roboto_light"
                 android:text="Sudah punya akun ?"
+                app:layout_constraintWidth_percent=".25"
                 android:textColor="@color/colorPrimary"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMaxTextSize="20sp"
-                android:autoSizeMinTextSize="6sp"
+                android:autoSizeMinTextSize="8sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor27"
                 app:layout_constraintBottom_toTopOf="@id/cdhor28"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
                 android:textAllCaps="false"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

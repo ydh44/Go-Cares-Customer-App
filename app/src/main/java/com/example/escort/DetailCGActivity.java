@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 public class DetailCGActivity extends AppCompatActivity {
-    Button back, next;
+    ImageButton back, next;
+    ImageView gambarcg;
     TextView namaTv, umurTv, kotaTv, genderTv, gajiTv, ratingTv;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -22,6 +27,7 @@ public class DetailCGActivity extends AppCompatActivity {
         setContentView(R.layout.detailcg);
 
         Intent i = getIntent();
+        String urlgambar = i.getStringExtra("urlgambar");
         String nama = i.getStringExtra("nama");
         String umur = i.getStringExtra("umur");
         String kota = i.getStringExtra("kota");
@@ -37,6 +43,7 @@ public class DetailCGActivity extends AppCompatActivity {
         ratingTv = findViewById(R.id.rating);
         back = findViewById(R.id.btnBack);
         next = findViewById(R.id.btnNext);
+        gambarcg = findViewById(R.id.imageView);
 
         namaTv.setText(nama);
         umurTv.setText(umur);
@@ -44,6 +51,8 @@ public class DetailCGActivity extends AppCompatActivity {
         ratingTv.setText(rating);
         kotaTv.setText(kota);
         gajiTv.setText(gaji);
+
+        Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

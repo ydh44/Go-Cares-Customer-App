@@ -1,12 +1,16 @@
 package com.example.escort;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 
 import com.google.android.material.tabs.TabLayout;
@@ -16,7 +20,9 @@ public class PesananActivity extends AppCompatActivity {
     ImageButton back;
     TabLayout tab;
     ViewPager2 pager;
+    Window window;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +31,8 @@ public class PesananActivity extends AppCompatActivity {
         back = findViewById(R.id.backButton);
         tab = findViewById(R.id.tabpesanan);
         pager = findViewById(R.id.pagerpesanan);
+        window = this.getWindow();
+
 
         pager.setAdapter(new PesananPagerAdapter(this));
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(

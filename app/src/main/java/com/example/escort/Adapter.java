@@ -1,14 +1,18 @@
 package com.example.escort;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +57,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView textTitle,textDescription, text3, text4;
+        ImageView gambarcg;
         HashMap<String, String> hm;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +67,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(),DetailCGActivity.class);
+                    i.putExtra("urlgambar", hm.get("urlgambar"));
                     i.putExtra("nama",hm.get("nama"));
                     i.putExtra("umur",hm.get("umur"));
                     i.putExtra("gender",hm.get("gender"));
@@ -70,6 +77,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     v.getContext().startActivity(i);
                 }
             });
+            gambarcg = itemView.findViewById(R.id.imageView);
             textTitle = itemView.findViewById(R.id.CgNameEt);
             textDescription = itemView.findViewById(R.id.CgCityNameEt);
             text3 = itemView.findViewById(R.id.CgUmurEt);
@@ -77,6 +85,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
 
         protected HashMap<String, String> DataDetail( @NonNull  CGdata cgdata) {
+            String urlgambar = cgdata.getUrlgambar();
             String nama = cgdata.getNama();
             String gaji = cgdata.getGaji();
             String gender = cgdata.getGender();
@@ -84,16 +93,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             String kota = cgdata.getKota();
             String rating = cgdata.getRating();
             hm = new HashMap<>();
+            hm.put("urlgambar", urlgambar);
             hm.put("nama", nama);
             hm.put("umur", umur);
             hm.put("gender", gender);
             hm.put("gaji", gaji);
             hm.put("kota", kota);
             hm.put("rating", rating);
+            Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
             textTitle.setText(nama);
             textDescription.setText(kota);
             text3.setText(umur);
             text4.setText(rating);
+
+
             return hm;
         }
     }

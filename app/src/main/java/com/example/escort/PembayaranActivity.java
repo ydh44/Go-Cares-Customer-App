@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ public class PembayaranActivity extends AppCompatActivity {
 
     Button TambahkanGambar, AmbilFoto;
     Uri gambar_uri;
+    Boolean pil;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +42,12 @@ public class PembayaranActivity extends AppCompatActivity {
                 // if system os is >= marshmallow , request runtime permission
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.CAMERA) ==
-                            PackageManager.PERMISSION_DENIED ||
-                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                                    PackageManager.PERMISSION_DENIED) {
+                            PackageManager.PERMISSION_DENIED ) {
                         //permission not enabled , request it
-                        String[] permission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        String[] permission = new String[]{Manifest.permission.CAMERA};
                         //show popup to request permission
                         requestPermissions(permission, PERMISSION_CODE);
+                        pil = true;
 
                     } else {
                         //permission already granted
@@ -67,9 +69,10 @@ public class PembayaranActivity extends AppCompatActivity {
                     if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED) {
                         //permission not granted, request it
-                        String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        String[] permission = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
                         //show popup for runtime permission
                         requestPermissions(permission, PERMISSION_CODE);
+                        pil = false;
                     }
                     else {
                         //permission already granted
@@ -92,7 +95,6 @@ public class PembayaranActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK_CODE);
-
     }
 
     private void openCamera() {
@@ -106,7 +108,10 @@ public class PembayaranActivity extends AppCompatActivity {
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE);
     }
 
+
+
     //handling permission result
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -115,8 +120,12 @@ public class PembayaranActivity extends AppCompatActivity {
             case PERMISIION_CODE: {
                 if (grantResults.length > 0 && grantResults[0] ==
                         PackageManager.PERMISSION_GRANTED) {
+                    if(pil){
+                        openCamera();
+                    }else {
+                        pickImageFromGallery();
+                    }
                     //permission form popup was granted
-                    openCamera();
                 } else {
                     //permission from popup was denied
                     Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
@@ -124,4 +133,5 @@ public class PembayaranActivity extends AppCompatActivity {
             }
         }
     }
+
 }

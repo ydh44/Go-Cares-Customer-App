@@ -5,28 +5,24 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class SessionLog {
-    SharedPreferences pref;
+    private static SharedPreferences getSharedPreference(Context context){
+        return PreferenceManager.getDefaultSharedPreferences(context);
+    }
 
-    public static boolean SaveEmail(Context context, String email){
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString(Key.KEY_EMAIL, email);
+    public static void SaveToken(Context context, String token){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putString(Key.KEY_TOKEN, token);
         editor.apply();
-        return true;
     }
-    public String GetEmail(Context context){
-        pref = PreferenceManager.getDefaultSharedPreferences(context);
-        return pref.getString(Key.KEY_EMAIL, null);
+    public static String GetToken(Context context){
+        return getSharedPreference(context).getString(Key.KEY_TOKEN, null);
     }
-    public static boolean SavePassword(Context context, String password){
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString(Key.KEY_PASSWORD, password);
+    public static void SaveStatus(Context context, boolean status){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putBoolean(Key.KEY_LOGIN,status);
         editor.apply();
-        return true;
     }
-    public String GetPassword(Context context){
-        pref = PreferenceManager.getDefaultSharedPreferences(context);
-        return pref.getString(Key.KEY_PASSWORD, null);
+    public static boolean GetStatus(Context context){
+        return getSharedPreference(context).getBoolean(Key.KEY_LOGIN,false);
     }
 }

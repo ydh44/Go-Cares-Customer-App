@@ -18,9 +18,12 @@
                 app:tabMode="fixed"
                 app:tabPaddingTop="3dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="47dp"
                 android:paddingTop="3dp"
                 android:paddingBottom="2dp"
+                android:autoSizeMaxTextSize="40sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
                 />
         </com.google.android.material.card.MaterialCardView>
     </com.google.android.material.appbar.AppBarLayout>
