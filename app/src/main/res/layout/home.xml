@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".MainActivity"
-    tools:openDrawer="left">
+    tools:context=".MainActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -134,28 +133,46 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/rcyver1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".04"/>
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/rcyver2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".96"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="0dp"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FFFFFF"
             app:layout_constraintTop_toBottomOf="@id/bar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/rcyver1"
-            app:layout_constraintEnd_toStartOf="@id/rcyver2"
-            tools:layout_editor_absoluteY="17dp" />
+            app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/rcyver1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".04"/>
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/rcyver2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent=".96"/>
+                <TextView
+                    android:id="@+id/noo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:translationZ="1dp"
+                    android:textSize="30dp"
+                    android:text="No Internet"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    app:layout_constraintStart_toEndOf="@id/rcyver1"
+                    app:layout_constraintEnd_toStartOf="@id/rcyver2"
+                    tools:layout_editor_absoluteY="17dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -193,13 +210,13 @@
                 android:id="@+id/backrhor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".028"
+                app:layout_constraintGuide_percent=".033"
                 android:orientation="horizontal"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/backrhor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".055"
+                app:layout_constraintGuide_percent=".058"
                 android:orientation="horizontal"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/backrver"
@@ -223,9 +240,9 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintHeight_percent=".028"
+                app:layout_constraintHeight_percent=".033"
                 app:layout_constraintVertical_bias="0"
-                app:layout_constraintHeight_min="15dp"
+                app:layout_constraintHeight_min="12dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/back3"
                 app:layout_constraintBottom_toBottomOf="@id/backrhor2"
@@ -247,9 +264,7 @@
                 android:textColor="@color/darkgray"
                 android:text="Kota"
                 android:textAllCaps="false"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeTextType="uniform"
+                android:textSize="15sp"
                 style="?android:attr/borderlessButtonStyle"/>
             <EditText
                 android:layout_width="0dp"
@@ -285,9 +300,7 @@
                 android:textColor="@color/darkgray"
                 android:text="Umur"
                 android:textAllCaps="false"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeTextType="uniform"
+                android:textSize="15sp"
                 style="?android:attr/borderlessButtonStyle"/>
             <EditText
                 android:id="@+id/etumur1"
@@ -336,9 +349,7 @@
                 android:fontFamily="@font/helvetica_bold"
                 android:textColor="@color/darkgray"
                 android:text="-"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="20sp"
-                android:autoSizeTextType="uniform" />
+                android:textSize="12sp" />
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/menrhor3"
                 android:layout_width="wrap_content"
@@ -378,13 +389,13 @@
                 android:id="@+id/backhor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".028"
+                app:layout_constraintGuide_percent=".033"
                 android:orientation="horizontal"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/backhor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".055"
+                app:layout_constraintGuide_percent=".06"
                 android:orientation="horizontal"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/backver"
@@ -409,9 +420,9 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintVertical_bias="0"
-                app:layout_constraintHeight_min="15dp"
+                app:layout_constraintHeight_min="14dp"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintHeight_percent=".028"
+                app:layout_constraintHeight_percent=".033"
                 android:scaleType="fitCenter"
                 android:src="@drawable/back3"
                 app:layout_constraintBottom_toBottomOf="@id/backhor2"
@@ -423,7 +434,7 @@
                 android:id="@+id/menhor1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".142"
+                app:layout_constraintGuide_percent=".14"
                 android:orientation="horizontal"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/ver"
@@ -440,7 +451,7 @@
                 android:background="@drawable/circleblue3"
                 android:layout_marginHorizontal="15dp"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintHeight_percent=".1"
+                app:layout_constraintHeight_percent=".08"
                 app:layout_constraintBottom_toBottomOf="@id/menu1TV"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -449,23 +460,21 @@
                 android:id="@+id/menu1TV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_min="20dp"
+                app:layout_constraintHeight_min="17dp"
                 app:layout_constraintRight_toLeftOf="@id/ver"
                 app:layout_constraintTop_toBottomOf="@id/menhor1"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:textAlignment="viewEnd"
                 android:fontFamily="@font/helvetica_hv"
-                app:layout_constraintHeight_percent=".03"
+                app:layout_constraintHeight_percent=".027"
                 android:textColor="@color/darkgray"
                 android:text="PESANAN"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeTextType="uniform" />
+                android:textSize="15sp"/>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/menhor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".245"
+                app:layout_constraintGuide_percent=".252"
                 android:orientation="horizontal"/>
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/menu2"
@@ -474,7 +483,7 @@
                 android:background="@drawable/circleblue3"
                 android:layout_marginHorizontal="15dp"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintHeight_percent=".1"
+                app:layout_constraintHeight_percent=".08"
                 app:layout_constraintBottom_toBottomOf="@id/menu2TV"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -483,24 +492,22 @@
                 android:id="@+id/menu2TV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_min="20dp"
+                app:layout_constraintHeight_min="17dp"
                 app:layout_constraintRight_toLeftOf="@id/ver"
                 app:layout_constraintTop_toBottomOf="@id/menhor2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:textAlignment="viewEnd"
                 android:fontFamily="@font/helvetica_hv"
-                app:layout_constraintHeight_percent=".03"
+                app:layout_constraintHeight_percent=".027"
                 android:textColor="@color/darkgray"
                 android:text="PROFIL"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeTextType="uniform" />
+                android:textSize="15sp"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/menhor3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".347"
+                app:layout_constraintGuide_percent=".362"
                 android:orientation="horizontal"/>
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/menu3"
@@ -509,7 +516,7 @@
                 android:background="@drawable/circleblue3"
                 android:layout_marginHorizontal="15dp"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintHeight_percent=".1"
+                app:layout_constraintHeight_percent=".08"
                 app:layout_constraintBottom_toBottomOf="@id/menu3TV"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -518,18 +525,16 @@
                 android:id="@+id/menu3TV"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_min="20dp"
+                app:layout_constraintHeight_min="17dp"
                 app:layout_constraintRight_toLeftOf="@id/ver"
                 app:layout_constraintTop_toBottomOf="@id/menhor3"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:textAlignment="viewEnd"
                 android:fontFamily="@font/helvetica_hv"
-                app:layout_constraintHeight_percent=".03"
+                app:layout_constraintHeight_percent=".027"
                 android:textColor="@color/darkgray"
                 android:text="TENTANG"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeTextType="uniform" />
+                android:textSize="15sp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

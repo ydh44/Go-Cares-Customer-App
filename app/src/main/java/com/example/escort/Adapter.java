@@ -24,8 +24,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     List<CGdata> Data = new ArrayList<>();
 
 
-
-
     Adapter(Context context, List<CGdata>Data){
         this.layoutInflater = LayoutInflater.from(context);
         this.Data = Data;
@@ -40,13 +38,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
-
         CGdata cgdata = Data.get(i);
         viewHolder.DataDetail(cgdata);
-
-
-
     }
 
     @Override
@@ -67,7 +60,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(),DetailCGActivity.class);
-                    i.putExtra("urlgambar", hm.get("urlgambar"));
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.putExtra("nama",hm.get("nama"));
                     i.putExtra("umur",hm.get("umur"));
                     i.putExtra("gender",hm.get("gender"));
@@ -85,7 +78,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
 
         protected HashMap<String, String> DataDetail( @NonNull  CGdata cgdata) {
-            String urlgambar = cgdata.getUrlgambar();
             String nama = cgdata.getNama();
             String gaji = cgdata.getGaji();
             String gender = cgdata.getGender();
@@ -93,17 +85,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             String kota = cgdata.getKota();
             String rating = cgdata.getRating();
             hm = new HashMap<>();
-            hm.put("urlgambar", urlgambar);
             hm.put("nama", nama);
             hm.put("umur", umur);
             hm.put("gender", gender);
             hm.put("gaji", gaji);
             hm.put("kota", kota);
             hm.put("rating", rating);
-            Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
+            //Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
             textTitle.setText(nama);
             textDescription.setText(kota);
-            text3.setText(umur);
+            text3.setText(umur + " Tahun");
             text4.setText(rating);
 
 

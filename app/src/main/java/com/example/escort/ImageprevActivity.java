@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 public class ImageprevActivity extends AppCompatActivity {
 
@@ -19,10 +23,10 @@ public class ImageprevActivity extends AppCompatActivity {
         preview = findViewById(R.id.cv2);
 
         Intent i = getIntent();
-        Bundle imgs = i.getBundleExtra("img");
+        String imgs = i.getStringExtra("image");
+        Uri img = Uri.parse(imgs);
+        Log.d("TAG", "onCreate: " + img);
 
-        Bitmap imgg = (Bitmap) imgs.get("data");
-
-        preview.setImageBitmap(imgg);
+        Glide.with(this).load(img).into(preview);
     }
 }

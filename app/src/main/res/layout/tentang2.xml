@@ -15,15 +15,13 @@
             android:background="#fff">
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabpesanan"
-                app:tabMode="fixed"
+                app:tabMode="scrollable"
                 app:tabPaddingTop="3dp"
                 android:layout_width="match_parent"
-                android:layout_height="47dp"
+                android:layout_height="40dp"
                 android:paddingTop="3dp"
                 android:paddingBottom="2dp"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="10sp"
-                android:autoSizeTextType="uniform"
+                android:textSize="12sp"
                 />
         </com.google.android.material.card.MaterialCardView>
     </com.google.android.material.appbar.AppBarLayout>

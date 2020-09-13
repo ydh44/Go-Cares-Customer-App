@@ -75,8 +75,6 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.cardhor1) Guideline hor1;
     @BindView(R.id.cardhor2) Guideline hor2;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -98,7 +96,9 @@ public class LoginActivity extends AppCompatActivity {
             snackbar.show();
         }
 
-        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+        }
 
         KeyboardVisibilityEvent.setEventListener(LoginActivity.this, new KeyboardVisibilityEventListener() {
             @Override
@@ -198,13 +198,14 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     }else{
-                        Toast.makeText(LoginActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Email / Password Salah", Toast.LENGTH_SHORT).show();
                         prgbar.setVisibility(View.INVISIBLE);
                     }
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(LoginActivity.this, "Jaringan Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Koneksi Error", Toast.LENGTH_SHORT).show();
+                    Log.d("s", "onFailure: " + t);
                     prgbar.setVisibility(View.INVISIBLE);
                 }
             });

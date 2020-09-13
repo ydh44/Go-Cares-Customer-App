@@ -1,5 +1,8 @@
 package com.example.escort;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -11,6 +14,10 @@ public class APIClient {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .client(new OkHttpClient.Builder()
+                            .readTimeout(30, TimeUnit.SECONDS)
+                            .connectTimeout(30, TimeUnit.SECONDS)
+                            .build())
                     .build();
         }
         return retrofit;

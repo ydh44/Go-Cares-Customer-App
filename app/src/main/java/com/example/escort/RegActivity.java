@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
@@ -40,14 +41,14 @@ public class RegActivity extends AppCompatActivity {
 
     APIinterface apIinterface;
     EditText emailEt, namaEt, umurEt, teleponEt, alamatEt, password1Et, password2Et;
-    TextView emailTv, namaTv, umurTv, teleponTv, alamatTv, password1Tv, password2Tv;
+    TextView emailTv, namaTv, umurTv, kelaminTv, teleponTv, alamatTv, password1Tv, password2Tv;
     RadioGroup kelaminEt;
     RelativeLayout prgbar;
     ProgressBar prgbar2;
     Window window;
+    String kelamin = null;
 
     private static final String TAG = "RegActivity";
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,13 +69,29 @@ public class RegActivity extends AppCompatActivity {
         alamatTv = (TextView) findViewById(R.id.addTV);
         password1Tv = (TextView) findViewById(R.id.pass1TV);
         password2Tv = (TextView) findViewById(R.id.pass2TV);
+        kelaminTv = (TextView) findViewById(R.id.genderTV);
         kelaminEt = (RadioGroup) findViewById(R.id.genderEdtx);
         prgbar = (RelativeLayout) findViewById(R.id.progressbar);
         prgbar2 = (ProgressBar) findViewById(R.id.prgs);
         window = this.getWindow();
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+        }
 
-        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+        kelaminEt.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.radio0 :
+                        kelamin = "L";
+                        break;
+                    case R.id.radio1 :
+                        kelamin = "P";
+                        break;
+                }
+            }
+        });
 
 
         cek_form(emailEt, emailTv);
@@ -105,7 +122,7 @@ public class RegActivity extends AppCompatActivity {
 
             apIinterface = APIClient.GetClient().create(APIinterface.class);
             Call<ResponseBody> call = apIinterface.register(
-            email, nama, umur, "laki", telepon, alamat, password1, password2);
+            email, nama, umur, kelamin, telepon, alamat, password1, password2);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -115,16 +132,16 @@ public class RegActivity extends AppCompatActivity {
                             i.putExtra("status", true);
                             prgbar.setVisibility(View.INVISIBLE);
                             startActivity(i);
-                        }else{
-                            Toast.makeText(RegActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
-                            prgbar.setVisibility(View.INVISIBLE);
                         }
+                    }else{
+                        Toast.makeText(RegActivity.this, "Email Telah Digunakan", Toast.LENGTH_SHORT).show();
+                        prgbar.setVisibility(View.INVISIBLE);
                     }
                 }
-
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(RegActivity.this, "Jaringan Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegActivity.this, "Koneksi Error", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onFailure: " + t);
                     prgbar.setVisibility(View.INVISIBLE);
                 }
             });
@@ -175,6 +192,10 @@ public class RegActivity extends AppCompatActivity {
         if(password2Et.getText().length()<8){
             password2Et.setBackgroundResource(R.drawable.borderred);
             password2Tv.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+        if (kelamin == null){
+            kelaminTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
         }
         if(!password1Et.getText().toString().equals(password2Et.getText().toString())){

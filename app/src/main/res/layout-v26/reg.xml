@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cons"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintHeight_default="percent"
+    app:layout_constraintWidth_default="percent">
+
+    <RelativeLayout
+        android:id="@+id/progressbar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:translationZ="20dp"
+        android:elevation="30dp"
+        android:visibility="gone"
+        android:background="@drawable/backbluebig3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/prgs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            style="?android:attr/progressBarStyleLarge"/>
+    </RelativeLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/backhor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8pt"
+        android:background="@drawable/backbluebig"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/backhor"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardhor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardhor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardver1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardver2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv2"
+        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        app:layout_constraintDimensionRatio="1:1.7"
+        android:maxHeight="20dp"
+        android:maxWidth="350dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/cardver1"
+        app:layout_constraintRight_toLeftOf="@id/cardver2"
+        app:layout_constraintBottom_toTopOf="@id/cardhor2">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdver2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.93" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdver1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.07" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.035" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.070" />
+            <TextView
+                android:id="@+id/emailTV"
+                android:labelFor="@id/emailEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/email"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+                app:layout_constraintTop_toBottomOf="@id/cdhor1"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintBottom_toTopOf="@id/cdhor2"
+                app:layout_constraintRight_toRightOf="@id/cdver2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.085" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.15" />
+            <EditText
+                android:id="@+id/emailEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constrainedWidth="true"
+                android:autofillHints="email"
+                android:background="@drawable/borderblue"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
+                android:paddingHorizontal="8sp"
+                android:inputType="textEmailAddress"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@id/cdhor3"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintRight_toLeftOf="@id/cdver2"
+                app:layout_constraintBottom_toTopOf="@id/cdhor4"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.165" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.20" />
+
+            <TextView
+                android:id="@+id/nameTV"
+                android:labelFor="@id/nameEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="NAMA"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+                app:layout_constraintTop_toBottomOf="@id/cdhor5"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintBottom_toTopOf="@id/cdhor6"
+                app:layout_constraintRight_toRightOf="@id/cdver2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.215" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.28" />
+
+            <EditText
+                android:id="@+id/nameEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constrainedWidth="true"
+                android:autofillHints="email"
+                android:background="@drawable/borderblue"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
+                android:paddingHorizontal="8sp"
+                android:inputType="text"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@id/cdhor7"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintRight_toLeftOf="@id/cdver2"
+                app:layout_constraintBottom_toTopOf="@id/cdhor8"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.295" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.33" />
+
+            <TextView
+                android:id="@+id/ageTV"
+                android:labelFor="@id/ageEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="UMUR"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+                app:layout_constraintTop_toBottomOf="@id/cdhor9"
+                app:layout_constraintLeft_toLeftOf="@id/ageEdtx"
+                app:layout_constraintBottom_toTopOf="@id/cdhor10"
+                app:layout_constraintRight_toRightOf="@id/ageEdtx" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.345" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.41" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdver3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.45" />
+
+            <EditText
+                android:id="@+id/ageEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:maxLength="2"
+                android:gravity="center"
+                app:layout_constrainedWidth="true"
+                android:autofillHints="email"
+                android:background="@drawable/borderblue"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
+                android:paddingHorizontal="8sp"
+                android:inputType="number"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@id/cdhor11"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintRight_toLeftOf="@id/cdver3"
+                app:layout_constraintBottom_toTopOf="@id/cdhor12"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdver4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50" />
+            <TextView
+                android:id="@+id/genderTV"
+                android:labelFor="@id/genderEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="GENDER"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+                app:layout_constraintTop_toBottomOf="@id/cdhor9"
+                app:layout_constraintLeft_toLeftOf="@id/genderEdtx"
+                app:layout_constraintBottom_toTopOf="@id/cdhor10"
+                app:layout_constraintRight_toRightOf="@id/genderEdtx" />
+           <RadioGroup
+               android:id="@+id/genderEdtx"
+               android:layout_width="wrap_content"
+               android:layout_height="0dp"
+               android:orientation="horizontal"
+               app:layout_constrainedWidth="true"
+               app:layout_constrainedHeight="true"
+               app:layout_constraintTop_toBottomOf="@id/cdhor11"
+               app:layout_constraintBottom_toTopOf="@id/cdhor12"
+               app:layout_constraintRight_toRightOf="@id/cdver2">
+               <androidx.appcompat.widget.AppCompatRadioButton
+                   android:id="@+id/radio0"
+                   android:gravity="center"
+                   android:layout_width="wrap_content"
+                   android:minWidth="55dp"
+                   android:layout_height="match_parent"
+                   android:layout_marginRight="5dp"
+                   android:background="@drawable/cstmradio"
+                   android:button="@drawable/cstmradio"
+                   android:text="L" />
+               <androidx.appcompat.widget.AppCompatRadioButton
+                   android:gravity="center"
+                   android:id="@+id/radio1"
+                   android:layout_width="wrap_content"
+                   android:minWidth="55dp"
+                   android:layout_marginLeft="5dp"
+                   android:layout_height="match_parent"
+                   android:background="@drawable/cstmradio"
+                   android:button="@drawable/cstmradio"
+                   android:text="P" />
+            </RadioGroup>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.425" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.46" />
+            <TextView
+                android:id="@+id/phoneTV"
+                android:labelFor="@id/phoneEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="TELEPON"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+                app:layout_constraintTop_toBottomOf="@id/cdhor13"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintBottom_toTopOf="@id/cdhor14"
+                app:layout_constraintRight_toRightOf="@id/cdver2" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.475" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.54" />
+            <EditText
+                android:id="@+id/phoneEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constrainedWidth="true"
+                android:autofillHints="email"
+                android:background="@drawable/borderblue"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
+                android:paddingHorizontal="8sp"
+                android:inputType="phone"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@id/cdhor15"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintRight_toLeftOf="@id/cdver2"
+                app:layout_constraintBottom_toTopOf="@id/cdhor16"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.555" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.59" />
+            <TextView
+                android:id="@+id/addTV"
+                android:labelFor="@id/addEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="ALAMAT"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+                app:layout_constraintTop_toBottomOf="@id/cdhor17"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintBottom_toTopOf="@id/cdhor18"
+                app:layout_constraintRight_toRightOf="@id/cdver2" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.605" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.67" />
+            <EditText
+                android:id="@+id/addEdtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constrainedWidth="true"
+                android:autofillHints="email"
+                android:background="@drawable/borderblue"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
+                android:paddingHorizontal="8sp"
+                android:inputType="textLongMessage"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@id/cdhor19"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintRight_toLeftOf="@id/cdver2"
+                app:layout_constraintBottom_toTopOf="@id/cdhor20"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.685" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.72" />
+            <TextView
+                android:id="@+id/pass1TV"
+                android:labelFor="@id/pass1Edtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="PASSWORD"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+
+                app:layout_constraintTop_toBottomOf="@id/cdhor21"
+                app:layout_constraintLeft_toLeftOf="@id/pass1Edtx"
+                app:layout_constraintBottom_toTopOf="@id/cdhor22"
+                app:layout_constraintRight_toRightOf="@id/pass1Edtx" />
+            <TextView
+                android:id="@+id/pass2TV"
+                android:labelFor="@id/pass2Edtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:paddingStart="8sp"
+                android:paddingEnd="8sp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/roboto_light"
+                android:text="KONFIRMASI"
+                android:textColor="#000"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="30sp"
+                android:autoSizeMinTextSize="10sp"
+
+                app:layout_constraintTop_toBottomOf="@id/cdhor21"
+                app:layout_constraintLeft_toLeftOf="@id/pass2Edtx"
+                app:layout_constraintBottom_toTopOf="@id/cdhor22"
+                app:layout_constraintRight_toRightOf="@id/pass2Edtx" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.735" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.8" />
+            <EditText
+                android:id="@+id/pass1Edtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constrainedWidth="true"
+                android:autofillHints="password"
+                android:background="@drawable/borderblue"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
+                android:paddingHorizontal="8sp"
+                android:inputType="textPassword"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@id/cdhor23"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                app:layout_constraintRight_toLeftOf="@id/cdver4"
+                app:layout_constraintBottom_toTopOf="@id/cdhor24"/>
+            <EditText
+                android:id="@+id/pass2Edtx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                app:layout_constrainedWidth="true"
+                android:autofillHints="password"
+                android:background="@drawable/borderblue"
+                android:fontFamily="@font/helvetica_light"
+                android:paddingVertical="2dp"
+                android:textSize="16sp"
+                android:paddingHorizontal="8sp"
+                android:inputType="textPassword"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintTop_toBottomOf="@id/cdhor23"
+                app:layout_constraintLeft_toRightOf="@id/cdver4"
+                app:layout_constraintRight_toLeftOf="@id/cdver2"
+                app:layout_constraintBottom_toTopOf="@id/cdhor24"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.83" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.95" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buttonreg"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/backblue2"
+                app:layout_constraintDimensionRatio="1:1"
+                android:fontFamily="@font/roboto_bold"
+                app:layout_constrainedWidth="true"
+                app:layout_constrainedHeight="true"
+                android:paddingHorizontal="88dp"
+                app:layout_constraintRight_toLeftOf="@id/cdver2"
+                app:layout_constraintTop_toBottomOf="@id/cdhor25"
+                app:layout_constraintBottom_toTopOf="@id/cdhor26"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fontFamily="@font/helvetica_bold"
+                app:layout_constraintHeight_percent=".029"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="DAFTAR"
+                android:textColor="#FFFFFF"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="16sp"
+                android:autoSizeMinTextSize="8sp"
+                app:layout_constraintLeft_toLeftOf="@id/buttonreg"
+                app:layout_constraintRight_toRightOf="@id/buttonreg"
+                app:layout_constraintTop_toTopOf="@id/buttonreg"
+                app:layout_constraintBottom_toBottomOf="@id/buttonreg"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.862"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/cdhor28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.927"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonlogin"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:padding="0dp"
+                app:layout_constrainedHeight="true"
+                android:textAlignment="viewStart"
+                android:fontFamily="@font/roboto_light"
+                android:text="Sudah punya akun ?"
+                app:layout_constraintWidth_percent=".25"
+                android:textColor="@color/colorPrimary"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="8sp"
+                app:layout_constraintTop_toBottomOf="@id/cdhor27"
+                app:layout_constraintBottom_toTopOf="@id/cdhor28"
+                app:layout_constraintLeft_toRightOf="@id/cdver1"
+                android:textAllCaps="false"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

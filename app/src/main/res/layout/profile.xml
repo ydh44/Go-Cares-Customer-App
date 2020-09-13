@@ -84,9 +84,7 @@
                 android:text="PROFILE"
                 android:textColor="#5B4949"
                 app:layout_constraintHeight_min="19dp"
-                android:autoSizeMaxTextSize="40sp"
-                android:autoSizeMinTextSize="10sp"
-                android:autoSizeTextType="uniform"
+                android:textSize="15sp"
                 android:fontFamily="@font/roboto_bold"
                 app:layout_constraintTop_toBottomOf="@id/tilhor1"
                 app:layout_constraintBottom_toTopOf="@id/tilhor2"
@@ -187,17 +185,16 @@
                 android:id="@+id/hor1"
                 app:layout_constraintGuide_percent=".3"/>
             <TextView
+                android:id="@+id/nama"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintWidth_percent=".9"
-                android:autoSizeMaxTextSize="25sp"
-                android:autoSizeMinTextSize="10sp"
-                android:autoSizeTextType="uniform"
+                android:textSize="18sp"
                 android:fontFamily="@font/helvetica_medium"
                 android:text="Nama cust"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hor1"
-                app:layout_constraintHeight_percent=".15"
+                app:layout_constraintHeight_percent=".2"
                 />
             <androidx.constraintlayout.widget.Guideline
                 android:layout_width="wrap_content"
@@ -210,15 +207,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 style="?android:attr/borderlessButtonStyle"
-                app:layout_constraintHeight_percent=".1"
+                app:layout_constraintHeight_percent=".15"
                 android:padding="0dp"
                 android:fontFamily="@font/helvetica_bold"
                 android:text="KELUAR"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/colorRed"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="20sp"
-                android:autoSizeMinTextSize="6sp"
+                android:textSize="12sp"
                 app:layout_constraintTop_toBottomOf="@id/hor2"
                 app:layout_constraintRight_toRightOf="parent" />
 
@@ -236,14 +231,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4275"/>
+        app:layout_constraintGuide_percent="0.4375"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25sp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_light"
         android:text="Email      :"
         android:textColor="#000000"
@@ -260,12 +253,10 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".33"/>
     <TextView
-        android:id="@+id/kota"
+        android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_thin"
         android:text="Semarang"
         android:textColor="#000000"
@@ -286,14 +277,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4825"/>
+        app:layout_constraintGuide_percent="0.4925"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25sp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_light"
         android:text="Telepon :"
         android:textColor="#000000"
@@ -304,12 +293,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cdhor7" />
     <TextView
-        android:id="@+id/umur"
+        android:id="@+id/telepon"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_thin"
         android:text="Umur"
         android:textColor="#000000"
@@ -330,14 +317,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5375"/>
+        app:layout_constraintGuide_percent="0.5475"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25sp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_light"
         android:text="Gender  :"
         android:textColor="#000000"
@@ -351,9 +336,7 @@
         android:id="@+id/gender"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="12sp"
         android:fontFamily="@font/helvetica_thin"
         android:text="Gender"
         android:textColor="#000000"
@@ -374,13 +357,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5925"/>
+        app:layout_constraintGuide_percent="0.6025"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:layout_marginStart="25sp"
         android:fontFamily="@font/helvetica_light"
         android:text="Umur     :"
@@ -392,12 +373,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cdhor11" />
     <TextView
-        android:id="@+id/gaji"
+        android:id="@+id/umur"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_thin"
         android:text="Gaji"
         android:textColor="#000000"
@@ -418,13 +397,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6475"/>
+        app:layout_constraintGuide_percent="0.6575"/>
     <TextView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:layout_marginStart="25sp"
         android:fontFamily="@font/helvetica_light"
         android:text="Alamat   :"
@@ -436,12 +413,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cdhor13" />
     <TextView
-        android:id="@+id/rating"
+        android:id="@+id/alamat"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:autoSizeMaxTextSize="40sp"
-        android:autoSizeMinTextSize="8sp"
-        android:autoSizeTextType="uniform"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_thin"
         android:text="Rating"
         android:textColor="#000000"

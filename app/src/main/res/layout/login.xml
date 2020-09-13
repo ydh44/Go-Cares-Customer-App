@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.29" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <TextView
         android:id="@+id/text"
@@ -66,11 +66,8 @@
         android:fontFamily="@font/roboto_condensed_regular"
         android:text="APLIKASI PENDAMPING LANSIA"
         android:textColor="#fff"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:translationZ="4dp"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMaxTextSize="50sp"
-        android:autoSizeMinTextSize="12sp"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@id/logohor2"
@@ -170,9 +167,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="@string/email"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor1"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"
                 app:layout_constraintBottom_toTopOf="@id/cdhor2"
@@ -182,7 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.17" />
+                app:layout_constraintGuide_percent="0.19" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdhor3"
@@ -225,7 +220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.445" />
+                app:layout_constraintGuide_percent="0.465" />
             <TextView
                 android:id="@+id/passTv"
                 android:labelFor="@id/passEdtx"
@@ -238,9 +233,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="@string/password"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor5"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"
                 app:layout_constraintBottom_toTopOf="@id/cdhor6"
@@ -294,8 +287,6 @@
                 android:background="@drawable/backblue2"
                 app:layout_constraintDimensionRatio="1:1"
                 android:fontFamily="@font/roboto_bold"
-                app:layout_constrainedWidth="true"
-                app:layout_constrainedHeight="true"
                 android:paddingHorizontal="88dp"
                 app:layout_constraintRight_toLeftOf="@id/cdver2"
                 app:layout_constraintTop_toBottomOf="@id/cdhor9"
@@ -305,14 +296,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:fontFamily="@font/helvetica_bold"
-                app:layout_constraintHeight_percent=".06"
+                app:layout_constraintHeight_percent=".1"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:text="MASUK"
                 android:textColor="#FFFFFF"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeMinTextSize="8sp"
+                android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="@id/buttonlog"
                 app:layout_constraintRight_toRightOf="@id/buttonlog"
                 app:layout_constraintTop_toTopOf="@id/buttonlog"
@@ -323,12 +312,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.705"/>
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdhor12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.775"/>
+                app:layout_constraintGuide_percent="0.78" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonreg"
@@ -341,9 +331,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="@string/belum_punya_akun"
                 android:textColor="@color/colorPrimary"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="15sp"
-                android:autoSizeMinTextSize="6sp"
+                android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor11"
                 app:layout_constraintBottom_toTopOf="@id/cdhor12"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"
@@ -372,9 +360,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="@string/lupa_password"
                 android:textColor="@color/colorPrimary"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="15sp"
-                android:autoSizeMinTextSize="6sp"
+                android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor13"
                 app:layout_constraintBottom_toTopOf="@id/cdhor14"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"

@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.070" />
+                app:layout_constraintGuide_percent="0.08" />
             <TextView
                 android:id="@+id/emailTV"
                 android:labelFor="@id/emailEdtx"
@@ -128,9 +128,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="@string/email"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor1"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"
                 app:layout_constraintBottom_toTopOf="@id/cdhor2"
@@ -178,7 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.20" />
+                app:layout_constraintGuide_percent="0.21" />
 
             <TextView
                 android:id="@+id/nameTV"
@@ -192,9 +190,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="NAMA"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor5"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"
                 app:layout_constraintBottom_toTopOf="@id/cdhor6"
@@ -242,7 +238,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.33" />
+                app:layout_constraintGuide_percent="0.34" />
 
             <TextView
                 android:id="@+id/ageTV"
@@ -256,9 +252,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="UMUR"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor9"
                 app:layout_constraintLeft_toLeftOf="@id/ageEdtx"
                 app:layout_constraintBottom_toTopOf="@id/cdhor10"
@@ -309,7 +303,7 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.50" />
             <TextView
-                android:id="@+id/ganderTV"
+                android:id="@+id/genderTV"
                 android:labelFor="@id/genderEdtx"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -320,9 +314,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="GENDER"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor9"
                 app:layout_constraintLeft_toLeftOf="@id/genderEdtx"
                 app:layout_constraintBottom_toTopOf="@id/cdhor10"
@@ -369,7 +361,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.46" />
+                app:layout_constraintGuide_percent="0.47" />
             <TextView
                 android:id="@+id/phoneTV"
                 android:labelFor="@id/phoneEdtx"
@@ -382,9 +374,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="TELEPON"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor13"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"
                 app:layout_constraintBottom_toTopOf="@id/cdhor14"
@@ -430,7 +420,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.59" />
+                app:layout_constraintGuide_percent="0.6" />
             <TextView
                 android:id="@+id/addTV"
                 android:labelFor="@id/addEdtx"
@@ -443,9 +433,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="ALAMAT"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor17"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"
                 app:layout_constraintBottom_toTopOf="@id/cdhor18"
@@ -490,7 +478,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.72" />
+                app:layout_constraintGuide_percent="0.73" />
             <TextView
                 android:id="@+id/pass1TV"
                 android:labelFor="@id/pass1Edtx"
@@ -503,10 +491,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="PASSWORD"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
-
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor21"
                 app:layout_constraintLeft_toLeftOf="@id/pass1Edtx"
                 app:layout_constraintBottom_toTopOf="@id/cdhor22"
@@ -523,10 +508,7 @@
                 android:fontFamily="@font/roboto_light"
                 android:text="KONFIRMASI"
                 android:textColor="#000"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="30sp"
-                android:autoSizeMinTextSize="10sp"
-
+                android:textSize="16sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor21"
                 app:layout_constraintLeft_toLeftOf="@id/pass2Edtx"
                 app:layout_constraintBottom_toTopOf="@id/cdhor22"
@@ -553,7 +535,7 @@
                 android:background="@drawable/borderblue"
                 android:fontFamily="@font/helvetica_light"
                 android:paddingVertical="2dp"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:paddingHorizontal="8sp"
                 android:inputType="textPassword"
                 app:layout_constrainedHeight="true"
@@ -590,7 +572,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.95" />
+                app:layout_constraintGuide_percent="0.96" />
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/buttonreg"
                 android:layout_width="0dp"
@@ -608,14 +590,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:fontFamily="@font/helvetica_bold"
-                app:layout_constraintHeight_percent=".029"
+                app:layout_constraintHeight_percent=".05"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:text="DAFTAR"
                 android:textColor="#FFFFFF"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="16sp"
-                android:autoSizeMinTextSize="8sp"
+                android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="@id/buttonreg"
                 app:layout_constraintRight_toRightOf="@id/buttonreg"
                 app:layout_constraintTop_toTopOf="@id/buttonreg"
@@ -642,11 +622,9 @@
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/roboto_light"
                 android:text="Sudah punya akun ?"
-                app:layout_constraintWidth_percent=".25"
+                app:layout_constraintWidth_percent=".3"
                 android:textColor="@color/colorPrimary"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMaxTextSize="20sp"
-                android:autoSizeMinTextSize="8sp"
+                android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/cdhor27"
                 app:layout_constraintBottom_toTopOf="@id/cdhor28"
                 app:layout_constraintLeft_toRightOf="@id/cdver1"

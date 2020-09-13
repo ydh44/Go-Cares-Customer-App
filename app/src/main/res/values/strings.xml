@@ -15,7 +15,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="teks_visi_kompetensi_ps">Terwujudnya Tenaga Kerja Dibidang Lansia Dan Homecare Yang Memenuhi Tuntutan Dunia Industri,Unggul,Berkarakter,Berdaya Saing Dan Berwawasan Lingkungan."</string>
+    <string name="teks_misi_ps1">1.Menyelenggarakan Pembelajaran Yang Mempersiapkan Lulusan Memiliki Ketaqwaan Terhadap Tuhan Yang Maha Esa,Berahlak Mulia,Berdisplin,Bertanggung Jawab,Beretos Kerja Tinggi, Dan Berkopeten Dipekerjaan Sosial.</string>
+    <string name="teks_misi_ps2">2.Menyelenggarakan Pembelajaran Yang Mempersiapkan Lulusan Memiliki Kemampuan Berkompetensi Merebut Pasar Kerja.</string>
+    <string name="teks_misi_ps3">3.Menyelenggarakan Pembelajaran Yang Mempersiapkan Lulusan Memiliki Kemampuan Adaptasi Terhadap Perubahan/Kepentingan Masyarakat Dan Lingkungannya.</string>
 </resources>
