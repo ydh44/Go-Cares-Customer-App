@@ -3,6 +3,9 @@ package com.example.escort;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +64,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(),DetailCGActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.putExtra("id",hm.get("id"));
+                    i.putExtra("urlgambar",hm.get("urlgambar"));
                     i.putExtra("nama",hm.get("nama"));
                     i.putExtra("umur",hm.get("umur"));
                     i.putExtra("gender",hm.get("gender"));
+                    i.putExtra("keahlian" , hm.get("keahlian"));
                     i.putExtra("gaji",hm.get("gaji"));
                     i.putExtra("kota",hm.get("kota"));
                     i.putExtra("rating",hm.get("rating"));
@@ -78,25 +84,31 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
 
         protected HashMap<String, String> DataDetail( @NonNull  CGdata cgdata) {
+            String id = cgdata.getId();
+            String urlgambar = cgdata.getUrlgambar();
             String nama = cgdata.getNama();
             String gaji = cgdata.getGaji();
             String gender = cgdata.getGender();
             String umur = cgdata.getUmur();
             String kota = cgdata.getKota();
+            String keahlian = cgdata.getKeahlian();
             String rating = cgdata.getRating();
             hm = new HashMap<>();
+            hm.put("id", id);
+            hm.put("urlgambar", urlgambar);
             hm.put("nama", nama);
             hm.put("umur", umur);
             hm.put("gender", gender);
             hm.put("gaji", gaji);
             hm.put("kota", kota);
+            hm.put("keahlian", keahlian);
             hm.put("rating", rating);
-            //Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
+            Log.d("TAG", "DataDetail: " +urlgambar);
+            Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
             textTitle.setText(nama);
             textDescription.setText(kota);
             text3.setText(umur + " Tahun");
             text4.setText(rating);
-
 
             return hm;
         }

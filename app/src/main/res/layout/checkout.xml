@@ -4,6 +4,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/progressbar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:translationZ="20dp"
+        android:elevation="30dp"
+        android:visibility="gone"
+        android:background="@drawable/backbluebig3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/prgs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            style="?android:attr/progressBarStyleLarge"/>
+    </RelativeLayout>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/cardhor1"
         android:layout_width="wrap_content"
@@ -114,12 +134,13 @@
         app:layout_constraintHeight_max="420dp"/>
 
     <TextView
+        android:id="@+id/tit"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="13sp"
         app:layout_constraintHeight_percent=".025"
         android:fontFamily="@font/roboto_bold"
-        android:textAlignment="textEnd"
+        android:gravity="end"
         android:layout_marginEnd="15dp"
         android:text="CHECKOUT"
         android:textColor="#5B4949"
@@ -184,20 +205,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.02" />
+                            app:layout_constraintGuide_percent="0.0225" />
                         <androidx.constraintlayout.widget.Guideline
                             android:id="@+id/tithor2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.05"/>
+                        <CheckBox
+                            android:id="@+id/check"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintHeight_percent=".03"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintTop_toBottomOf="@id/tithor1"
+                            app:layout_constraintLeft_toRightOf="@id/cdver1" />
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             android:fontFamily="@font/helvetica_light"
                             android:text="Data Lansia"
-                            android:textAlignment="center"
+                            android:gravity="center"
                             android:textColor="#000"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
@@ -216,15 +245,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.1"/>
+                            app:layout_constraintGuide_percent="0.09"/>
                         <TextView
+                            android:id="@+id/nameTv"
                             android:labelFor="@+id/nameEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:textSize="16sp"
                             android:paddingStart="8sp"
                             android:paddingEnd="8sp"
-                            android:fontFamily="@font/helvetica_thin"
+                            android:fontFamily="@font/roboto_light"
                             android:text="Nama"
                             android:textColor="#000"
                             app:layout_constrainedHeight="true"
@@ -233,13 +263,12 @@
                             app:layout_constraintLeft_toLeftOf="@id/nameEdtx"
                             app:layout_constraintRight_toRightOf="@id/nameEdtx"
                             app:layout_constraintTop_toBottomOf="@id/cdhor1" />
-
                         <androidx.constraintlayout.widget.Guideline
                             android:id="@+id/cdver1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            app:layout_constraintGuide_begin="28dp" />
+                            app:layout_constraintGuide_percent="0.075"/>
                         <androidx.constraintlayout.widget.Guideline
                             android:id="@+id/cdver2"
                             android:layout_width="wrap_content"
@@ -293,6 +322,7 @@
                             android:orientation="vertical"
                             app:layout_constraintGuide_percent="0.45"/>
                         <TextView
+                            android:id="@+id/ageTv"
                             android:labelFor="@id/ageEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -300,7 +330,7 @@
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
+                            android:fontFamily="@font/roboto_light"
                             android:text="Umur"
                             android:textColor="#000"
                             android:textSize="16sp"
@@ -309,6 +339,7 @@
                             app:layout_constraintBottom_toTopOf="@id/cdhor6"
                             app:layout_constraintRight_toRightOf="@id/ageEdtx" />
                         <TextView
+                            android:id="@+id/genderTv"
                             android:labelFor="@id/genderEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -316,7 +347,7 @@
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
+                            android:fontFamily="@font/roboto_light"
                             android:text="Gender"
                             android:textColor="#000"
                             android:textSize="16sp"
@@ -398,6 +429,7 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.28"/>
                         <TextView
+                            android:id="@+id/hobbyTv"
                             android:labelFor="@id/hobbyEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -405,7 +437,7 @@
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
+                            android:fontFamily="@font/roboto_light"
                             android:text="Hobi atau kebiasaan"
                             android:textColor="#000"
                             android:textSize="16sp"
@@ -454,6 +486,7 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.375"/>
                         <TextView
+                            android:id="@+id/sickTv"
                             android:labelFor="@id/sickEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -461,7 +494,7 @@
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
+                            android:fontFamily="@font/roboto_light"
                             android:text="Riwayat penyakit"
                             android:textColor="#000"
                             android:textSize="16sp"
@@ -512,14 +545,14 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.53"/>
                         <TextView
-                            android:labelFor="@id/sickEdtx"
+                            android:id="@+id/pkgTv"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:paddingStart="8sp"
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
+                            android:fontFamily="@font/roboto_light"
                             android:text="Pilih Paket"
                             android:textColor="#000"
                             android:textSize="16sp"
@@ -527,6 +560,24 @@
                             app:layout_constraintLeft_toLeftOf="@id/hobbyEdtx"
                             app:layout_constraintBottom_toTopOf="@id/cdhor18"
                             app:layout_constraintRight_toRightOf="@id/hobbyEdtx" />
+                        <TextView
+                            android:id="@+id/durasiTv"
+                            android:labelFor="@id/durasiEdtx"
+                            android:visibility="gone"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:paddingStart="8sp"
+                            android:paddingEnd="8sp"
+                            app:layout_constrainedHeight="true"
+                            app:layout_constrainedWidth="true"
+                            android:fontFamily="@font/roboto_light"
+                            android:text="Durasi"
+                            android:textColor="#000"
+                            android:textSize="16sp"
+                            app:layout_constraintTop_toBottomOf="@id/cdhor17"
+                            app:layout_constraintLeft_toLeftOf="@id/genderEdtx"
+                            app:layout_constraintBottom_toTopOf="@id/cdhor18"
+                            app:layout_constraintRight_toRightOf="@id/genderEdtx" />
                         <androidx.constraintlayout.widget.Guideline
                             android:id="@+id/cdhor19"
                             android:layout_width="wrap_content"
@@ -539,6 +590,56 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.5875"/>
+                        <RelativeLayout
+                            android:id="@+id/backdur"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintLeft_toLeftOf="@id/genderEdtx"
+                            app:layout_constraintRight_toRightOf="@id/genderEdtx"
+                            app:layout_constraintTop_toBottomOf="@id/cdhor19"
+                            app:layout_constraintBottom_toTopOf="@id/cdhor20"
+                            android:background="@drawable/backdur"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/durasi2Tv"
+                            android:labelFor="@id/durasiEdtx"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:paddingStart="8sp"
+                            android:paddingEnd="8sp"
+                            android:visibility="gone"
+                            app:layout_constrainedHeight="true"
+                            app:layout_constrainedWidth="true"
+                            android:fontFamily="@font/roboto_light"
+                            android:text="BULAN"
+                            android:textColor="#000"
+                            android:gravity="center_vertical"
+                           android:textSize="12sp"
+                            app:layout_constraintHeight_percent=".025"
+                            app:layout_constraintWidth_percent=".15"
+                            app:layout_constraintRight_toRightOf="@id/genderEdtx"
+                            app:layout_constraintTop_toBottomOf="@id/cdhor19"
+                            app:layout_constraintBottom_toTopOf="@id/cdhor20" />
+                        <EditText
+                            android:id="@+id/durasiEdtx"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:maxLength="2"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            app:layout_constrainedWidth="true"
+                            android:autofillHints="email"
+                            android:background="@drawable/backwhite"
+                            android:fontFamily="@font/helvetica_light"
+                            android:paddingHorizontal="8sp"
+                            android:textSize="16sp"
+                            android:inputType="number"
+                            app:layout_constraintWidth_percent=".15"
+                            app:layout_constrainedHeight="true"
+                            app:layout_constraintLeft_toLeftOf="@id/genderEdtx"
+                            app:layout_constraintTop_toBottomOf="@id/cdhor19"
+                            app:layout_constraintBottom_toTopOf="@id/cdhor20"/>
                         <RadioGroup
                             android:id="@+id/paketEdtx"
                             android:layout_width="0dp"
@@ -583,15 +684,16 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.625"/>
                         <TextView
-                            android:labelFor="@id/sickEdtx"
+                            android:id="@+id/descTv"
+                            android:labelFor="@id/descEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:paddingStart="8sp"
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
-                            android:text="Alamat Rumah"
+                            android:fontFamily="@font/roboto_light"
+                            android:text="Deskripsi Pekerjaan"
                             android:textColor="#000"
                             android:textSize="16sp"
                             app:layout_constraintTop_toBottomOf="@id/cdhor21"
@@ -611,12 +713,12 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.6775"/>
                         <EditText
-                            android:id="@+id/AddressEdtx"
+                            android:id="@+id/descEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             app:layout_constrainedWidth="true"
                             android:autofillHints="text"
-                            android:background="@drawable/backwhite"
+                            android:background="@drawable/borderblue"
                             android:fontFamily="@font/helvetica_light"
                             android:paddingHorizontal="8sp"
                             android:textSize="16sp"
@@ -639,15 +741,16 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.715"/>
                         <TextView
-                            android:labelFor="@id/phoneEdtx"
+                            android:id="@+id/addressTv"
+                            android:labelFor="@id/addressEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:paddingStart="8sp"
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
-                            android:text="Nomor Telepon"
+                            android:fontFamily="@font/roboto_light"
+                            android:text="Alamat Rumah"
                             android:textColor="#000"
                             android:textSize="16sp"
                             app:layout_constraintTop_toBottomOf="@id/cdhor25"
@@ -667,15 +770,15 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.7675"/>
                         <EditText
-                            android:id="@+id/phoneEdtx"
+                            android:id="@+id/addressEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             app:layout_constrainedWidth="true"
                             android:autofillHints="text"
-                            android:background="@drawable/backwhite"
+                            android:background="@drawable/borderblue"
                             android:fontFamily="@font/helvetica_light"
                             android:paddingHorizontal="8sp"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:inputType="textMultiLine"
                             app:layout_constrainedHeight="true"
                             app:layout_constraintTop_toBottomOf="@id/cdhor27"
@@ -695,15 +798,16 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.805"/>
                         <TextView
-                            android:labelFor="@id/descEdtx"
+                            android:id="@+id/phoneTv"
+                            android:labelFor="@id/phoneEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:paddingStart="8sp"
                             android:paddingEnd="8sp"
                             app:layout_constrainedHeight="true"
                             app:layout_constrainedWidth="true"
-                            android:fontFamily="@font/helvetica_thin"
-                            android:text="Deskripsi Pekerjaan"
+                            android:fontFamily="@font/roboto_light"
+                            android:text="Nomor Telepon"
                             android:textColor="#000"
                             android:textSize="16sp"
                             app:layout_constraintTop_toBottomOf="@id/cdhor29"
@@ -723,16 +827,16 @@
                             android:orientation="horizontal"
                             app:layout_constraintGuide_percent="0.8575"/>
                         <EditText
-                            android:id="@+id/descEdtx"
+                            android:id="@+id/phoneEdtx"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             app:layout_constrainedWidth="true"
                             android:autofillHints="text"
-                            android:background="@drawable/backwhite"
+                            android:background="@drawable/borderblue"
                             android:fontFamily="@font/helvetica_light"
                             android:paddingHorizontal="8sp"
                             android:textSize="16sp"
-                            android:inputType="textMultiLine"
+                            android:inputType="phone"
                             app:layout_constrainedHeight="true"
                             app:layout_constraintTop_toBottomOf="@id/cdhor31"
                             app:layout_constraintLeft_toRightOf="@id/cdver1"
@@ -743,7 +847,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.885"/>
+                            app:layout_constraintGuide_percent="0.887"/>
                         <androidx.constraintlayout.widget.Guideline
                             android:id="@+id/btn2"
                             android:layout_width="wrap_content"
@@ -773,7 +877,7 @@
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:fontFamily="@font/helvetica_bold"
-                            app:layout_constraintHeight_percent=".023"
+                            app:layout_constraintHeight_percent=".02"
                             android:gravity="center"
                             android:textAlignment="center"
                             android:text="PESAN"

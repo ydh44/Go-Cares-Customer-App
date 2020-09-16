@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     SwipeRefreshLayout swipe;
     Boolean err;
     TextView error;
-    String id, nama, email, umur, gender, telepon, alamat;
+    String id, urlgambar,  nama, email, umur, gender, telepon, alamat;
 
 
     @Override
@@ -218,17 +218,20 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<JsonElement>() {
             @Override
             public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                Log.d("TAG", "onResponse: " + response.code());
                 if (response.isSuccessful()){
                     List<CGdata> data = null;
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().toString());
                         String b = jsonObject.getString("data");
                         JSONArray jsonArray = new JSONArray(b);
+                        Log.d("TAG", "onResponse: " + b);
                         data = new ArrayList<>();
                         for (int i = 0 ; i < jsonArray.length(); i++){
                             JSONObject a = jsonArray.getJSONObject(i);
                             data.add(new CGdata(
-                                    a.getString("photo"),
+                                    a.getString("id"),
+                                    "http://40.88.4.113/esccortPhotos/" + a.getString("photo"),
                                     a.getString("name"),
                                     a.getString("age"),
                                     a.getString("gender"),

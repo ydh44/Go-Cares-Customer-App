@@ -3,6 +3,7 @@ package com.example.escort;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
 import androidx.lifecycle.LifecycleOwner;
@@ -69,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.passEdtx) EditText passEt;
     @BindView(R.id.emailTv) TextView emailTv;
     @BindView(R.id.passTv) TextView passTv;
-    @BindView(R.id.progressbar) RelativeLayout prgbar;
     @BindView(R.id.text) TextView text;
     @BindView(R.id.logo) ImageView logo;
     @BindView(R.id.cardhor1) Guideline hor1;
@@ -172,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
         if(!validation()){
             passEt.setText(null);
         }else {
-            prgbar.setVisibility(View.VISIBLE);
+            loading(true);
             apIinterface = APIClient.GetClient().create(APIinterface.class);
             Call<ResponseBody> call = apIinterface.login(
                     email, password);
@@ -189,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.d("TAG", "onResponse: " + b);
                                 SessionLog.SaveStatus(LoginActivity.this, true);
                                 SessionLog.SaveToken(LoginActivity.this, b);
-                                prgbar.setVisibility(View.INVISIBLE);
+                                loading(false);
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
@@ -199,14 +199,14 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }else{
                         Toast.makeText(LoginActivity.this, "Email / Password Salah", Toast.LENGTH_SHORT).show();
-                        prgbar.setVisibility(View.INVISIBLE);
+                        loading(false);
                     }
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     Toast.makeText(LoginActivity.this, "Koneksi Error", Toast.LENGTH_SHORT).show();
                     Log.d("s", "onFailure: " + t);
-                    prgbar.setVisibility(View.INVISIBLE);
+                    loading(false);
                 }
             });
         }
@@ -228,5 +228,18 @@ public class LoginActivity extends AppCompatActivity {
             valid = false;
         }
         return valid;
+    }
+    public void loading(Boolean status){
+        RelativeLayout prgbar;
+        CardView cv;
+        prgbar = findViewById(R.id.progressbar);
+        cv = findViewById(R.id.cv2);
+        if(status){
+            prgbar.setVisibility(View.VISIBLE);
+            cv.setVisibility(View.INVISIBLE);
+        }else {
+            prgbar.setVisibility(View.INVISIBLE);
+            cv.setVisibility(View.VISIBLE);
+        }
     }
 }

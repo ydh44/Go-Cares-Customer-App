@@ -18,6 +18,12 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Guideline;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -43,10 +49,9 @@ public class RegActivity extends AppCompatActivity {
     EditText emailEt, namaEt, umurEt, teleponEt, alamatEt, password1Et, password2Et;
     TextView emailTv, namaTv, umurTv, kelaminTv, teleponTv, alamatTv, password1Tv, password2Tv;
     RadioGroup kelaminEt;
-    RelativeLayout prgbar;
-    ProgressBar prgbar2;
     Window window;
     String kelamin = null;
+    Guideline hor1;
 
     private static final String TAG = "RegActivity";
     @Override
@@ -71,8 +76,6 @@ public class RegActivity extends AppCompatActivity {
         password2Tv = (TextView) findViewById(R.id.pass2TV);
         kelaminTv = (TextView) findViewById(R.id.genderTV);
         kelaminEt = (RadioGroup) findViewById(R.id.genderEdtx);
-        prgbar = (RelativeLayout) findViewById(R.id.progressbar);
-        prgbar2 = (ProgressBar) findViewById(R.id.prgs);
         window = this.getWindow();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
@@ -85,14 +88,32 @@ public class RegActivity extends AppCompatActivity {
                 switch (i){
                     case R.id.radio0 :
                         kelamin = "L";
+                        kelaminTv.setTextColor(getResources().getColor(R.color.colorBlack));
                         break;
                     case R.id.radio1 :
                         kelamin = "P";
+                        kelaminTv.setTextColor(getResources().getColor(R.color.colorBlack));
                         break;
                 }
             }
         });
+        KeyboardVisibilityEvent.setEventListener(this, new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean b) {
 
+                hor1 = findViewById(R.id.cardhor2);
+
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) hor1.getLayoutParams();
+
+                if (b) {
+                    params.guidePercent = 0.8f;
+                    hor1.setLayoutParams(params);
+                }else {
+                    params.guidePercent = 0.94f;
+                    hor1.setLayoutParams(params);
+                }
+            }
+        });
 
         cek_form(emailEt, emailTv);
         cek_form(namaEt, namaTv);
@@ -109,7 +130,7 @@ public class RegActivity extends AppCompatActivity {
             password1Et.setText(null);
             password2Et.setText(null);
         }else{
-            prgbar.setVisibility(View.VISIBLE);
+            loading(true);
             //api
             String email, nama, umur, alamat, telepon, password1, password2;
             email = emailEt.getText().toString();
@@ -130,19 +151,20 @@ public class RegActivity extends AppCompatActivity {
                         if(response.code() == 200){
                             Intent i = new Intent(RegActivity.this, LoginActivity.class);
                             i.putExtra("status", true);
-                            prgbar.setVisibility(View.INVISIBLE);
+                            loading(false);
                             startActivity(i);
+                            finish();
                         }
                     }else{
                         Toast.makeText(RegActivity.this, "Email Telah Digunakan", Toast.LENGTH_SHORT).show();
-                        prgbar.setVisibility(View.INVISIBLE);
+                        loading(false);
                     }
                 }
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     Toast.makeText(RegActivity.this, "Koneksi Error", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "onFailure: " + t);
-                    prgbar.setVisibility(View.INVISIBLE);
+                    loading(false);
                 }
             });
 
@@ -246,5 +268,18 @@ public class RegActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void loading(Boolean status){
+        RelativeLayout prgbar;
+        CardView cv;
+        prgbar = findViewById(R.id.progressbar);
+        cv = findViewById(R.id.cv2);
+        if(status){
+            prgbar.setVisibility(View.VISIBLE);
+            cv.setVisibility(View.INVISIBLE);
+        }else {
+            prgbar.setVisibility(View.INVISIBLE);
+            cv.setVisibility(View.VISIBLE);
+        }
     }
 }

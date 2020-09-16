@@ -122,7 +122,7 @@
         android:autoSizeMinTextSize="13sp"
         android:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent=".025"
-        android:textAlignment="viewEnd"
+        android:gravity="end"
         android:fontFamily="@font/roboto_bold"
         android:layout_marginEnd="15dp"
         android:text="DETAIL PESANAN"

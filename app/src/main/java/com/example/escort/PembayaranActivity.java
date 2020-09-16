@@ -15,7 +15,9 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,8 +40,10 @@ public class PembayaranActivity extends AppCompatActivity {
     private static final int IMAGE_CAPTURE_CODE = 0;
     private static final int IMAGE_PICK_CODE = 1;
 
-    String currentPhotoPath;
+    String currentPhotoPath, id, total;
 
+    TextView totalTv;
+    ImageButton back;
     Button TambahkanGambar, AmbilFoto;
     Uri gambar_uri = null;
     Boolean pil;
@@ -54,6 +58,24 @@ public class PembayaranActivity extends AppCompatActivity {
         TambahkanGambar = findViewById(R.id.btnGalerry);
         AmbilFoto = findViewById(R.id.btnCamera);
         test = findViewById(R.id.test);
+        totalTv = findViewById(R.id.total);
+        back = findViewById(R.id.btnBack);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PembayaranActivity.this, PesananActivity.class);
+                startActivity(i);
+                finish();
+            }
+
+        });
+
+        Intent i = getIntent();
+        id = i.getStringExtra("id");
+        total = i.getStringExtra("total");
+
+        totalTv.setText("Rp."+total);
 
         if(gambar_uri != null){
             test.setImageURI(gambar_uri);
@@ -194,7 +216,9 @@ public class PembayaranActivity extends AppCompatActivity {
                     String uri = photoURI.toString();
                     Intent i = new Intent(PembayaranActivity.this, ImageprevActivity.class);
                     i.putExtra("image", uri);
+                    i.putExtra("id", id);
                     startActivity(i);
+                    finish();
                 }
                 break;
             case 1:
@@ -204,8 +228,9 @@ public class PembayaranActivity extends AppCompatActivity {
                     String uri = imageUri.toString();
                     Intent i = new Intent(PembayaranActivity.this, ImageprevActivity.class);
                     i.putExtra("image", uri);
+                    i.putExtra("id", id);
                     startActivity(i);
-
+                    finish();
                 }
                 break;
 

@@ -5,6 +5,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#000">
+    <RelativeLayout
+        android:id="@+id/progressbar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:translationZ="20dp"
+        android:elevation="30dp"
+        android:visibility="gone"
+        android:background="@drawable/backbluebig3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/prgs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            style="?android:attr/progressBarStyleLarge"/>
+    </RelativeLayout>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/cardhor1"
         android:layout_width="wrap_content"
@@ -138,7 +158,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".95" />
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnGalerry"
+        android:id="@+id/btnUp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/backblue3"

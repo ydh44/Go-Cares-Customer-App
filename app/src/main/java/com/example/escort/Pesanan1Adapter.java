@@ -2,13 +2,17 @@ package com.example.escort;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,6 +57,7 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView namacgview,tglpesanview,txt;
+        ImageView gambarcg;
         HashMap<String, String> hm;
 
         public ViewHolder(@NonNull View itemView) {
@@ -69,9 +74,11 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
                     v.getContext().startActivity(i);
                 }
             });
+            gambarcg = itemView.findViewById(R.id.imageView);
             namacgview =itemView.findViewById(R.id.CgNameEt);
             txt = itemView.findViewById(R.id.CgCityNameEt);
             tglpesanview = itemView.findViewById(R.id.CgUmurEt);
+
         }
 
         protected HashMap<String, String> DataDetail2( @NonNull  Pesanan1Data pesananData) {
@@ -80,6 +87,7 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
             String deskripsi = pesananData.getDeskripsi();
             String gaji = pesananData.getGaji();
             String status = pesananData.getStatus();
+            String urlgambar = pesananData.getPhoto();
             hm = new HashMap<>();
             hm.put("namacg", namacg);
             hm.put("tglpesan", tglpesan);
@@ -88,6 +96,8 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
             namacgview.setText(namacg);
             tglpesanview.setText(tglpesan);
             txt.setText("Tanggal Pesanan");
+            Log.d("TAG", "DataDetail: " +urlgambar);
+            Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
             return hm;
         }
     }

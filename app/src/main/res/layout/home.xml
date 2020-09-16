@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:openDrawer="end">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -258,7 +259,7 @@
                 app:layout_constraintLeft_toRightOf="@id/rver1"
                 app:layout_constraintTop_toBottomOf="@id/menrhor1"
                 app:layout_constraintRight_toRightOf="parent"
-                android:textAlignment="viewStart"
+                android:gravity="start"
                 android:fontFamily="@font/helvetica_hv"
                 app:layout_constraintHeight_percent=".028"
                 android:textColor="@color/darkgray"
@@ -294,7 +295,7 @@
                 app:layout_constraintLeft_toRightOf="@id/rver1"
                 app:layout_constraintTop_toBottomOf="@id/menrhor2"
                 app:layout_constraintRight_toRightOf="parent"
-                android:textAlignment="viewStart"
+                android:gravity="start"
                 android:fontFamily="@font/helvetica_hv"
                 app:layout_constraintHeight_percent=".028"
                 android:textColor="@color/darkgray"
@@ -464,7 +465,7 @@
                 app:layout_constraintRight_toLeftOf="@id/ver"
                 app:layout_constraintTop_toBottomOf="@id/menhor1"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:textAlignment="viewEnd"
+                android:gravity="end"
                 android:fontFamily="@font/helvetica_hv"
                 app:layout_constraintHeight_percent=".027"
                 android:textColor="@color/darkgray"
@@ -496,7 +497,7 @@
                 app:layout_constraintRight_toLeftOf="@id/ver"
                 app:layout_constraintTop_toBottomOf="@id/menhor2"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:textAlignment="viewEnd"
+                android:gravity="end"
                 android:fontFamily="@font/helvetica_hv"
                 app:layout_constraintHeight_percent=".027"
                 android:textColor="@color/darkgray"
@@ -529,7 +530,7 @@
                 app:layout_constraintRight_toLeftOf="@id/ver"
                 app:layout_constraintTop_toBottomOf="@id/menhor3"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:textAlignment="viewEnd"
+                android:gravity="end"
                 android:fontFamily="@font/helvetica_hv"
                 app:layout_constraintHeight_percent=".027"
                 android:textColor="@color/darkgray"
