@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.gson.JsonElement;
 
@@ -20,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -41,6 +44,9 @@ public class FragPesanan1 extends Fragment implements Callback<JsonElement> {
     List<Pesanan1Data> items;
     Boolean err;
     APIinterface apIinterface;
+    TextView error;
+    ProgressBar prgs;
+    TextView error1;
 
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,8 +97,32 @@ public class FragPesanan1 extends Fragment implements Callback<JsonElement> {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.pesanan_frag1, container, false);
         recyclerView = view.findViewById(R.id.recyclerview);
+        error = view.findViewById(R.id.noo);
+        prgs = view.findViewById(R.id.prgs);
+        error1 = view.findViewById(R.id.nooo2);
+        prgs.setVisibility(View.VISIBLE);
+        load();
 
+        return view;
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        load();
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        recyclerView.setVisibility(View.GONE);
+        error1.setVisibility(View.GONE);
+        error.setVisibility(View.GONE);
+        prgs.setVisibility(View.VISIBLE);
+    }
+
+    public void  load()
+    {
+        recyclerView.setVisibility(View.GONE);
         apIinterface = APIClient.GetClient().create(APIinterface.class);
         String idUserLogin;
         Call<JsonElement> call = apIinterface.getstatus_belum(
@@ -100,10 +130,7 @@ public class FragPesanan1 extends Fragment implements Callback<JsonElement> {
         );
         Log.d("TAG", "onResponse: " );
         call.enqueue(FragPesanan1.this);
-
-        return view;
     }
-
     @Override
     public void onResponse(Call call, Response response) {
         Log.d(TAG, "onResponse: " + response.code());
@@ -115,7 +142,8 @@ public class FragPesanan1 extends Fragment implements Callback<JsonElement> {
                 JSONArray jsonArray = new JSONArray(b);
                 Log.d("TAG", "onResponse: " + b);
                 data = new ArrayList<>();
-                for (int i = 0 ; i < jsonArray.length(); i++){
+                int i;
+                for (i = 0 ; i < jsonArray.length(); i++){
                     JSONObject a = jsonArray.getJSONObject(i);
                     data.add(new Pesanan1Data(
                             "http://40.88.4.113/esccortPhotos/" +  a.getString("photo"),
@@ -128,28 +156,44 @@ public class FragPesanan1 extends Fragment implements Callback<JsonElement> {
                             a.getString("paket"),
                             a.getString("durasi"),
                             a.getString("deskripsi_kerja"),
-                            a.getString("phone"),
-                            a.getString("address"),
+                            a.getString("nomor_telp"),
+                            a.getString("alamat"),
                             a.getString("total_bayar")
                     ));
                 }
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                adapter = new Pesanan1Adapter(getContext(), data);
-                recyclerView.setAdapter(adapter);
-                err = true;
-                recyclerView.setVisibility(View.VISIBLE);
+                if (i < 1){
+                    prgs.setVisibility(View.GONE);
+                    error1.setVisibility(View.VISIBLE);
+                }else {
+                    error1.setVisibility(View.GONE);
+                    error.setVisibility(View.GONE);
+                    prgs.setVisibility(View.GONE);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    Collections.reverse(data);
+                    if (getActivity()!=null){
+                        adapter = new Pesanan1Adapter(getActivity(), data);
+                        recyclerView.setAdapter(adapter);
+                        err = true;
+                        recyclerView.setVisibility(View.VISIBLE);
+                    }
+
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
                 err = false;
-                recyclerView.setVisibility(View.GONE);
+                prgs.setVisibility(View.GONE);
+                error1.setVisibility(View.VISIBLE);
             }
         }else{
-            recyclerView.setVisibility(View.GONE);
+            prgs.setVisibility(View.GONE);
+            error1.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void onFailure(Call call, Throwable t) {
-
+        prgs.setVisibility(View.GONE);
+        error.setVisibility(View.VISIBLE);
     }
+
 }

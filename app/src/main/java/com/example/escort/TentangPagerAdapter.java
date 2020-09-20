@@ -14,17 +14,21 @@ public class TentangPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position){
-            case 0:
+            default:
                 return new FragTentang1();
             case 1:
                 return new FragTentang2();
-            default:
+            case 2:
                 return new FragTentang3();
+            case 3:
+                return new FragTentang4();
+            case 4:
+                return new FragTentang5();
         }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 5;
     }
 }

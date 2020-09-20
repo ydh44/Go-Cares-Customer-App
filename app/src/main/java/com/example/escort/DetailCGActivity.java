@@ -40,6 +40,13 @@ public class DetailCGActivity extends AppCompatActivity {
             void pesans(){
         pesan();
     }
+    @OnClick(R.id.btninfo)
+    void bout(){
+        Intent i = new Intent(DetailCGActivity.this, TentangActivity.class);
+        int i1 = 2;
+        i.putExtra("id", i1);
+        startActivity(i);
+    }
     ImageButton back;
     ImageView gambarcg;
     Guideline hor1, hor2, hor4, hor5;
@@ -83,13 +90,13 @@ public class DetailCGActivity extends AppCompatActivity {
 
         //guideline
         assert kota != null;
-        if(kota.length() >= 30){
+        if(kota.length() >= 32){
             params5.guidePercent = 0.625f;
             params4.guidePercent = 0.65f;
             hor5.setLayoutParams(params5);
             hor4.setLayoutParams(params4);
             assert keahlian != null;
-            if(keahlian.length() >= 30){
+            if(keahlian.length() >= 32){
                 params.guidePercent = 0.725f;
                 params2.guidePercent = 0.75f;
                 hor1.setLayoutParams(params);
@@ -100,7 +107,7 @@ public class DetailCGActivity extends AppCompatActivity {
             }
         }else{
             assert keahlian != null;
-            if(keahlian.length() >= 30){
+            if(keahlian.length() >= 32){
                 params.guidePercent = 0.69f;
                 hor1.setLayoutParams(params);
             }else {
@@ -175,7 +182,6 @@ public class DetailCGActivity extends AppCompatActivity {
                         e.printStackTrace();
 
                         Intent i = new Intent(DetailCGActivity.this, CheckoutActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         i.putExtra("status", "none");
                         i.putExtra("id", id);
                         startActivity(i);

@@ -15,7 +15,7 @@
             android:background="#fff">
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabpesanan"
-                app:tabMode="fixed"
+                app:tabMode="scrollable"
                 app:tabPaddingTop="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"

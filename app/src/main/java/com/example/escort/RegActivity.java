@@ -25,6 +25,7 @@ import androidx.constraintlayout.widget.Guideline;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
@@ -45,13 +46,15 @@ public class RegActivity extends AppCompatActivity {
         register();
     }
 
+    @BindView(R.id.cv2) CardView card;
+
     APIinterface apIinterface;
     EditText emailEt, namaEt, umurEt, teleponEt, alamatEt, password1Et, password2Et;
     TextView emailTv, namaTv, umurTv, kelaminTv, teleponTv, alamatTv, password1Tv, password2Tv;
     RadioGroup kelaminEt;
     Window window;
     String kelamin = null;
-    Guideline hor1;
+    Guideline hor1, hor2;
 
     private static final String TAG = "RegActivity";
     @Override
@@ -97,23 +100,32 @@ public class RegActivity extends AppCompatActivity {
                 }
             }
         });
+        /*
         KeyboardVisibilityEvent.setEventListener(this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean b) {
 
                 hor1 = findViewById(R.id.cardhor2);
+                hor2 = findViewById(R.id.cardhor1);
 
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) hor1.getLayoutParams();
+                ConstraintLayout.LayoutParams params2 = (ConstraintLayout.LayoutParams) hor2.getLayoutParams();
+                ConstraintLayout.LayoutParams params3 = (ConstraintLayout.LayoutParams) card.getLayoutParams();
 
                 if (b) {
-                    params.guidePercent = 0.8f;
-                    hor1.setLayoutParams(params);
+                    params3.dimensionRatio = "1:1.15";
+                    params2.guidePercent = 0.02f;
+                    hor2.setLayoutParams(params2);
+                    card.setLayoutParams(params3);
                 }else {
-                    params.guidePercent = 0.94f;
-                    hor1.setLayoutParams(params);
+                    params3.dimensionRatio = "1:1.7";
+                    params2.guidePercent = 0.08f;
+                    hor2.setLayoutParams(params2);
+                    card.setLayoutParams(params3);
                 }
             }
         });
+        */
 
         cek_form(emailEt, emailTv);
         cek_form(namaEt, namaTv);

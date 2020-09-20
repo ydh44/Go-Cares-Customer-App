@@ -66,11 +66,17 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(v.getContext(),DetailPesananActivity.class);
+                    i.putExtra("urlgambar",hm.get("urlgambar"));
+                    i.putExtra("status",hm.get("status"));
+                    i.putExtra("id_pesan",hm.get("id_pesan"));
                     i.putExtra("namacg",hm.get("namacg"));
                     i.putExtra("tglpesan",hm.get("tglpesan"));
-                    i.putExtra("deskripsi",hm.get("gender"));
+                    i.putExtra("paket",hm.get("paket"));
+                    i.putExtra("durasi",hm.get("durasi"));
+                    i.putExtra("deskripsi",hm.get("deskripsi"));
+                    i.putExtra("telepon",hm.get("telepon"));
+                    i.putExtra("alamat", hm.get("alamat"));
                     i.putExtra("gaji",hm.get("gaji"));
-                    i.putExtra("status",hm.get("status"));
                     v.getContext().startActivity(i);
                 }
             });
@@ -82,16 +88,30 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
         }
 
         protected HashMap<String, String> DataDetail2( @NonNull  Pesanan1Data pesananData) {
+            String urlgambar = pesananData.getPhoto();
+            String status = pesananData.getStatus();
+            String id_pesan = pesananData.getId_pesan();
             String namacg = pesananData.getNamacg();
             String tglpesan = pesananData.getTglpesan();
+            String paket =pesananData.getPaket();
+            String durasi = pesananData.getDurasi();
             String deskripsi = pesananData.getDeskripsi();
+            String telepon = pesananData.getTelepon();
+            String alamat = pesananData.getAlamat();
             String gaji = pesananData.getGaji();
-            String status = pesananData.getStatus();
-            String urlgambar = pesananData.getPhoto();
+
+
             hm = new HashMap<>();
+            hm.put("urlgambar", urlgambar);
+            hm.put("status", status);
+            hm.put("id_pesan", id_pesan);
             hm.put("namacg", namacg);
             hm.put("tglpesan", tglpesan);
+            hm.put("paket", paket);
+            hm.put("durasi", durasi);
             hm.put("deskripsi", deskripsi);
+            hm.put("telepon", telepon);
+            hm.put("alamat",alamat);
             hm.put("gaji", gaji);
             namacgview.setText(namacg);
             tglpesanview.setText(tglpesan);

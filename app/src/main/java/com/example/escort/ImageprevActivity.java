@@ -2,14 +2,18 @@ package com.example.escort;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -24,10 +28,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -40,17 +48,23 @@ public class ImageprevActivity extends AppCompatActivity {
     Button upload;
     ImageView preview;
     RelativeLayout prgbar;
+    @OnClick(R.id.btnBack)
+            void pindahs(){
+        finish();
+    }
 
-    String id;
+    String id, path;
 
     Uri img;
 
     File file;
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.imagepreview);
+        ButterKnife.bind(this);
 
         upload = findViewById(R.id.btnUp);
         preview = findViewById(R.id.cv2);
@@ -58,22 +72,42 @@ public class ImageprevActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         String imgs = i.getStringExtra("image");
+        path = i.getStringExtra("path");
         id = i.getStringExtra("id");
         img = Uri.parse(imgs);
-        OutputStream os;
-        File filesDir = getApplicationContext().getFilesDir();
-        file = new File(filesDir, Math.random() + ".jpg");
-        try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), img);
-            os = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
-            os.flush();
-            os.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(path!=null){
+            OutputStream os;
+            File filesDir = getApplicationContext().getFilesDir();
+            file = new File(filesDir, Math.random() + ".jpg");
+            try {
+                Bitmap bitmap = BitmapFactory.decodeFile(path);
+                os = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, os);
+                os.flush();
+                os.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }else {
+            OutputStream os;
+            File filesDir = getApplicationContext().getFilesDir();
+            file = new File(filesDir, Math.random() + ".jpg");
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), img);
+                os = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, os);
+                os.flush();
+                os.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        Log.d("TAG", "onCreate: " + img + id);
+
+        Log.d("TAG", "onCreate: " + file + id);
 
         Glide.with(this).load(img).into(preview);
 
@@ -88,8 +122,9 @@ public class ImageprevActivity extends AppCompatActivity {
     public void up(){
         prgbar.setVisibility(View.VISIBLE);
         AndroidNetworking.upload("http://40.88.4.113/api/uploadbukti")
-                .addMultipartFile("bukti_foto", file)
+                .addMultipartFile("bukti_foto",file)
                 .addMultipartParameter("id", id)
+                .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -97,6 +132,7 @@ public class ImageprevActivity extends AppCompatActivity {
                         Log.d("TAG", "onResponse: " + response.toString());
                         Intent i = new Intent(ImageprevActivity.this, PesananActivity.class);
                         startActivity(i);
+                        finish();
                         prgbar.setVisibility(View.INVISIBLE);
                     }
                     @Override
@@ -106,5 +142,22 @@ public class ImageprevActivity extends AppCompatActivity {
                         // handle error
                     }
                 });
+    }
+    private File savebitmap(Bitmap bmp) {
+        OutputStream outStream = null;
+        // String temp = null;
+        File filesDir = getFilesDir();
+        File files = new File(filesDir, Math.random() + ".jpg");
+        try {
+            outStream = new FileOutputStream(files);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+            outStream.flush();
+            outStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return files;
     }
 }

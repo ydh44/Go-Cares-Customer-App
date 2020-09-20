@@ -72,11 +72,40 @@ public interface APIinterface
             @Field("deskripsi_kerja") String deskripsi,
             @Field("user_id") String userid,
             @Field("esccort_id") String cgid,
-            @Field("lansia_id") String lansiaid
+            @Field("lansia_id") String lansiaid,
+            @Field("lansiauses") String useslansia
+    );
+    @GET("loadtransaksi/{id_pesanan}")
+    Call<ResponseBody> getpesanan(
+            @Path("id_pesanan") String id_pesanan
     );
 
     @GET("status/{idUserLogin}/belum")
     Call<JsonElement>  getstatus_belum(
             @Path("idUserLogin") String idUserLogin
+    );
+    @GET("status/{idUserLogin}/menunggu")
+    Call<JsonElement>  getstatus_menunggu(
+            @Path("idUserLogin") String idUserLogin
+    );
+    @GET("status/{idUserLogin}/dikonfirmasi")
+    Call<JsonElement>  getstatus_dikonfirmasi(
+            @Path("idUserLogin") String idUserLogin
+    );
+    @GET("status/{idUserLogin}/merawat")
+    Call<JsonElement>  getstatus_merawat(
+            @Path("idUserLogin") String idUserLogin
+    );
+    @GET("status/{idUserLogin}/selesai")
+    Call<JsonElement>  getstatus_diterima(
+            @Path("idUserLogin") String idUserLogin
+    );
+
+    @FormUrlEncoded
+    @POST("cg/filter")
+    Call<JsonElement> getfilter(
+            @Field("gender") String gender,
+            @Field("age1") String age1,
+            @Field("age2") String age2
     );
 }

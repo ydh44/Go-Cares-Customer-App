@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,22 +25,37 @@ public class TentangActivity extends AppCompatActivity {
         back = findViewById(R.id.backButton);
         tab = findViewById(R.id.tabpesanan);
         pager = findViewById(R.id.pagerpesanan);
+        Intent i = getIntent();
+        int defaults = 0;
+        int posts = i.getIntExtra("id", defaults);
 
         pager.setAdapter(new TentangPagerAdapter(this));
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
                 tab, pager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                if(posts == 1){
+                    position = 2;
+                    pager.setCurrentItem(position);
+                }
                 switch (position){
                     case 0: {
-                        tab.setText("Deskripsi");
+                        tab.setText("Panduan");
                         break;
                     }
                     case 1: {
-                        tab.setText("Perawatan Sosial");
+                        tab.setText("Lingkup Kerja");
                         break;
                     }
                     case 2: {
+                        tab.setText("Perawatan Sosial");
+                        break;
+                    }
+                    case 3: {
+                        tab.setText("Info Sekolah");
+                        break;
+                    }
+                    case 4: {
                         tab.setText("Kontak");
                         break;
                     }

@@ -2,6 +2,7 @@ package com.example.escort;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,10 +14,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Layout;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +39,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -45,13 +55,20 @@ public class MainActivity extends AppCompatActivity {
     Window window;
     DrawerLayout drawerLayout;
     NavigationView navigationView, navigationView2;
-    RecyclerView recyclerView;
-    ImageButton menu, search, back1, back2, menu1, menu2, menu3;
+    RecyclerView recyclerView, recyclerView2;
+    ImageButton menu, search, back1, back2, menu1, menu2, menu3, menu4, back3, btnsearch;
     Adapter adapter;
     SwipeRefreshLayout swipe;
     Boolean err;
-    TextView error;
+    TextView error, error1, error2;
     String id, urlgambar,  nama, email, umur, gender, telepon, alamat;
+    RadioGroup rggender;
+    TextView agetv1, agetv2, gendertv1,gendertv2;
+    EditText etumur1,etumur2;
+    View filter;
+    ProgressBar prgs;
+    String kelamin = null;
+    ImageView icsearch;
 
 
     @Override
@@ -70,9 +87,44 @@ public class MainActivity extends AppCompatActivity {
         menu1 = findViewById(R.id.menu1);
         menu2 = findViewById(R.id.menu2);
         menu3 = findViewById(R.id.menu3);
+        menu4 = findViewById(R.id.menu4);
         swipe = findViewById(R.id.swipe);
         error = findViewById(R.id.noo);
+        error1 = findViewById(R.id.nooo2);
+        error2 = findViewById(R.id.noo2);
+
+        filter = findViewById(R.id.filter);
+        recyclerView2 = findViewById(R.id.recyclerview2);
+        prgs = findViewById(R.id.prgs);
+        agetv1 = findViewById(R.id.agetv);
+        agetv2 = findViewById(R.id.agetv2);
+        gendertv1 = findViewById(R.id.gendertv);
+        gendertv2 = findViewById(R.id.gendertv2);
+        back3 = findViewById(R.id.backout);
+        error1 = findViewById(R.id.nooo2);
+        rggender = findViewById(R.id.genderEdtx);
+        etumur1 = findViewById(R.id.etumur1);
+        etumur2 = findViewById(R.id.etumur2);
+        btnsearch = findViewById(R.id.btnsearch);
+        icsearch = findViewById(R.id.icsearch);
+
         window = this.getWindow();
+
+        rggender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.radio0:
+                        agetv1.setTextColor(getResources().getColor(R.color.darkgray));
+                        kelamin = "L";
+                        break;
+                    case R.id.radio1:
+                        agetv1.setTextColor(getResources().getColor(R.color.darkgray));
+                        kelamin = "P";
+                        break;
+                }
+            }
+        });
 
         control();
 
@@ -84,6 +136,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //set on click di menu
+        btnsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filter();
+            }
+        });
+
         menu.setOnClickListener(view -> drawerLayout.openDrawer(navigationView2, true));
         search.setOnClickListener(view -> drawerLayout.openDrawer(navigationView, true));
         back1.setOnClickListener((view -> drawerLayout.closeDrawer(navigationView2, true)));
@@ -99,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
         });
         menu2.setOnClickListener(view -> {
             Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+            if(nama != null){
+                i.putExtra("status", "yes");
+            }
             i.putExtra("nama", nama);
             i.putExtra("email", email);
             i.putExtra("umur", umur);
@@ -112,6 +174,22 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(MainActivity.this, TentangActivity.class);
             startActivity(i);
             drawerLayout.closeDrawer(navigationView2, false);
+        });
+        menu4.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setMessage("Logout dari akun ?")
+                    .setPositiveButton("Lanjutkan", (dialog, id) -> {
+                        SessionLog.Delete(MainActivity.this);
+                        Intent i = new Intent(this, LoginActivity.class);
+                        startActivity(i);
+                        finish();
+                    })
+                    .setNegativeButton("Batalkan", (dialog, id) -> {
+                        // User cancelled the dialog
+                    });
+            // Create the AlertDialog object and return it
+            builder.create();
+            builder.show();
         });
 
         //Ubah warrna status bar sesuai drawer
@@ -128,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
                         window.setStatusBarColor(getResources().getColor(R.color.white));
                     }
                     drawerLayout.closeDrawer(drawerView, true);
+
                 }
                 if(!drawerLayout.isDrawerVisible(drawerView)){
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -138,15 +217,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
                 isOpen = true;
+                cek_form(etumur1, agetv1);
+                cek_form(etumur2, agetv1);
             }
 
             @Override
             public void onDrawerClosed(@NonNull View drawerView) {
                 isOpen = false;
+                UIUtil.hideKeyboard(MainActivity.this);
+                etumur1.setBackgroundResource(R.drawable.backwhite);
+                etumur1.setBackgroundResource(R.drawable.backwhite);
             }
 
             @Override
             public void onDrawerStateChanged(int newState) {
+                etumur1.setBackgroundResource(R.drawable.backwhite);
+                etumur1.setBackgroundResource(R.drawable.backwhite);
             }
         });
 
@@ -242,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
                             ));
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                        Collections.shuffle(data);
                         adapter = new Adapter(getBaseContext(), data);
                         recyclerView.setAdapter(adapter);
                         err = true;
@@ -264,6 +351,131 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void filter(){
+        if(valid()){
+            String umur1 = etumur1.getText().toString();
+            String umur2 = etumur2.getText().toString();
+            error1.setVisibility(View.GONE);
+            error2.setVisibility(View.GONE);
+            icsearch.setVisibility(View.GONE);
+            prgs.setVisibility(View.VISIBLE);
+            recyclerView2.setVisibility(View.GONE);
+            drawerLayout.closeDrawer(navigationView, true);
+            UIUtil.hideKeyboard(MainActivity.this);
+            swipe.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
+            search.setVisibility(View.GONE);
+            filter.setVisibility(View.VISIBLE);
+            if(kelamin == "L"){
+                gendertv2.setText("Laki laki");
+            }else{
+                gendertv2.setText("Perempuan");
+            }
+            back3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    filter.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.GONE);
+                    swipe.setVisibility(View.VISIBLE);
+                    search.setVisibility(View.VISIBLE);
+                    icsearch.setVisibility(View.VISIBLE);
+                    control();
+                }
+            });
+            agetv2.setText("|  " + umur1 + " - " + umur2 + " Tahun");
+            Call<JsonElement> call = apIinterface.getfilter(kelamin, umur1, umur2);
+            call.enqueue(new Callback<JsonElement>() {
+                @Override
+                public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                    Log.d("TAG", "onResponse: " + response.code());
+                    int i;
+                    if (response.isSuccessful()){
+                        List<CGdata> data = null;
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body().toString());
+                            String b = jsonObject.getString("data");
+                            JSONArray jsonArray = new JSONArray(b);
+                            Log.d("TAG", "onResponse: " + b);
+                            data = new ArrayList<>();
+                            for ( i = 0 ; i < jsonArray.length(); i++){
+                                JSONObject a = jsonArray.getJSONObject(i);
+                                data.add(new CGdata(
+                                        a.getString("id"),
+                                        "http://40.88.4.113/esccortPhotos/" + a.getString("photo"),
+                                        a.getString("name"),
+                                        a.getString("age"),
+                                        a.getString("gender"),
+                                        a.getString("keahlian"),
+                                        a.getString("address"),
+                                        a.getString("salary"),
+                                        a.getString("rating")
+                                ));
+
+                            }
+                            prgs.setVisibility(View.GONE);
+                            if(i < 1){
+                                error1.setVisibility(View.VISIBLE);
+                            }else {
+                                recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                                recyclerView2.setVisibility(View.VISIBLE);
+                                Collections.shuffle(data);
+                                adapter = new Adapter(getBaseContext(), data);
+                                recyclerView2.setAdapter(adapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            prgs.setVisibility(View.GONE);
+                            error2.setVisibility(View.VISIBLE);
+                        }
+                    }else{
+                        prgs.setVisibility(View.GONE);
+                        error2.setVisibility(View.VISIBLE);
+                    }
+                }
+                @Override
+                public void onFailure(Call<JsonElement> call, Throwable t) {
+                    prgs.setVisibility(View.GONE);
+                    error2.setVisibility(View.VISIBLE);
+                }
+            });
+
+        }
+
+    }
+    public boolean valid(){
+        boolean valid = true;
+        if(etumur1.getText().length()<1){
+            etumur1.setError("Masukan Umur");
+            etumur1.setBackgroundResource(R.drawable.borderred);
+            agetv1.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+        if(etumur2.getText().length()<1){
+            etumur2.setError("Masukan umur");
+            etumur2.setBackgroundResource(R.drawable.borderred);
+            agetv1.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+       if(!(etumur1.getText().length() < 1) &&!(etumur2.getText().length() < 1)){
+           int satu = Integer.parseInt(etumur1.getText().toString());
+           int dua = Integer.parseInt(etumur2.getText().toString());
+           if(dua < satu){
+               etumur1.setError("Masukan rentang umur yang valid");
+               etumur2.setError("Masukan rentang umur yang valid");
+               etumur1.setBackgroundResource(R.drawable.borderred);
+               etumur2.setBackgroundResource(R.drawable.borderred);
+               agetv1.setTextColor(getResources().getColor(R.color.colorRed));
+               valid = false;
+           }
+       }
+        if (kelamin == null){
+            gendertv1.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+
+        return valid;
+    }
+
     public void hand(){
         if(err){
             swipe.setRefreshing(false);
@@ -274,5 +486,45 @@ public class MainActivity extends AppCompatActivity {
             error.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
         }
+    }
+
+    void cek_form(final EditText editText, final TextView textView){
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                if(charSequence.length()<1)
+                {
+                    editText.setBackgroundResource(R.drawable.borderred);
+                    textView.setTextColor(getResources().getColor(R.color.colorRed));
+                }
+                else if (charSequence.length()>=1){
+                    editText.setBackgroundResource(R.drawable.borderbluebig);
+                    textView.setTextColor(getResources().getColor(R.color.colorDarkblue));
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus){
+                    editText.setBackgroundResource(R.drawable.borderbluebig);
+                    textView.setTextColor(getResources().getColor(R.color.colorDarkblue));
+                }
+                if(!hasFocus){
+                    editText.setBackgroundResource(R.drawable.borderblue);
+                    textView.setTextColor(getResources().getColor(R.color.darkgray));
+                }
+            }
+        });
     }
 }

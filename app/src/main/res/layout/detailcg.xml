@@ -141,7 +141,7 @@
         android:textSize="13sp"
         android:fontFamily="@font/roboto_bold"
         android:layout_marginEnd="15dp"
-        android:text="DETAIL"
+        android:text="DETAIL CAREGIVER"
         android:gravity="end"
         android:textColor="#5B4949"
         app:layout_constraintBottom_toBottomOf="@id/imgback"
@@ -169,28 +169,48 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/profile"
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btninfo"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:cardCornerRadius="150dp"
-                app:cardElevation="1dp"
-                app:layout_constraintBottom_toBottomOf="@id/bgcard"
+                app:layout_constraintHeight_max="90dp"
+                android:background="@drawable/backfotobtn"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#FFFFFF"
+                android:translationZ="1dp"
+                app:layout_constrainedHeight="true"
+                app:layout_constrainedWidth="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintHeight_max="200dp"
-                app:layout_constraintHeight_percent=".22"
-                app:layout_constraintLeft_toLeftOf="@id/bgcard"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintRight_toRightOf="@id/bgcard"
-                app:layout_constraintTop_toTopOf="@id/bgcard">
+                app:layout_constraintBottom_toBottomOf="@id/bgcard"
+                app:layout_constraintWidth_max="120dp"
+                app:layout_constraintWidth_percent=".1" />
+
+            <LinearLayout
+                android:id="@+id/imginfo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_percent=".04"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="@id/btninfo"
+                app:layout_constraintBottom_toBottomOf="@id/btninfo"
+                app:layout_constraintRight_toRightOf="@id/btninfo"
+                app:layout_constraintLeft_toLeftOf="@id/btninfo"
+                android:translationZ="2dp"
+                >
 
                 <ImageView
-                    android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profilecg" />
-            </androidx.cardview.widget.CardView>
+                    android:scaleType="fitCenter"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constrainedWidth="true"
+                    app:srcCompat="@drawable/about" />
+            </LinearLayout>
+
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cardbghor1"
@@ -209,6 +229,20 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profilecg"
+                app:layout_constraintBottom_toBottomOf="@id/bgcard"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_max="200dp"
+                app:layout_constraintHeight_percent=".22"
+                app:layout_constraintLeft_toLeftOf="@id/bgcard"
+                app:layout_constraintRight_toRightOf="@id/bgcard"
+                app:layout_constraintTop_toTopOf="@id/bgcard"/>
+
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdhor1"
@@ -236,7 +270,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.09" />
+                app:layout_constraintGuide_percent=".08" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdver3"
@@ -308,7 +342,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent=".31" />
+                app:layout_constraintGuide_percent=".29" />
 
             <TextView
                 android:id="@+id/umur"

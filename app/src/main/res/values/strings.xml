@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">escort</string>
+    <string name="app_name">CareGiver</string>
     <string name="email">EMAIL</string>
     <string name="password">PASSWORD</string>
     <string name="masuk">MASUK</string>
@@ -17,8 +17,21 @@
     <string name="previous">Previous</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="teks_visi_kompetensi_ps">Terwujudnya Tenaga Kerja Dibidang Lansia Dan Homecare Yang Memenuhi Tuntutan Dunia Industri,Unggul,Berkarakter,Berdaya Saing Dan Berwawasan Lingkungan."</string>
-    <string name="teks_misi_ps1">1.Menyelenggarakan Pembelajaran Yang Mempersiapkan Lulusan Memiliki Ketaqwaan Terhadap Tuhan Yang Maha Esa,Berahlak Mulia,Berdisplin,Bertanggung Jawab,Beretos Kerja Tinggi, Dan Berkopeten Dipekerjaan Sosial.</string>
-    <string name="teks_misi_ps2">2.Menyelenggarakan Pembelajaran Yang Mempersiapkan Lulusan Memiliki Kemampuan Berkompetensi Merebut Pasar Kerja.</string>
-    <string name="teks_misi_ps3">3.Menyelenggarakan Pembelajaran Yang Mempersiapkan Lulusan Memiliki Kemampuan Adaptasi Terhadap Perubahan/Kepentingan Masyarakat Dan Lingkungannya.</string>
+    <string name="teks_visi_kompetensi_ps">Terwujudnya tenaga kerja di bidang lansia dan homecare yang memenuhi tuntutan dunia industri, unggul, berkarakter, berdaya saing, dan berwawasan lingkungan."</string>
+    <string name="teks_misi_ps1">1.Menyelenggarakan pembelajaran yang mempersiapkan lulusan memiliki ketaqwaan terhadap Tuhan Yang Maha Esa, berahlak mulia, berdisplin, bertanggung jawab, beretos kerja tinggi, dan berkopeten di pekerjaan sosial.</string>
+    <string name="teks_misi_ps2">2.Menyelenggarakan pembelajaran yang mempersiapkan lulusan memiliki kemampuan berkompetensi merebut pasar kerja.</string>
+    <string name="teks_misi_ps3">3.Menyelenggarakan pembelajaran yang mempersiapkan lulusan memiliki Kemampuan adaptasi terhadap perubahan/kepentingan masyarakat dan lingkungannya.</string>
+    <string name="teks_panduan_penggunaan1">Login jika anda sudah punya akun, jika belum daftar akun.</string>
+    <string name="teks_panduan_penggunaan2">Isilah form yang telah disediakan.</string>
+    <string name="teks_panduan_penggunaan3">Lengkapi dengan data yang valid.</string>
+    <string name="teks_panduan_penggunaan4">Jika telah lengkap tekan daftar, berarti anda telah menyetujui layanan ini.</string>
+    <string name="teks_panduan_penggunaan5">Dalam menu pilihlah perawat sesuai daftar yang telah disediakan.</string>
+    <string name="teks_panduan_penggunaan6">Tekan tombol pesan jika anda menyetujui.</string>
+    <string name="teks_panduan_penggunaan7">Lengkapi data lansia yang akan dirawat.</string>
+    <string name="teks_panduan_penggunaan8">Tekan tombol pesan jika anda telah melengkapi data lansia dengan valid.</string>
+    <string name="teks_panduan_penggunaan9">Pelayanan akan disetujui jika anda telah melakukan pembayaran dengan mengirimkan bukti pembayaran.</string>
+    <string name="teks_panduan_penggunaan10">Pembayaran hanya di Rekening yang telah ditunjuk oleh institusi.</string>
+    <string name="teks_panduan_penggunaan11">Proses Merawat Lansia dilakukan satu hari setelah admin mengkonfirmasi pembayaran.</string>
+    <string name="teks_lingkup_pekerjaan">LINGKUP PEKERJAAN TENAGA PROFESIONAL PENDAMPING LANSIA (CAREGIVER)</string>
+    <string name="riwayat_penyakit">Riwayat penyakit</string>
 </resources>

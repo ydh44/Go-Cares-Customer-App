@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -19,6 +20,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".DetailLansiaActivity"></activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileprovider"
@@ -29,26 +32,35 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".ImageprevActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PembayaranActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".DetailPesananActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".TentangActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ProfileActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PesananActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".DetailCGActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CheckoutActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ImageprevActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PembayaranActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DetailPesananActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TentangActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PesananActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DetailCGActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.Fullscreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,16 +69,16 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".RegActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysVisible"/>
         <activity
             android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -49,6 +49,7 @@ public class PembayaranActivity extends AppCompatActivity {
     Boolean pil;
     ImageView test;
     Uri photoURI;
+    File photoFile = null;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,7 +150,6 @@ public class PembayaranActivity extends AppCompatActivity {
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
-            File photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
@@ -217,6 +217,7 @@ public class PembayaranActivity extends AppCompatActivity {
                     Intent i = new Intent(PembayaranActivity.this, ImageprevActivity.class);
                     i.putExtra("image", uri);
                     i.putExtra("id", id);
+                    i.putExtra("path", photoFile.getPath());
                     startActivity(i);
                     finish();
                 }

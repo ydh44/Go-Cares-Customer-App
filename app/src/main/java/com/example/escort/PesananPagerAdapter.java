@@ -14,20 +14,21 @@ public class PesananPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position){
-            case 0:
-                return new FragPesanan1();
-                
             case 1:
                 return new FragPesanan2();
             case 2:
                 return new FragPesanan3();
-            default:
+            case 3:
                 return new FragPesanan4();
+            case 4:
+                return new FragPesanan5();
+            default:
+                return new FragPesanan1();
         }
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 5;
     }
 }

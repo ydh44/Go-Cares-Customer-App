@@ -65,14 +65,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.16666667" />
+                        app:layout_constraintGuide_percent="0.16" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/loghor2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.8333333" />
+                        app:layout_constraintGuide_percent="0.83" />
                     <ImageView
                         android:id="@+id/logo"
                         android:layout_width="0dp"
@@ -133,6 +133,17 @@
                         app:srcCompat="@drawable/menu" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
+
+        <include
+            android:id="@+id/filter"
+            layout="@layout/home2"
+            android:layout_height="0dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bar"
+            android:layout_width="match_parent"
+            android:visibility="gone"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe"
@@ -251,7 +262,7 @@
                 app:layout_constraintStart_toEndOf="@id/rver1"
                 app:layout_constraintTop_toTopOf="@id/backrhor1" />
             <TextView
-                android:id="@+id/searchtv"
+                android:id="@+id/gendertv"
                 android:background="@drawable/backtv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -263,23 +274,42 @@
                 android:fontFamily="@font/helvetica_hv"
                 app:layout_constraintHeight_percent=".028"
                 android:textColor="@color/darkgray"
-                android:text="Kota"
+                android:text="Gender"
                 android:textAllCaps="false"
                 android:textSize="15sp"
                 style="?android:attr/borderlessButtonStyle"/>
-            <EditText
-                android:layout_width="0dp"
+            <RadioGroup
+                android:id="@+id/genderEdtx"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_min="25dp"
-                android:fontFamily="@font/helvetica_light"
-                android:paddingHorizontal="8sp"
-                android:textSize="16sp"
-                app:layout_constraintRight_toLeftOf="@id/rver2"
-                app:layout_constraintLeft_toRightOf="@id/rver1"
+                android:orientation="horizontal"
+                app:layout_constrainedWidth="true"
+                app:layout_constrainedHeight="true"
+                android:layout_marginTop="15dp"
                 app:layout_constraintHeight_percent=".05"
-                android:background="@drawable/backwhite"
-                app:layout_constraintTop_toBottomOf="@id/searchtv"
-                android:layout_marginTop="15dp"/>
+                app:layout_constraintTop_toBottomOf="@id/gendertv"
+                app:layout_constraintLeft_toRightOf="@id/rver1">
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radio0"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:minWidth="55dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/cstmradio"
+                    android:button="@drawable/cstmradio"
+                    android:text="L" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:gravity="center"
+                    android:id="@+id/radio1"
+                    android:layout_width="wrap_content"
+                    android:minWidth="55dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cstmradio"
+                    android:button="@drawable/cstmradio"
+                    android:text="P" />
+            </RadioGroup>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/menrhor2"
                 android:layout_width="wrap_content"
@@ -309,9 +339,9 @@
                 android:layout_height="0dp"
                 android:inputType="number"
                 android:maxLength="2"
+                android:gravity="center"
                 android:fontFamily="@font/helvetica_light"
                 android:textSize="16sp"
-                android:textAlignment="center"
                 app:layout_constraintHeight_min="25dp"
                 app:layout_constraintLeft_toRightOf="@id/rver1"
                 app:layout_constraintHeight_percent=".05"
@@ -329,7 +359,7 @@
                 android:maxLength="2"
                 android:fontFamily="@font/helvetica_light"
                 android:textSize="16sp"
-                android:textAlignment="center"
+                android:gravity="center"
                 app:layout_constraintRight_toLeftOf="@id/rver2"
                 app:layout_constraintHeight_percent=".05"
                 app:layout_constraintWidth_percent=".3"
@@ -358,6 +388,7 @@
                 app:layout_constraintGuide_percent=".43"
                 android:orientation="horizontal"/>
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnsearch"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintWidth_percent=".185"
@@ -535,6 +566,39 @@
                 app:layout_constraintHeight_percent=".027"
                 android:textColor="@color/darkgray"
                 android:text="TENTANG"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/menhor4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_percent=".462"
+                android:orientation="horizontal"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/menu4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/circleblue3"
+                android:layout_marginHorizontal="15dp"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintHeight_percent=".08"
+                app:layout_constraintBottom_toBottomOf="@id/menu4TV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/menu4TV" />
+            <TextView
+                android:id="@+id/menu4TV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintHeight_min="17dp"
+                app:layout_constraintRight_toLeftOf="@id/ver"
+                app:layout_constraintTop_toBottomOf="@id/menhor4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:gravity="end"
+                android:fontFamily="@font/helvetica_hv"
+                app:layout_constraintHeight_percent=".027"
+                android:textColor="@color/darkgray"
+                android:text="KELUAR"
                 android:textSize="15sp" />
 
 

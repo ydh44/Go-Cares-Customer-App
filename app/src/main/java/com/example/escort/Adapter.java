@@ -103,12 +103,18 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             hm.put("kota", kota);
             hm.put("keahlian", keahlian);
             hm.put("rating", rating);
+
             Log.d("TAG", "DataDetail: " +urlgambar);
             Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
             textTitle.setText(nama);
-            textDescription.setText(kota);
+            if(gender.equals("L")){
+                textDescription.setText("Laki - laki");
+            }else if(gender.equals("P")){
+                textDescription.setText("Perempuan");
+            }else{
+                textDescription.setText("-");
+            }
             text3.setText(umur + " Tahun");
-            text4.setText(rating);
 
             return hm;
         }

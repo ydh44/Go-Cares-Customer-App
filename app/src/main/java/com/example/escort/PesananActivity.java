@@ -45,14 +45,18 @@ public class PesananActivity extends AppCompatActivity {
                         break;
                     }
                     case 1: {
-                        tab.setText("Dalam Proses");
+                        tab.setText("Menunggu");
                         break;
                     }
                     case 2: {
-                        tab.setText("Sedang Merawat");
+                        tab.setText("Dikonfirmasi");
                         break;
                     }
                     case 3: {
+                        tab.setText("Merawat");
+                        break;
+                    }
+                    case 4: {
                         tab.setText("Selesai");
                         break;
                     }

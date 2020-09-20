@@ -1,5 +1,6 @@
 package com.example.escort;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -20,6 +21,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -35,6 +37,7 @@ import android.widget.Toast;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,7 +77,11 @@ public class CheckoutActivity extends AppCompatActivity {
     @BindView(R.id.durasiTv) TextView durasiTv;
     @BindView(R.id.durasi2Tv) TextView durasi2Tv;
     @BindView(R.id.durasiEdtx) EditText durasiEt;
-    @BindView(R.id.bacdur) RelativeLayout durasiBg;
+    @Nullable
+    @BindView(R.id.backdur) RelativeLayout durasiBg;
+
+    @Nullable
+    @BindView(R.id.cv2) CardView card;
 
     @BindView(R.id.genderEdtx)
     RadioGroup genderEt;
@@ -87,31 +94,34 @@ public class CheckoutActivity extends AppCompatActivity {
         finish();
     }
 
-    //@OnClick(R.id.btnNext)
-    //public void next(){
-    //    pesan();
-    //}
+    @OnClick(R.id.btnNext)
+    public void next(){
+       pesan();
+    }
 
     APIinterface apIinterface;
 
     CheckBox check;
 
-    String t_useslansia, t_idlansia, t_idcg, t_iduser, t_nama, t_umur, t_gender, t_hobi, t_sakit, t_paket, t_durasi, t_alamat, t_telepon, t_desc;
+    String useslansia, idlansia, idcg, iduser, nama, umur, gender, hobi, sakit, paket, durasi, alamat, telepon, desc;
+    String t_idlansia, t_nama, t_umur, t_gender, t_hobi, t_sakit;
+
+    Boolean status, status2;
 
     Guideline hor1, hor2;
-
-    Boolean checked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.checkout);
+        setContentView(R.layout.checkout_v2);
         ButterKnife.bind(this);
+        Window window = this.getWindow();
 
         check = findViewById(R.id.check);
+        status2 = false;
 
         Intent i = getIntent();
-        t_idcg = i.getStringExtra("id");
+        idcg = i.getStringExtra("id");
         if(i.getStringExtra("status").equals("there")){
             t_idlansia = i.getStringExtra("lansia_id");
             t_nama = i.getStringExtra("nama");
@@ -119,26 +129,68 @@ public class CheckoutActivity extends AppCompatActivity {
             t_gender = i.getStringExtra("gender");
             t_hobi = i.getStringExtra("hobi");
             t_sakit = i.getStringExtra("sakit");
-            checked();
-
+            check.setChecked(true);
+            namaEt.setText(t_nama);
+            umurEt.setText(t_umur);
+            hobiEt.setText(t_hobi);
+            sakitEt.setText(t_sakit);
+            if(t_gender.equals("L")){
+                genderEt.check(R.id.radio0);
+                gender = "L";
+            }else {
+                genderEt.check(R.id.radio1);
+                gender = "P";
+            }
+            status = true;
         }else {
-            unchecked();
+            status = false;
+            check.setVisibility(View.GONE);
         }
 
-
+        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                gender = t_gender;
+                if(b){
+                    namaEt.setText(t_nama);
+                    umurEt.setText(t_umur);
+                    hobiEt.setText(t_hobi);
+                    sakitEt.setText(t_sakit);
+                    status2 = true;
+                    if(t_gender.equals("L")){
+                        gender = "L";
+                        genderEt.check(R.id.radio0);
+                        status2 = false;
+                    }else {
+                        gender = "P";
+                        genderEt.check(R.id.radio1);
+                        status2 = false;
+                    }
+                }else{
+                }
+            }
+        });
 
         genderEt.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
                     case R.id.radio0:
-                        t_gender = "L";
+                        gender = "L";
                         genderTv.setTextColor(getResources().getColor(R.color.colorBlack));
                         break;
                     case R.id.radio1:
-                        t_gender = "P";
+                        gender = "P";
                         genderTv.setTextColor(getResources().getColor(R.color.colorBlack));
                         break;
+                }if(!status2){
+                    if(t_gender != null){
+                        if(!t_gender.equals(gender)){
+                            check.setChecked(false);
+                            status2 = false;
+                        }
+                    }
+
                 }
             }
         });
@@ -147,7 +199,7 @@ public class CheckoutActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
                     case R.id.harian:
-                        t_paket = "harian";
+                        paket = "harian";
                         paketTv.setTextColor(getResources().getColor(R.color.colorBlack));
                         durasiTv.setVisibility(View.VISIBLE);
                         durasi2Tv.setVisibility(View.VISIBLE);
@@ -156,7 +208,7 @@ public class CheckoutActivity extends AppCompatActivity {
                         durasi2Tv.setText("HARI");
                         break;
                     case R.id.bulanan:
-                        t_paket = "bulanan";
+                        paket = "bulanan";
                         paketTv.setTextColor(getResources().getColor(R.color.colorBlack));
                         durasiTv.setVisibility(View.VISIBLE);
                         durasi2Tv.setVisibility(View.VISIBLE);
@@ -168,6 +220,7 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
 
+        /*
         KeyboardVisibilityEvent.setEventListener(this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean b) {
@@ -177,109 +230,93 @@ public class CheckoutActivity extends AppCompatActivity {
 
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) hor1.getLayoutParams();
                 ConstraintLayout.LayoutParams params2 = (ConstraintLayout.LayoutParams) hor2.getLayoutParams();
+                ConstraintLayout.LayoutParams params3 = (ConstraintLayout.LayoutParams) card.getLayoutParams();
 
                 if (b) {
-                    params.guidePercent = 0.0f;
+                    params.guidePercent = 0.01f;
                     params2.guidePercent = 0.9f;
+                    params3.dimensionRatio = "1:1.15";
                     hor1.setLayoutParams(params);
                     hor2.setLayoutParams(params2);
+                    card.setLayoutParams(params3);
                 }else {
                     params.guidePercent = 0.095f;
                     params2.guidePercent = 0.97f;
+                    params3.dimensionRatio = "1:1.5";
                     hor1.setLayoutParams(params);
                     hor2.setLayoutParams(params2);
+                    card.setLayoutParams(params3);
                 }
             }
         });
-
+         */
+        cek_form2(namaEt, namaTv, t_nama);
+        cek_form2(umurEt, umurTv, t_umur);
+        cek_form2(hobiEt, hobiTv, t_hobi);
+        cek_form2(sakitEt, sakitTv, t_sakit);
         cek_form(durasiEt, durasiTv);
         cek_form(alamatEt, alamatTv);
         cek_form(teleponEt, teleponTv);
         cek_form(deskripsiEt, deskripsiTv);
     }
-    public void checked(){
-        namaEt.setText(t_nama);
-        umurEt.setText(t_umur);
-        hobiEt.setText(t_hobi);
-        sakitEt.setText(t_sakit);
-        t_useslansia = "lama";
-        cek_form2(namaEt, namaTv);
-        cek_form2(umurEt, umurTv);
-        cek_form2(hobiEt, hobiTv);
-        cek_form2(sakitEt, sakitTv);
-        check.setChecked(true);
-        if(t_gender.equals("L")){
-            genderEt.check(R.id.radio0);
-            t_gender = "L";
-        }else if (t_gender.equals("P")){
-            genderEt.check(R.id.radio1);
-            t_gender = "P";
-        }
-
-        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    namaEt.setText(t_nama);
-                    umurEt.setText(t_umur);
-                    hobiEt.setText(t_hobi);
-                    sakitEt.setText(t_sakit);
-                    checked = true;
-                }else {
-                    checked = false;
-                }
-            }
-        });
-    }
-    void unchecked(){
-        cek_form(namaEt, namaTv);
-        cek_form(umurEt, umurTv);
-        cek_form(hobiEt, hobiTv);
-        cek_form(sakitEt, sakitTv);
-        namaEt.setText("");
-        umurEt.setText("");
-        hobiEt.setText("");
-        sakitEt.setText("");
-        t_useslansia = "baru";
-        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    namaEt.setText(t_nama);
-                    umurEt.setText(t_umur);
-                    hobiEt.setText(t_hobi);
-                    sakitEt.setText(t_sakit);
-                }else {
-                    unchecked();
-                }
-            }
-        });
-
-    }
-    /*void pesan(){
+      // /*
+    void pesan(){
+        UIUtil.hideKeyboard(CheckoutActivity.this);
         if(validation()){
             loading(true);
             //api
-            String nama, umur, hobi, sakit, alamat, telepon, deskripsi, userid;
+            Call<ResponseBody> call;
+            String alamat, telepon, deskripsi, userid, cgid, pakets;
             int durasi;
-            nama = namaEt.getText().toString();
-            umur = umurEt.getText().toString();
-            hobi = hobiEt.getText().toString();
-            sakit = sakitEt.getText().toString();
+
+            userid = SessionLog.GetId(CheckoutActivity.this);
+            cgid = idcg;
             durasi = Integer.parseInt(durasiEt.getText().toString());
+            pakets = paket;
             alamat = alamatEt.getText().toString();
             telepon = teleponEt.getText().toString();
             deskripsi = deskripsiEt.getText().toString();
-            userid = SessionLog.GetId(CheckoutActivity.this);
 
             apIinterface = APIClient.GetClient().create(APIinterface.class);
-            Call<ResponseBody> call = apIinterface.pesan(
-                    nama, umur, kelamin, hobi, sakit, paket, durasi, alamat, telepon, deskripsi, userid, cgid, ""
-            );
+            if(status){
+                if(namaEt.getText().toString().equals(t_nama) &&
+                        umurEt.getText().toString().equals(t_umur) &&
+                        hobiEt.getText().toString().equals(t_hobi) &&
+                        sakitEt.getText().toString().equals(t_sakit) &&
+                        gender.equals(t_gender)){
+                    useslansia = "lama";
+                    call = apIinterface.pesan(
+                            "", "", "", "", "", pakets, durasi, alamat, telepon, deskripsi, userid, cgid, t_idlansia, useslansia
+                    );
+                    Log.d("TAG", "pesan: " + pakets + durasi + alamat + telepon + deskripsi + userid + cgid + t_idlansia + useslansia);
+                }else {
+                    useslansia = "baru";
+                    String nama = namaEt.getText().toString();
+                    String umur = umurEt.getText().toString();
+                    String hobi = hobiEt.getText().toString();
+                    String sakit = sakitEt.getText().toString();
+                    String kelamin = gender;
+                    call = apIinterface.pesan(
+                            nama, umur, kelamin, hobi, sakit, pakets, durasi, alamat, telepon, deskripsi, userid, cgid, t_idlansia, useslansia
+                    );
+                    Log.d("TAG", "pesan: " +nama + umur + hobi + sakit + kelamin + pakets + durasi + alamat + telepon + deskripsi + userid + cgid + t_idlansia + useslansia);
+                }
+            }else{
+                String nama = namaEt.getText().toString();
+                String umur = umurEt.getText().toString();
+                String hobi = hobiEt.getText().toString();
+                String sakit = sakitEt.getText().toString();
+                String kelamin = gender;
+                call = apIinterface.pesan(
+                        nama, umur, kelamin, hobi, sakit, pakets, durasi, alamat, telepon, deskripsi, userid, cgid, "", "baru"
+                );
+                Log.d("TAG", "pesan: " +nama + umur + hobi + sakit + kelamin + pakets + durasi + alamat + telepon + deskripsi + userid + cgid);
+            }
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()){
+                        Log.d("TAG", "onResponse: " + response.code());
                         if(response.code() == 200){
                             try {
                                 JSONObject jsonObject = new JSONObject(response.body().string());
@@ -300,8 +337,8 @@ public class CheckoutActivity extends AppCompatActivity {
                             }
                         }
                     }else{
+                        Log.d("TAG", "onResponse: " +   response.body().toString());
                         Toast.makeText(CheckoutActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                        Log.d("TAG", "onResponse: " + response.message() + nama + umur + kelamin + hobi + paket + durasi + alamat + telepon + deskripsi +userid + cgid);
                         loading(false);
                     }
                 }
@@ -316,7 +353,8 @@ public class CheckoutActivity extends AppCompatActivity {
 
         }
 
-    }*/
+    }
+    // */
     public boolean validation(){
         boolean valid = true;
         if(namaEt.getText().length()<1){
@@ -361,23 +399,29 @@ public class CheckoutActivity extends AppCompatActivity {
             deskripsiTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
         }
-        if(durasiEt.getText().length()<1) {
+        int duras = 0;
+        if(durasiEt.getText().length() != 0){
+            duras = Integer.parseInt(durasiEt.getText().toString());
+        }
+        if(durasiEt.getText().length()<1 || duras < 1) {
+            durasiEt.setError("Masukan durasi");
             durasiEt.setBackgroundResource(R.drawable.borderred);
             durasiTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
         }
-        if (t_gender == null){
+        if (gender == null){
             genderTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
         }
-        if (t_paket == null){
+        if (paket == null){
             paketTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
         }
+
         return valid;
     }
 
-    void cek_form(final EditText editText, final TextView textView){
+    void cek_form2(final EditText editText, final TextView textView, final String value){
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -386,7 +430,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                    if(charSequence.length()<1)
+                if(charSequence.length()<1)
                     {
                         editText.setBackgroundResource(R.drawable.borderred);
                         textView.setTextColor(getResources().getColor(R.color.colorRed));
@@ -400,6 +444,9 @@ public class CheckoutActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(!editText.getText().toString().equals(value)){
+                    check.setChecked(false);
+                }
             }
         });
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -416,7 +463,9 @@ public class CheckoutActivity extends AppCompatActivity {
                 }
         });
     }
-    void cek_form2(final EditText editText, final TextView textView){
+
+
+    void cek_form(final EditText editText, final TextView textView){
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -424,7 +473,7 @@ public class CheckoutActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 if(charSequence.length()<1)
                 {
                     editText.setBackgroundResource(R.drawable.borderred);
@@ -434,11 +483,11 @@ public class CheckoutActivity extends AppCompatActivity {
                     editText.setBackgroundResource(R.drawable.borderbluebig);
                     textView.setTextColor(getResources().getColor(R.color.colorDarkblue));
                 }
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                check.setChecked(false);
             }
         });
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -454,9 +503,8 @@ public class CheckoutActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
+
     public void loading(Boolean status){
         RelativeLayout prgbar;
         TextView titleTv;

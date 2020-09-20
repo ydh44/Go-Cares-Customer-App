@@ -84,7 +84,7 @@
                 android:text="PROFILE"
                 android:textColor="#5B4949"
                 app:layout_constraintHeight_min="19dp"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:fontFamily="@font/roboto_bold"
                 app:layout_constraintTop_toBottomOf="@id/tilhor1"
                 app:layout_constraintBottom_toTopOf="@id/tilhor2"
@@ -175,6 +175,7 @@
         app:layout_constraintRight_toLeftOf="@id/gdver2"
         app:layout_constraintTop_toBottomOf="@id/gdhor1">
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/backblue">
@@ -194,7 +195,7 @@
                 android:text="Nama cust"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hor1"
-                app:layout_constraintHeight_percent=".2"
+                app:layout_constraintHeight_percent=".15"
                 />
             <androidx.constraintlayout.widget.Guideline
                 android:layout_width="wrap_content"
@@ -207,13 +208,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 style="?android:attr/borderlessButtonStyle"
-                app:layout_constraintHeight_percent=".15"
+                app:layout_constraintHeight_percent=".1"
                 android:padding="0dp"
                 android:fontFamily="@font/helvetica_bold"
                 android:text="KELUAR"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/colorRed"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintTop_toBottomOf="@id/hor2"
                 app:layout_constraintRight_toRightOf="parent" />
 
@@ -226,13 +227,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.4"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4375"/>
     <TextView
+        android:id="@+id/a"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25sp"
@@ -242,7 +238,7 @@
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor6"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintLeft_toRightOf="@id/gdver1"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cdhor5" />
@@ -255,30 +251,18 @@
     <TextView
         android:id="@+id/email"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:textSize="16sp"
         android:fontFamily="@font/helvetica_thin"
-        android:text="Semarang"
+        android:text=""
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor6"
         app:layout_constraintLeft_toRightOf="@id/cdver"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cdhor5" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.455"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4925"/>
     <TextView
+        android:id="@+id/b"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25sp"
@@ -288,37 +272,26 @@
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor8"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintLeft_toRightOf="@id/gdver1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor7" />
+        app:layout_constraintTop_toTopOf="@id/telepon" />
     <TextView
         android:id="@+id/telepon"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:fontFamily="@font/helvetica_thin"
-        android:text="Umur"
+        android:text=""
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor8"
         app:layout_constraintLeft_toRightOf="@id/cdver"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor7" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.51"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5475"/>
+        app:layout_constraintTop_toBottomOf="@id/email" />
     <TextView
+        android:id="@+id/c"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25sp"
@@ -328,37 +301,26 @@
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor10"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintLeft_toRightOf="@id/gdver1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor9" />
+        app:layout_constraintTop_toTopOf="@id/gender" />
     <TextView
         android:id="@+id/gender"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:textSize="12sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
         android:fontFamily="@font/helvetica_thin"
-        android:text="Gender"
+        android:text=""
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor10"
         app:layout_constraintLeft_toRightOf="@id/cdver"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor9" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.565"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6025"/>
+        app:layout_constraintTop_toBottomOf="@id/telepon" />
     <TextView
+        android:id="@+id/d"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="16sp"
@@ -368,37 +330,26 @@
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor12"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintLeft_toRightOf="@id/gdver1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor11" />
+        app:layout_constraintTop_toTopOf="@id/umur" />
     <TextView
         android:id="@+id/umur"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/helvetica_thin"
-        android:text="Gaji"
+        android:text=""
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor12"
         app:layout_constraintLeft_toRightOf="@id/cdver"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor11" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.62"/>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cdhor14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6575"/>
+        app:layout_constraintTop_toBottomOf="@id/gender" />
     <TextView
+        android:id="@+id/e"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="16sp"
@@ -408,23 +359,33 @@
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor14"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintLeft_toRightOf="@id/gdver1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor13" />
+        app:layout_constraintTop_toTopOf="@id/alamat" />
     <TextView
         android:id="@+id/alamat"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="16sp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/helvetica_thin"
-        android:text="Rating"
+        android:text=""
         android:textColor="#000000"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/cdhor14"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintLeft_toRightOf="@id/cdver"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cdhor13" />
+        app:layout_constraintTop_toBottomOf="@id/umur" />
+    <TextView
+        android:id="@+id/noo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:translationZ="1dp"
+        android:textSize="30dp"
+        android:text="No Internet"
+        android:gravity="center"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
