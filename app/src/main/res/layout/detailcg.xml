@@ -169,23 +169,24 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btninfo"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_max="90dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/backfotobtn"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#FFFFFF"
                 android:translationZ="1dp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="@id/bgcard"
                 app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_max="90dp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintRight_toRightOf="@id/bgcard"
-                app:layout_constraintBottom_toBottomOf="@id/bgcard"
                 app:layout_constraintWidth_max="120dp"
                 app:layout_constraintWidth_percent=".1" />
 
@@ -193,14 +194,13 @@
                 android:id="@+id/imginfo"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent=".04"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintTop_toTopOf="@id/btninfo"
-                app:layout_constraintBottom_toBottomOf="@id/btninfo"
-                app:layout_constraintRight_toRightOf="@id/btninfo"
-                app:layout_constraintLeft_toLeftOf="@id/btninfo"
                 android:translationZ="2dp"
-                >
+                app:layout_constraintBottom_toBottomOf="@id/btninfo"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHeight_percent=".04"
+                app:layout_constraintLeft_toLeftOf="@id/btninfo"
+                app:layout_constraintRight_toRightOf="@id/btninfo"
+                app:layout_constraintTop_toTopOf="@id/btninfo">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -229,6 +229,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
@@ -241,7 +242,7 @@
                 app:layout_constraintHeight_percent=".22"
                 app:layout_constraintLeft_toLeftOf="@id/bgcard"
                 app:layout_constraintRight_toRightOf="@id/bgcard"
-                app:layout_constraintTop_toTopOf="@id/bgcard"/>
+                app:layout_constraintTop_toTopOf="@id/bgcard" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -270,7 +271,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent=".08" />
+                app:layout_constraintGuide_begin="26dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdver3"
@@ -297,10 +298,10 @@
                 android:id="@+id/nama"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="20sp"
                 android:fontFamily="@font/helvetica_light"
                 android:text="CareGiver1"
                 android:textColor="#000000"
+                android:textSize="20sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor4"
@@ -325,11 +326,11 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/helvetica_light"
-                android:text="Umur      :"
                 android:paddingVertical="1sp"
+                android:text="Gender   :"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor6"
@@ -345,13 +346,13 @@
                 app:layout_constraintGuide_percent=".29" />
 
             <TextView
-                android:id="@+id/umur"
+                android:id="@+id/gender"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/roboto_light"
                 android:text="Semarang"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor6"
@@ -376,11 +377,11 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/helvetica_light"
-                android:text="Gender   :"
                 android:paddingVertical="1sp"
+                android:text="Umur      :"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor8"
@@ -389,13 +390,13 @@
                 app:layout_constraintTop_toBottomOf="@id/cdhor7" />
 
             <TextView
-                android:id="@+id/gender"
+                android:id="@+id/umur"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/roboto_light"
                 android:text="Umur"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor8"
@@ -420,17 +421,18 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/helvetica_light"
-                android:text="Alamat    :"
                 android:paddingVertical="1sp"
+                android:text="Alamat    :"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor10"
                 app:layout_constraintLeft_toLeftOf="@id/cdver2"
                 app:layout_constraintRight_toRightOf="@id/cdver3"
                 app:layout_constraintTop_toBottomOf="@id/cdhor9" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdhor19"
                 android:layout_width="wrap_content"
@@ -442,16 +444,17 @@
                 android:id="@+id/kota"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/roboto_light"
                 android:text="Gender"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor19"
                 app:layout_constraintLeft_toRightOf="@id/cdver"
                 app:layout_constraintRight_toRightOf="@id/cdver3"
                 app:layout_constraintTop_toBottomOf="@id/cdhor9" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdhor15"
                 android:layout_width="wrap_content"
@@ -462,11 +465,11 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/helvetica_light"
-                android:text="Keahlian :"
                 android:paddingVertical="1sp"
+                android:text="Keahlian :"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintHeight_percent=".04"
@@ -485,14 +488,14 @@
                 android:id="@+id/keahlian"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/roboto_light"
-                android:text="Genderfmk"
+                android:lines="2"
                 android:maxLines="2"
                 android:minLines="2"
-                android:lines="2"
-                android:textColor="#000000"
                 android:singleLine="false"
+                android:text="Genderfmk"
+                android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constrainedHeight="true"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toTopOf="@id/cdhor18"
@@ -507,65 +510,33 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.715" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/helvetica_light"
-                android:text="Gaji        :"
-                android:paddingVertical="1sp"
-                android:textColor="#000000"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintHeight_percent=".04"
-                app:layout_constraintLeft_toLeftOf="@id/cdver2"
-                app:layout_constraintRight_toRightOf="@id/cdver3"
-                app:layout_constraintTop_toBottomOf="@id/cdhor11" />
-
-            <TextView
-                android:id="@+id/gaji"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_light"
-                android:singleLine="false"
-                android:text="Rp.2.000.000 / Bulan                     Rp.150.000 / hari"
-                android:textColor="#000000"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintHeight_percent=".075"
-                app:layout_constraintLeft_toRightOf="@id/cdver"
-                app:layout_constraintRight_toRightOf="@id/cdver3"
-                app:layout_constraintTop_toBottomOf="@id/cdhor11" />
-
-
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnNext"
-                android:layout_marginEnd="15dp"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginEnd="15dp"
                 android:background="@drawable/backblue2"
-                app:layout_constraintDimensionRatio="1:1"
                 android:fontFamily="@font/roboto_bold"
                 android:paddingHorizontal="88dp"
+                app:layout_constraintBottom_toTopOf="@id/cdhor2"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cdhor1"
-                app:layout_constraintBottom_toTopOf="@id/cdhor2"/>
+                app:layout_constraintTop_toBottomOf="@id/cdhor1" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:fontFamily="@font/helvetica_bold"
-                app:layout_constraintHeight_percent=".032"
                 android:gravity="center"
-                android:textAlignment="center"
                 android:text="PESAN"
+                android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/btnNext"
+                app:layout_constraintHeight_percent=".032"
                 app:layout_constraintLeft_toLeftOf="@id/btnNext"
                 app:layout_constraintRight_toRightOf="@id/btnNext"
-                app:layout_constraintTop_toTopOf="@id/btnNext"
-                app:layout_constraintBottom_toBottomOf="@id/btnNext"/>
+                app:layout_constraintTop_toTopOf="@id/btnNext" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

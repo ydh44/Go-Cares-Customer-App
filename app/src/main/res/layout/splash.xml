@@ -7,13 +7,14 @@
     android:layout_height="match_parent"
     app:layout_constraintHeight_default="percent"
     app:layout_constraintWidth_default="percent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/backbluewhite">
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/logohor1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_percent="0.35" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/logover2"
@@ -33,21 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.48" />
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_condensed_regular"
-        android:text="APLIKASI PENDAMPING LANSIA"
-        android:textColor="#fff"
-        android:textSize="25sp"
-        app:layout_constrainedHeight="true"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/logohor2"
-        app:layout_constraintDimensionRatio="1:0.5"
-        app:layout_constraintLeft_toRightOf="@id/logover1"
-        app:layout_constraintTop_toBottomOf="@id/logohor1" />
+        app:layout_constraintGuide_percent="0.575" />
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
@@ -56,9 +43,9 @@
         android:contentDescription="@string/app_name"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
-        app:layout_constraintRight_toLeftOf="@id/logover2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@id/logohor2"
         app:layout_constraintTop_toBottomOf="@id/logohor1"
-        android:maxWidth="25dp"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:openDrawer="start">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,12 +77,12 @@
                         android:id="@+id/logo"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintDimensionRatio="2.5:1"
                         app:layout_constraintBottom_toBottomOf="@id/loghor2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/loghor1"
-                        app:srcCompat="@drawable/logo"
+                        app:srcCompat="@drawable/logo3"
                         />
 
                     <androidx.appcompat.widget.AppCompatImageButton
@@ -181,6 +182,7 @@
                     app:layout_constraintStart_toEndOf="@id/rcyver1"
                     app:layout_constraintEnd_toStartOf="@id/rcyver2"
                     tools:layout_editor_absoluteY="17dp" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -228,12 +230,13 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintGuide_percent=".055"
                 android:orientation="horizontal"/>
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/backrver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintGuide_percent=".24"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="67dp" />
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/backdrawr"
                 android:layout_width="0dp"
@@ -612,6 +615,14 @@
                 android:autoSizeMaxTextSize="40sp"
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeTextType="uniform"  />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@drawable/bege"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

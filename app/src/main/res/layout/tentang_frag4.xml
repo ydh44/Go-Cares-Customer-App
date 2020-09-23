@@ -25,12 +25,49 @@
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/Imageview1"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnMaps"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintHeight_max="90dp"
+        android:background="@drawable/backblue2white"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#FFFFFF"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toRightOf="@id/Imageview1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/Imageview1"
+        app:layout_constraintWidth_max="120dp"
+        app:layout_constraintWidth_percent=".12" />
+
+    <LinearLayout
+        android:id="@+id/imgback"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".04"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="@id/btnMaps"
+        app:layout_constraintLeft_toLeftOf="@id/btnMaps"
+        app:layout_constraintRight_toRightOf="@id/btnMaps"
+        app:layout_constraintTop_toTopOf="@id/btnMaps">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
+            app:srcCompat="@drawable/maps" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/Imageview1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintHeight_percent=".15"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo4"
         app:layout_constraintRight_toRightOf="@id/satu"
         app:layout_constraintLeft_toLeftOf="@id/satu"
         app:layout_constraintBottom_toBottomOf="@id/satu"
@@ -48,7 +85,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
-        android:text="Smk Negeri 8 Kota Semarang"
+        android:text="SMK Negeri 8 Semarang"
         android:textSize="25sp"
         android:textColor="@color/colorBlack"
         android:fontFamily="@font/helvetica_medium"
@@ -78,15 +115,13 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="248dp"
         android:textSize="16sp"
-        android:text="Jl.Pandanaran II No 12 Kelurahan/Kecamatan:Semarang Selatan Mugasssari "
+        android:text="Jl.Pandanaran II No 12, Kelurahan Mugassari, Kecamatan Semarang Selatan "
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
         android:fontFamily="@font/roboto_light"
         app:layout_constraintStart_toStartOf="@id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.0" />
 

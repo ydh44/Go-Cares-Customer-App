@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="8pt"
-        android:background="@drawable/backbluebig"
+        android:background="@drawable/backbluewhite"
         android:elevation="4dp"
         app:layout_constraintBottom_toTopOf="@id/backhor"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,45 +50,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.14" />
+        app:layout_constraintGuide_percent="0.13" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/logohor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.29" />
+        app:layout_constraintGuide_percent="0.34" />
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_condensed_regular"
-        android:text="APLIKASI PENDAMPING LANSIA"
-        android:textColor="#fff"
-        android:translationZ="4dp"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMaxTextSize="50sp"
-        android:autoSizeMinTextSize="12sp"
-        app:layout_constrainedHeight="true"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/logohor2"
-        app:layout_constraintDimensionRatio="1:0.5"
-        app:layout_constraintLeft_toLeftOf="@id/cv2"
-        app:layout_constraintTop_toBottomOf="@id/logohor1" />
     <ImageView
         android:id="@+id/logo"
         android:translationZ="4dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintDimensionRatio="1:1"
         android:contentDescription="@string/app_name"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
         app:layout_constraintRight_toRightOf="@id/cv2"
+        app:layout_constraintLeft_toLeftOf="@id/cv2"
         app:layout_constraintBottom_toTopOf="@id/logohor2"
         app:layout_constraintTop_toBottomOf="@id/logohor1"
-        android:maxWidth="25dp"
         app:srcCompat="@drawable/logo" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -366,6 +349,7 @@
                 app:layout_constraintGuide_percent="0.895"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/lupa"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 style="?android:attr/borderlessButtonStyle"

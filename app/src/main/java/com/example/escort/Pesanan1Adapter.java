@@ -2,6 +2,7 @@ package com.example.escort;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,19 +66,16 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(v.getContext(),DetailPesananActivity.class);
-                    i.putExtra("urlgambar",hm.get("urlgambar"));
-                    i.putExtra("status",hm.get("status"));
-                    i.putExtra("id_pesan",hm.get("id_pesan"));
-                    i.putExtra("namacg",hm.get("namacg"));
-                    i.putExtra("tglpesan",hm.get("tglpesan"));
-                    i.putExtra("paket",hm.get("paket"));
-                    i.putExtra("durasi",hm.get("durasi"));
-                    i.putExtra("deskripsi",hm.get("deskripsi"));
-                    i.putExtra("telepon",hm.get("telepon"));
-                    i.putExtra("alamat", hm.get("alamat"));
-                    i.putExtra("gaji",hm.get("gaji"));
-                    v.getContext().startActivity(i);
+                  pindah(v);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Vibrator vibrator = (Vibrator) v.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(80);
+                    pindah(v);
+                    return false;
                 }
             });
             gambarcg = itemView.findViewById(R.id.imageView);
@@ -85,6 +83,21 @@ public class Pesanan1Adapter extends RecyclerView.Adapter<Pesanan1Adapter.ViewHo
             txt = itemView.findViewById(R.id.CgCityNameEt);
             tglpesanview = itemView.findViewById(R.id.CgUmurEt);
 
+        }
+        protected void pindah(View v){
+            Intent i = new Intent(v.getContext(),DetailPesananActivity.class);
+            i.putExtra("urlgambar",hm.get("urlgambar"));
+            i.putExtra("status",hm.get("status"));
+            i.putExtra("id_pesan",hm.get("id_pesan"));
+            i.putExtra("namacg",hm.get("namacg"));
+            i.putExtra("tglpesan",hm.get("tglpesan"));
+            i.putExtra("paket",hm.get("paket"));
+            i.putExtra("durasi",hm.get("durasi"));
+            i.putExtra("deskripsi",hm.get("deskripsi"));
+            i.putExtra("telepon",hm.get("telepon"));
+            i.putExtra("alamat", hm.get("alamat"));
+            i.putExtra("gaji",hm.get("gaji"));
+            v.getContext().startActivity(i);
         }
 
         protected HashMap<String, String> DataDetail2( @NonNull  Pesanan1Data pesananData) {

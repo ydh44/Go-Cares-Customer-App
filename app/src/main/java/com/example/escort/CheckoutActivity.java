@@ -271,18 +271,18 @@ public class CheckoutActivity extends AppCompatActivity {
 
             userid = SessionLog.GetId(CheckoutActivity.this);
             cgid = idcg;
-            durasi = Integer.parseInt(durasiEt.getText().toString());
+            durasi = Integer.parseInt(durasiEt.getText().toString().trim());
             pakets = paket;
-            alamat = alamatEt.getText().toString();
-            telepon = teleponEt.getText().toString();
-            deskripsi = deskripsiEt.getText().toString();
+            alamat = alamatEt.getText().toString().trim();
+            telepon = teleponEt.getText().toString().trim();
+            deskripsi = deskripsiEt.getText().toString().trim();
 
             apIinterface = APIClient.GetClient().create(APIinterface.class);
             if(status){
-                if(namaEt.getText().toString().equals(t_nama) &&
-                        umurEt.getText().toString().equals(t_umur) &&
-                        hobiEt.getText().toString().equals(t_hobi) &&
-                        sakitEt.getText().toString().equals(t_sakit) &&
+                if(namaEt.getText().toString().trim().equals(t_nama) &&
+                        umurEt.getText().toString().trim().equals(t_umur) &&
+                        hobiEt.getText().toString().trim().equals(t_hobi) &&
+                        sakitEt.getText().toString().trim().equals(t_sakit) &&
                         gender.equals(t_gender)){
                     useslansia = "lama";
                     call = apIinterface.pesan(
@@ -291,10 +291,10 @@ public class CheckoutActivity extends AppCompatActivity {
                     Log.d("TAG", "pesan: " + pakets + durasi + alamat + telepon + deskripsi + userid + cgid + t_idlansia + useslansia);
                 }else {
                     useslansia = "baru";
-                    String nama = namaEt.getText().toString();
-                    String umur = umurEt.getText().toString();
-                    String hobi = hobiEt.getText().toString();
-                    String sakit = sakitEt.getText().toString();
+                    String nama = namaEt.getText().toString().trim();
+                    String umur = umurEt.getText().toString().trim();
+                    String hobi = hobiEt.getText().toString().trim();
+                    String sakit = sakitEt.getText().toString().trim();
                     String kelamin = gender;
                     call = apIinterface.pesan(
                             nama, umur, kelamin, hobi, sakit, pakets, durasi, alamat, telepon, deskripsi, userid, cgid, t_idlansia, useslansia
@@ -302,10 +302,10 @@ public class CheckoutActivity extends AppCompatActivity {
                     Log.d("TAG", "pesan: " +nama + umur + hobi + sakit + kelamin + pakets + durasi + alamat + telepon + deskripsi + userid + cgid + t_idlansia + useslansia);
                 }
             }else{
-                String nama = namaEt.getText().toString();
-                String umur = umurEt.getText().toString();
-                String hobi = hobiEt.getText().toString();
-                String sakit = sakitEt.getText().toString();
+                String nama = namaEt.getText().toString().trim();
+                String umur = umurEt.getText().toString().trim();
+                String hobi = hobiEt.getText().toString().trim();
+                String sakit = sakitEt.getText().toString().trim();
                 String kelamin = gender;
                 call = apIinterface.pesan(
                         nama, umur, kelamin, hobi, sakit, pakets, durasi, alamat, telepon, deskripsi, userid, cgid, "", "baru"
@@ -337,7 +337,7 @@ public class CheckoutActivity extends AppCompatActivity {
                             }
                         }
                     }else{
-                        Log.d("TAG", "onResponse: " +   response.body().toString());
+                        Log.d("TAG", "onResponse: " +  response.body().toString());
                         Toast.makeText(CheckoutActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         loading(false);
                     }
@@ -382,7 +382,7 @@ public class CheckoutActivity extends AppCompatActivity {
             valid = false;
         }
         if(teleponEt.getText().length()<1 || !Patterns.PHONE.matcher(teleponEt.getText()).matches()){
-            teleponEt.setError("Masukan nomor telepon yang valid");
+            teleponEt.setError("Masukan nomor hp yang valid");
             teleponEt.setBackgroundResource(R.drawable.borderred);
             teleponTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
@@ -394,7 +394,7 @@ public class CheckoutActivity extends AppCompatActivity {
             valid = false;
         }
         if(deskripsiEt.getText().length()<1) {
-            deskripsiEt.setError("Masukan alamat Anda");
+            deskripsiEt.setError("Masukan deskripsi pekerjaan");
             deskripsiEt.setBackgroundResource(R.drawable.borderred);
             deskripsiTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
@@ -416,6 +416,28 @@ public class CheckoutActivity extends AppCompatActivity {
         if (paket == null){
             paketTv.setTextColor(getResources().getColor(R.color.colorRed));
             valid = false;
+        }
+        if(teleponEt.getText().toString().length() <= 10 || teleponEt.getText().length() > 13){
+            teleponEt.setError("Masukan nomor hp yang valid");
+            teleponEt.setBackgroundResource(R.drawable.borderred);
+            teleponTv.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+        if(!teleponEt.getText().toString().startsWith("0")){
+            teleponEt.setError("Masukan nomor hp, harus diawali dengan nol");
+            teleponEt.setBackgroundResource(R.drawable.borderred);
+            teleponTv.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+        if(teleponEt.getText().length() != 0){
+            String tel = null;
+            tel = teleponEt.getText().toString().substring(0, 2);
+            if(!tel.equals("08")){
+                teleponEt.setError("Masukan nomor hp, harus diawali dengan nol");
+                teleponEt.setBackgroundResource(R.drawable.borderred);
+                teleponTv.setTextColor(getResources().getColor(R.color.colorRed));
+                valid = false;
+            }
         }
 
         return valid;

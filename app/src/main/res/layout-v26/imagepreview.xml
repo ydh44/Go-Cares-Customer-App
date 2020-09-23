@@ -170,7 +170,7 @@
         android:autoSizeMinTextSize="8sp"
         app:layout_constrainedWidth="true"
         app:layout_constrainedHeight="true"
-        android:text="Unggah Bukti pembnayaran"
+        android:text="Unggah Bukti pembayaran"
         app:layout_constraintBottom_toTopOf="@id/cdhor2"
         app:layout_constraintLeft_toRightOf="@id/cdver1"
         app:layout_constraintTop_toBottomOf="@id/cdhor1"

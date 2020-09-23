@@ -49,7 +49,7 @@
                         android:padding="10dp"
                         android:layout_marginStart="5dp"
                         android:text="@string/teks_lingkup_pekerjaan"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black_overlay"
                         android:textSize="18sp"
                         android:gravity="center"
                         android:fontFamily="@font/roboto_bold"
@@ -335,6 +335,7 @@
                 android:id="@+id/cv2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
                 app:layout_constraintRight_toRightOf="@id/card"
                 app:layout_constraintLeft_toLeftOf="@id/card"
                 app:layout_constraintTop_toBottomOf="@id/cv1"
@@ -602,35 +603,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
-            <TextView
-                android:id="@+id/tv001"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Catatan"
-                android:gravity="start"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/roboto_light"
-                android:lineSpacingExtra="10sp"
-                android:textSize="18sp"
-                android:layout_marginTop="50dp"
-                app:layout_constraintTop_toBottomOf="@id/cv2"
-                app:layout_constraintLeft_toLeftOf="@id/ss"
-                app:layout_constraintRight_toRightOf="@id/card"/>
-            <TextView
-                android:id="@+id/tv002"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="Biaya tersebut di luar transport dan makan tiap hari Rp. 50.000,-"
-                android:gravity="start"
-                android:fontFamily="@font/roboto_thin"
-                android:textColor="@color/colorBlack"
-                android:lineSpacingExtra="10sp"
-                android:textSize="18sp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintHeight_percent=".04"
-                app:layout_constraintTop_toBottomOf="@id/tv001"
-                app:layout_constraintLeft_toLeftOf="@id/ss"
-                app:layout_constraintRight_toRightOf="@id/card"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

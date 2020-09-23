@@ -270,7 +270,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.08" />
+                app:layout_constraintGuide_begin="26dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/cdver3"
@@ -331,7 +331,7 @@
                 android:autoSizeMinTextSize="13sp"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/helvetica_light"
-                android:text="Umur      :"
+                android:text="Gender   :"
                 android:paddingVertical="1sp"
                 android:textColor="#000000"
                 app:layout_constrainedHeight="true"
@@ -349,7 +349,7 @@
                 app:layout_constraintGuide_percent=".29" />
 
             <TextView
-                android:id="@+id/umur"
+                android:id="@+id/gender"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:autoSizeMaxTextSize="20sp"
@@ -386,7 +386,7 @@
                 android:autoSizeMinTextSize="13sp"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/helvetica_light"
-                android:text="Gender   :"
+                android:text="Umur      :"
                 android:paddingVertical="1sp"
                 android:textColor="#000000"
                 app:layout_constrainedHeight="true"
@@ -397,7 +397,7 @@
                 app:layout_constraintTop_toBottomOf="@id/cdhor7" />
 
             <TextView
-                android:id="@+id/gender"
+                android:id="@+id/umur"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:autoSizeMaxTextSize="20sp"
@@ -524,42 +524,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.715" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:autoSizeMaxTextSize="20sp"
-                android:autoSizeMinTextSize="13sp"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/helvetica_light"
-                android:text="Gaji        :"
-                android:paddingVertical="1sp"
-                android:textColor="#000000"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintHeight_percent=".04"
-                app:layout_constraintLeft_toLeftOf="@id/cdver2"
-                app:layout_constraintRight_toRightOf="@id/cdver3"
-                app:layout_constraintTop_toBottomOf="@id/cdhor11" />
-
-            <TextView
-                android:id="@+id/gaji"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:autoSizeMaxTextSize="20sp"
-                android:autoSizeMinTextSize="13sp"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/roboto_light"
-                android:singleLine="false"
-                android:text="Rp.2.000.000 / Bulan                                                    Rp.150.000 / hari"
-                android:textColor="#000000"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true"
-                app:layout_constraintHeight_percent=".075"
-                app:layout_constraintLeft_toRightOf="@id/cdver"
-                app:layout_constraintRight_toRightOf="@id/cdver3"
-                app:layout_constraintTop_toBottomOf="@id/cdhor11" />
-
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btnNext"

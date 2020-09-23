@@ -322,7 +322,7 @@
                 android:autoSizeMinTextSize="13sp"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/helvetica_light"
-                android:text="Hobi       :"
+                android:text="Hobi        :"
                 android:paddingVertical="1sp"
                 android:textColor="#000000"
                 app:layout_constrainedHeight="true"

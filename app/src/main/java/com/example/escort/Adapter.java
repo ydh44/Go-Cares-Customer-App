@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,18 +63,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(v.getContext(),DetailCGActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.putExtra("id",hm.get("id"));
-                    i.putExtra("urlgambar",hm.get("urlgambar"));
-                    i.putExtra("nama",hm.get("nama"));
-                    i.putExtra("umur",hm.get("umur"));
-                    i.putExtra("gender",hm.get("gender"));
-                    i.putExtra("keahlian" , hm.get("keahlian"));
-                    i.putExtra("gaji",hm.get("gaji"));
-                    i.putExtra("kota",hm.get("kota"));
-                    i.putExtra("rating",hm.get("rating"));
-                    v.getContext().startActivity(i);
+                    pindah(v);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Vibrator vibrator = (Vibrator) v.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(80);
+                    pindah(v);
+                    return false;
                 }
             });
             gambarcg = itemView.findViewById(R.id.imageView);
@@ -81,6 +80,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             textDescription = itemView.findViewById(R.id.CgCityNameEt);
             text3 = itemView.findViewById(R.id.CgUmurEt);
             text4 = itemView.findViewById(R.id.CgRattingEt);
+        }
+
+        protected void pindah(View v){
+            Intent i = new Intent(v.getContext(),DetailCGActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.putExtra("id",hm.get("id"));
+            i.putExtra("urlgambar",hm.get("urlgambar"));
+            i.putExtra("nama",hm.get("nama"));
+            i.putExtra("umur",hm.get("umur"));
+            i.putExtra("gender",hm.get("gender"));
+            i.putExtra("keahlian" , hm.get("keahlian"));
+            i.putExtra("gaji",hm.get("gaji"));
+            i.putExtra("kota",hm.get("kota"));
+            i.putExtra("rating",hm.get("rating"));
+            v.getContext().startActivity(i);
         }
 
         protected HashMap<String, String> DataDetail( @NonNull  CGdata cgdata) {

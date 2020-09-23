@@ -1,7 +1,10 @@
 package com.example.escort;
 
 import android.Manifest;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -11,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -31,8 +35,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 public class PembayaranActivity extends AppCompatActivity {
@@ -42,12 +48,11 @@ public class PembayaranActivity extends AppCompatActivity {
 
     String currentPhotoPath, id, total;
 
-    TextView totalTv;
+    TextView totalTv, rkning;
     ImageButton back;
     Button TambahkanGambar, AmbilFoto;
     Uri gambar_uri = null;
     Boolean pil;
-    ImageView test;
     Uri photoURI;
     File photoFile = null;
 
@@ -58,9 +63,22 @@ public class PembayaranActivity extends AppCompatActivity {
         final int PERMISSION_CODE = 1000;
         TambahkanGambar = findViewById(R.id.btnGalerry);
         AmbilFoto = findViewById(R.id.btnCamera);
-        test = findViewById(R.id.test);
         totalTv = findViewById(R.id.total);
         back = findViewById(R.id.btnBack);
+        rkning = findViewById(R.id.status);
+
+        rkning.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("rekening", rkning.getText().toString());
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(PembayaranActivity.this, "Rekening Berhasil Disalin", Toast.LENGTH_SHORT ).show();
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                vibrator.vibrate(80);
+                return false;
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,11 +94,13 @@ public class PembayaranActivity extends AppCompatActivity {
         id = i.getStringExtra("id");
         total = i.getStringExtra("total");
 
-        totalTv.setText("Rp."+total);
+        Locale localeid = new Locale("in", "ID");
+        NumberFormat format = NumberFormat.getCurrencyInstance(localeid);
 
-        if(gambar_uri != null){
-            test.setImageURI(gambar_uri);
-        }
+        double totals = Double.parseDouble(total);
+
+        totalTv.setText(format.format((double) totals));
+
 
         //btn click
         AmbilFoto.setOnClickListener(new View.OnClickListener() {

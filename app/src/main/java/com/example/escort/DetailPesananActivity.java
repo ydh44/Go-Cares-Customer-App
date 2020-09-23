@@ -28,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -149,7 +151,12 @@ public class DetailPesananActivity extends AppCompatActivity {
         telepon.setText(Stelepon);
         alamat.setText(Salamat);
         deskripsi.setText(Sdeskripsi);
-        gaji.setText("Rp." + Sgaji);
+        Locale localeid = new Locale("in", "ID");
+        NumberFormat format = NumberFormat.getCurrencyInstance(localeid);
+
+        double totals = Double.parseDouble(Sgaji);
+
+        gaji.setText(format.format((double) totals));
 
         ConstraintLayout.LayoutParams paramsa = (ConstraintLayout.LayoutParams) alamat.getLayoutParams();
         ConstraintLayout.LayoutParams paramsb = (ConstraintLayout.LayoutParams) deskripsi.getLayoutParams();

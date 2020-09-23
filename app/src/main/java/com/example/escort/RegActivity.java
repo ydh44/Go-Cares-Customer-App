@@ -24,6 +24,7 @@ import androidx.constraintlayout.widget.Guideline;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +44,9 @@ public class RegActivity extends AppCompatActivity {
     }
     @OnClick(R.id.buttonreg)
             void reg(){
+        UIUtil.hideKeyboard(this);
         register();
+
     }
 
     @BindView(R.id.cv2) CardView card;
@@ -82,7 +85,7 @@ public class RegActivity extends AppCompatActivity {
         window = this.getWindow();
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+            window.setStatusBarColor(this.getResources().getColor(R.color.gray));
         }
 
         kelaminEt.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -145,13 +148,13 @@ public class RegActivity extends AppCompatActivity {
             loading(true);
             //api
             String email, nama, umur, alamat, telepon, password1, password2;
-            email = emailEt.getText().toString();
-            nama = namaEt.getText().toString();
-            umur = umurEt.getText().toString();
-            telepon = teleponEt.getText().toString();
-            alamat = alamatEt.getText().toString();
-            password1 = password1Et.getText().toString();
-            password2 = password2Et.getText().toString();
+            email = emailEt.getText().toString().trim();
+            nama = namaEt.getText().toString().trim();
+            umur = umurEt.getText().toString().trim();
+            telepon = teleponEt.getText().toString().trim();
+            alamat = alamatEt.getText().toString().trim();
+            password1 = password1Et.getText().toString().trim();
+            password2 = password2Et.getText().toString().trim();
 
             apIinterface = APIClient.GetClient().create(APIinterface.class);
             Call<ResponseBody> call = apIinterface.register(
@@ -240,6 +243,28 @@ public class RegActivity extends AppCompatActivity {
             password2Et.setError("Masukan password yang sama");
             valid = false;
             }
+        if(teleponEt.getText().toString().length() <= 10 || teleponEt.getText().length() > 13){
+            teleponEt.setError("Masukan nomor hp yang valid");
+            teleponEt.setBackgroundResource(R.drawable.borderred);
+            teleponTv.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+        if(!teleponEt.getText().toString().startsWith("0")){
+            teleponEt.setError("Masukan nomor hp, harus diawali dengan nol");
+            teleponEt.setBackgroundResource(R.drawable.borderred);
+            teleponTv.setTextColor(getResources().getColor(R.color.colorRed));
+            valid = false;
+        }
+        if(teleponEt.getText().length() != 0){
+            String tel = null;
+            tel = teleponEt.getText().toString().substring(0, 2);
+            if(!tel.equals("08")){
+                teleponEt.setError("Masukan nomor hp, harus diawali dengan nol");
+                teleponEt.setBackgroundResource(R.drawable.borderred);
+                teleponTv.setTextColor(getResources().getColor(R.color.colorRed));
+                valid = false;
+            }
+        }
         return valid;
     }
     void cek_form(final EditText editText, final TextView textView){

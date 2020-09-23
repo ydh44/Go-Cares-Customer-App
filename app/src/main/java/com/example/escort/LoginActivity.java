@@ -32,6 +32,7 @@ import com.google.gson.Gson;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,12 +66,17 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.buttonlog)
     void in(){
         login();
+        UIUtil.hideKeyboard(this);
+    }
+    @OnClick(R.id.lupa)
+    public void pindahs() {
+        Intent i = new Intent (LoginActivity.this, LupapassActtivity.class);
+        startActivity(i);
     }
     @BindView(R.id.emailEdtx) EditText emailEt;
     @BindView(R.id.passEdtx) EditText passEt;
     @BindView(R.id.emailTv) TextView emailTv;
     @BindView(R.id.passTv) TextView passTv;
-    @BindView(R.id.text) TextView text;
     @BindView(R.id.logo) ImageView logo;
     @BindView(R.id.cardhor1) Guideline hor1;
     @BindView(R.id.cardhor2) Guideline hor2;
@@ -97,14 +103,13 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+            window.setStatusBarColor(this.getResources().getColor(R.color.gray));
         }
 
         KeyboardVisibilityEvent.setEventListener(LoginActivity.this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean b) {
                 if (b){
-                    text.setVisibility(View.GONE);
                     logo.setVisibility(View.GONE);
                     params.guidePercent = 0.0f;
                     params2.guidePercent = 0.7f;
@@ -112,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
                     hor2.setLayoutParams(params2);
 
                 }else {
-                    text.setVisibility(View.VISIBLE);
                     logo.setVisibility(View.VISIBLE);
                     params.guidePercent = 0.35f;
                     params2.guidePercent = 0.85f;
@@ -167,8 +171,8 @@ public class LoginActivity extends AppCompatActivity {
     void login()
     {
         String email, password;
-        email = emailEt.getText().toString();
-        password = passEt.getText().toString();
+        email = emailEt.getText().toString().trim();
+        password = passEt.getText().toString().trim();
         if(!validation()){
             passEt.setText(null);
         }else {
