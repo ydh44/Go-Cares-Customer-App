@@ -108,6 +108,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
     Boolean status, status2;
 
+
     Guideline hor1, hor2;
 
     @Override
@@ -261,7 +262,9 @@ public class CheckoutActivity extends AppCompatActivity {
     }
       // /*
     void pesan(){
+        Log.d("TAG", "onCreate: " + idcg);
         UIUtil.hideKeyboard(CheckoutActivity.this);
+        getCgStatus();
         if(validation()){
             loading(true);
             //api
@@ -325,9 +328,11 @@ public class CheckoutActivity extends AppCompatActivity {
                                 String b = jsonObject2.getString("id");
                                 String c = jsonObject2.getString("total_bayar");
                                 Intent i = new Intent(CheckoutActivity.this , PembayaranActivity.class);
+                                i.putExtra("idcg", idcg);
                                 i.putExtra("id", b);
                                 i.putExtra("total", c);
                                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Log.d("TAG", "onCreate: " + cgid);
                                 startActivity(i);
                                 finish();
                                 Log.d("TAG", "onResponse: " + a + b + c);
@@ -349,10 +354,37 @@ public class CheckoutActivity extends AppCompatActivity {
                     loading(false);
                 }
             });
-        }else {
-
         }
 
+    }
+
+
+    public void getCgStatus(){
+        loading(true);
+        APIinterface apIinterface = APIClient.GetClient().create(APIinterface.class);
+        Call<ResponseBody> call = apIinterface.getstatus(idcg);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.code() == 200){
+                    finish();
+                    loading(false);
+                }else if (response.code() == 401){
+                    loading(false);
+                }else {
+                    finish();
+                    loading(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(CheckoutActivity.this, "Koneksi Error", Toast.LENGTH_SHORT).show();
+                Log.d("TAG", "onFailure: " + t);
+                loading(false);
+            }
+
+        });
     }
     // */
     public boolean validation(){
@@ -536,11 +568,9 @@ public class CheckoutActivity extends AppCompatActivity {
         cv = findViewById(R.id.cv2);
         if(status){
             prgbar.setVisibility(View.VISIBLE);
-            titleTv.setVisibility(View.GONE);
             cv.setVisibility(View.INVISIBLE);
         }else {
             prgbar.setVisibility(View.INVISIBLE);
-            titleTv.setVisibility(View.VISIBLE);
             cv.setVisibility(View.VISIBLE);
         }
     }

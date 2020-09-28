@@ -33,6 +33,7 @@ public class FragTentang4 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ImageButton wa, email;
 
     public FragTentang4() {
         // Required empty public constructor
@@ -79,6 +80,27 @@ public class FragTentang4 extends Fragment {
                 Intent bukabrowser = new Intent(Intent. ACTION_VIEW);
                 bukabrowser.setData(Uri. parse(url));
                 startActivity(bukabrowser);
+            }
+        });
+
+        wa = view.findViewById(R.id.imageButton2);
+        email = view.findViewById(R.id.imageButton3);
+
+        wa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://api.whatsapp.com/send?phone=" + "+62 85727214582";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:fajar.mrj@gmail.com"));
+                startActivity(Intent.createChooser(emailIntent, "Send email"));
             }
         });
         return view;

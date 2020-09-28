@@ -82,6 +82,7 @@
                 android:fontFamily="@font/roboto_thin"
                 app:layout_constraintHeight_percent="0.4"
                 android:text="|  16 - 18 Tahun"
+                android:visibility="gone"
                 android:layout_marginStart="5dp"
                 android:textColor="#000000"
                 app:layout_constrainedHeight="true"

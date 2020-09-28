@@ -1,20 +1,15 @@
 package com.example.escort;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -27,6 +22,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.ResponseBody;
@@ -40,6 +36,7 @@ public class DetailCGActivity extends AppCompatActivity {
             void pesans(){
         pesan();
     }
+    @BindView(R.id.btnNext) ImageButton next;
     @OnClick(R.id.btninfo)
     void bout(){
         Intent i = new Intent(DetailCGActivity.this, TentangActivity.class);
@@ -50,8 +47,9 @@ public class DetailCGActivity extends AppCompatActivity {
     ImageButton back;
     ImageView gambarcg;
     Guideline hor1, hor2, hor4, hor5;
-    TextView namaTv, umurTv, kotaTv, genderTv, keahlianTv,  gajiTv, ratingTv;
+    TextView namaTv, kotaTv, genderTv, keahlianTv, cgstatusTv;
     String id;
+    String cgstatus, cgstatuses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,56 +67,50 @@ public class DetailCGActivity extends AppCompatActivity {
         String rating = i.getStringExtra("rating");
         String gender = i.getStringExtra("gender");
         String gaji = i.getStringExtra("gaji");
+        cgstatus = i.getStringExtra("cgstatus");
+
+        Log.d("TAG", "onCreate: " + id);
 
         namaTv = findViewById(R.id.nama);
         kotaTv = findViewById(R.id.kota);
-        umurTv = findViewById(R.id.umur);
         genderTv = findViewById(R.id.gender);
-        gajiTv = findViewById(R.id.gaji);
         keahlianTv = findViewById(R.id.keahlian);
         back = findViewById(R.id.btnBack);
         gambarcg = findViewById(R.id.imageView);
-        hor1 = findViewById(R.id.cdhor18);
-        hor2 = findViewById(R.id.cdhor11);
-        hor4 = findViewById(R.id.cdhor15);
-        hor5 = findViewById(R.id.cdhor19);
+        cgstatusTv = findViewById(R.id.statuscg);
 
-        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) hor1.getLayoutParams();
-        ConstraintLayout.LayoutParams params2 = (ConstraintLayout.LayoutParams) hor2.getLayoutParams();
-        ConstraintLayout.LayoutParams params4 = (ConstraintLayout.LayoutParams) hor4.getLayoutParams();
-        ConstraintLayout.LayoutParams params5 = (ConstraintLayout.LayoutParams) hor5.getLayoutParams();
+        ConstraintLayout.LayoutParams paramsa = (ConstraintLayout.LayoutParams) kotaTv.getLayoutParams();
+        ConstraintLayout.LayoutParams paramsb = (ConstraintLayout.LayoutParams) keahlianTv.getLayoutParams();
 
-        //guideline
         assert kota != null;
-        if(kota.length() >= 32){
-            params5.guidePercent = 0.625f;
-            params4.guidePercent = 0.65f;
-            hor5.setLayoutParams(params5);
-            hor4.setLayoutParams(params4);
-            assert keahlian != null;
-            if(keahlian.length() >= 32){
-                params.guidePercent = 0.725f;
-                params2.guidePercent = 0.75f;
-                hor1.setLayoutParams(params);
-                hor2.setLayoutParams(params2);
-            }else {
-                params.guidePercent = 0.69f;
-                hor1.setLayoutParams(params);
-            }
-        }else{
-            assert keahlian != null;
-            if(keahlian.length() >= 32){
-                params.guidePercent = 0.69f;
-                hor1.setLayoutParams(params);
-            }else {
-                params2.guidePercent = 0.68f;
-                hor2.setLayoutParams(params2);
-            }
+        if(kota.length() >= 32 && kota.length() < 64){
+            paramsa.matchConstraintPercentHeight = (float) 0.075f;
+            kotaTv.setLayoutParams(paramsa);
+        }else if(kota.length() >= 64 && kota.length() < 95){
+            paramsa.matchConstraintPercentHeight = (float) 0.11f;
+            kotaTv.setLayoutParams(paramsa);
+        }else if(kota.length() >= 95){
+            paramsa.matchConstraintPercentHeight = (float) 0.145f;
+            kotaTv.setLayoutParams(paramsa);
+        }
+
+        assert keahlian != null;
+        if(keahlian.length() >= 32 && keahlian.length() < 64){
+            paramsb.matchConstraintPercentHeight = (float) 0.075f;
+            keahlianTv.setLayoutParams(paramsb);
+        }else if(keahlian.length() >= 64 && keahlian.length() < 95){
+            paramsb.matchConstraintPercentHeight = (float) 0.11f;
+            keahlianTv.setLayoutParams(paramsb);
+        }else if(keahlian.length() >= 95 && keahlian.length() < 125){
+            paramsb.matchConstraintPercentHeight = (float) 0.145f;
+            keahlianTv.setLayoutParams(paramsb);
+        }else if(keahlian.length() >= 125) {
+            paramsb.matchConstraintPercentHeight = (float) 0.175f;
+            keahlianTv.setLayoutParams(paramsb);
         }
 
         //setText,setGambar
         namaTv.setText(nama);
-        umurTv.setText(umur + " Tahun");
         assert gender != null;
         if(gender.equals("L")){
             genderTv.setText("Laki-laki");
@@ -129,9 +121,7 @@ public class DetailCGActivity extends AppCompatActivity {
         }
         keahlianTv.setText(keahlian);
         kotaTv.setText(kota);
-
         Picasso.get().load(urlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(gambarcg);
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +130,59 @@ public class DetailCGActivity extends AppCompatActivity {
             }
 
         });
+    }
+    public void onResume() {
+        super.onResume();
+        getCgStatus();
+    }
+    public void getCgStatus(){
+        loading(true);
+        APIinterface apIinterface = APIClient.GetClient().create(APIinterface.class);
+        Call<ResponseBody> call = apIinterface.getstatus(id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.code() == 200){
+                    cgstatuses = "unavailable";
+                }else if (response.code() == 401){
+                    cgstatuses = "available";
+                }else {
+                    cgstatuses = "error";
+                }
+                validate();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                cgstatuses = "error";
+                validate();
+            }
+        });
+    }
+    public void validate(){
+        loading(false);
+        if(!cgstatuses.equals(cgstatus)){
+            if (cgstatuses.equals("unavailable")){
+                cgstatusTv.setText("Tidak Tersedia");
+                cgstatusTv.setTextColor(getResources().getColor(R.color.colorRed));
+                next.setVisibility(View.GONE);
+            }else if(cgstatuses.equals("available")){
+                cgstatusTv.setText("Tersedia");
+                cgstatusTv.setTextColor(getResources().getColor(R.color.colorGreen));
+            }else{
+                finish();
+            }
+            MainActivity.reload = "reload";
+        }else {
+            if (cgstatus.equals("unavailable")){
+                cgstatusTv.setText("Tidak Tersedia");
+                cgstatusTv.setTextColor(getResources().getColor(R.color.colorRed));
+                next.setVisibility(View.GONE);
+            }else if(cgstatus.equals("available")){
+                cgstatusTv.setText("Tersedia");
+                cgstatusTv.setTextColor(getResources().getColor(R.color.colorGreen));
+            }
+        }
     }
     public void pesan(){
         loading(true);
@@ -209,11 +252,9 @@ public class DetailCGActivity extends AppCompatActivity {
         cv = findViewById(R.id.cv2);
         if(status){
             prgbar.setVisibility(View.VISIBLE);
-            titleTv.setVisibility(View.GONE);
             cv.setVisibility(View.INVISIBLE);
         }else {
             prgbar.setVisibility(View.INVISIBLE);
-            titleTv.setVisibility(View.VISIBLE);
             cv.setVisibility(View.VISIBLE);
         }
     }

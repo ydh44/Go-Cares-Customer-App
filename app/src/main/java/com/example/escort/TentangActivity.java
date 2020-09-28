@@ -55,10 +55,6 @@ public class TentangActivity extends AppCompatActivity {
                         tab.setText("Info Sekolah");
                         break;
                     }
-                    case 4: {
-                        tab.setText("Kontak");
-                        break;
-                    }
                 }
             }
         }

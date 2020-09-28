@@ -6,10 +6,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class CGdata {
-    public String id, urlgambar, nama, umur, kota, gender, keahlian, rating, gaji;
+    public String id, urlgambar, nama, umur, kota, gender, keahlian, rating, gaji, cgstatus;
 
 
-    public CGdata(@NonNull String id, String urlgambar, String nama, String umur , String gender, String keahlian, String kota, String gaji, String rating) {
+    public CGdata(@NonNull String id, String urlgambar, String nama, String umur , String gender, String keahlian, String kota, String gaji, String rating, String cgstatus) {
         this.id = id;
         this.urlgambar = urlgambar;
         this.nama = nama;
@@ -19,6 +19,7 @@ public class CGdata {
         this.gaji = gaji;
         this.rating = rating;
         this.keahlian = keahlian;
+        this.cgstatus = cgstatus;
     }
 
     public String getId(){ return id;}
@@ -30,4 +31,5 @@ public class CGdata {
     public  String getRating(){ return  rating; }
     public String getGaji(){ return gaji; }
     public String getGender(){ return gender; }
+    public String getCgstatus(){ return cgstatus; }
 }

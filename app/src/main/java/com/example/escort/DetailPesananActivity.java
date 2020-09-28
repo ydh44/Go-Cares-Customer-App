@@ -74,6 +74,7 @@ public class DetailPesananActivity extends AppCompatActivity {
     @OnClick(R.id.btnNext)
             void pindah(){
         Intent i = new Intent(this, PembayaranActivity.class);
+        i.putExtra("idcg", Rid_cg);
         i.putExtra("id", Sid_pesan);
         i.putExtra("total", Sgaji);
         startActivity(i);
@@ -96,7 +97,7 @@ public class DetailPesananActivity extends AppCompatActivity {
 
     String Surlgambar, Sstatus, Sid_pesan, Snamacg, Stglpesan, Spaket, Sdurasi, Sdeskripsi, Stelepon, Salamat, Sgaji;
 
-    String Rid_cg, Rid_lansia, Rnamalansia, Rnamacg, Rumurcg, Rumurlansia, Rgenderlansia, Rgendercg, Rhobilansia, Rsakitlansia, Rkeahliancg, Rgajicg, Ralamatcg, Rratingcg;
+    String Rid_cg, Rid_lansia, Rnamalansia, Rnamacg, Rumurcg, Rumurlansia, Rgenderlansia, Rgendercg, Rhobilansia, Rsakitlansia, Rkeahliancg, Rgajicg, Ralamatcg, Rratingcg, Rcgstatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,7 +128,6 @@ public class DetailPesananActivity extends AppCompatActivity {
         Picasso.get().load(Surlgambar).placeholder(R.drawable.loadingfoto).error(R.drawable.profilecg).into(profileimg);
         if(Sstatus.equals("belum")){
             status.setText("Menunggu Pembayaran");
-            bayar.setVisibility(View.VISIBLE);
         }else if (Sstatus.equals("menunggu")){
             status.setText("Menunggu Konfirmasi");
         }else if(Sstatus.equals("dikonfirmasi")){
@@ -162,13 +162,13 @@ public class DetailPesananActivity extends AppCompatActivity {
         ConstraintLayout.LayoutParams paramsb = (ConstraintLayout.LayoutParams) deskripsi.getLayoutParams();
 
         if(Salamat.length() >= 32 && Salamat.length() < 64){
-            paramsa.matchConstraintPercentHeight = (float) 0.067f;
+            paramsa.matchConstraintPercentHeight = (float) 0.075f;
             alamat.setLayoutParams(paramsa);
         }else if(Salamat.length() >= 64 && Salamat.length() < 95){
-            paramsa.matchConstraintPercentHeight = (float) 0.105f;
+            paramsa.matchConstraintPercentHeight = (float) 0.11f;
             alamat.setLayoutParams(paramsa);
         }else if(Salamat.length() >= 95){
-            paramsa.matchConstraintPercentHeight = (float) 0.135f;
+            paramsa.matchConstraintPercentHeight = (float) 0.145f;
             alamat.setLayoutParams(paramsa);
         }
 
@@ -176,13 +176,13 @@ public class DetailPesananActivity extends AppCompatActivity {
             paramsb.matchConstraintPercentHeight = (float) 0.075f;
             deskripsi.setLayoutParams(paramsb);
         }else if(Sdeskripsi.length() >= 64 && Sdeskripsi.length() < 95){
-            paramsb.matchConstraintPercentHeight = (float) 0.105f;
+            paramsb.matchConstraintPercentHeight = (float) 0.11f;
             deskripsi.setLayoutParams(paramsb);
         }else if(Sdeskripsi.length() >= 95 && Sdeskripsi.length() < 125){
             paramsb.matchConstraintPercentHeight = (float) 0.135f;
             deskripsi.setLayoutParams(paramsb);
         }else if(Sdeskripsi.length() >= 125) {
-            paramsb.matchConstraintPercentHeight = (float) 0.165f;
+            paramsb.matchConstraintPercentHeight = (float) 0.175f;
             deskripsi.setLayoutParams(paramsb);
         }
     }
@@ -217,8 +217,9 @@ public class DetailPesananActivity extends AppCompatActivity {
                         Rratingcg = jsonObject2.getString("rating");
 
                         Log.d("TAG", "onResponse: " + jsonObject2);
+                        getCgStatus();
 
-                        loading(false);
+
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                         finish();
@@ -236,6 +237,44 @@ public class DetailPesananActivity extends AppCompatActivity {
             }
         });
     }
+    public void getCgStatus(){
+        loading(true);
+        APIinterface apIinterface = APIClient.GetClient().create(APIinterface.class);
+        Call<ResponseBody> call = apIinterface.getstatus(Rid_cg);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("TAG", "onResponse: " + response.code() + Rid_cg);
+                if(response.code() == 200){
+                    Rcgstatus = "unavailable";
+                }else if (response.code() == 401){
+                    Rcgstatus = "available";
+                }else {
+                    finish();
+                }
+                validate();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                finish();
+            }
+        });
+    }
+    public void validate(){
+        loading(false);
+        if(Sstatus.equals("belum")){
+            if(Rcgstatus.equals("unavailable")) {
+                infos.setVisibility(View.VISIBLE);
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) infos.getLayoutParams();
+                params.matchConstraintPercentHeight = (float) 0.07;
+                infos.setLayoutParams(params);
+                infos.setText("CareGiver ini sedang dalam pesanan lain.");
+            }else if (Rcgstatus.equals("available")){
+                bayar.setVisibility(View.VISIBLE);
+            }
+        }
+    }
     public void loading(Boolean status){
         RelativeLayout prgbar;
         TextView titleTv;
@@ -245,11 +284,9 @@ public class DetailPesananActivity extends AppCompatActivity {
         cv = findViewById(R.id.cv2);
         if(status){
             prgbar.setVisibility(View.VISIBLE);
-            titleTv.setVisibility(View.GONE);
             cv.setVisibility(View.INVISIBLE);
         }else {
             prgbar.setVisibility(View.INVISIBLE);
-            titleTv.setVisibility(View.VISIBLE);
             cv.setVisibility(View.VISIBLE);
         }
     }
@@ -264,6 +301,7 @@ public class DetailPesananActivity extends AppCompatActivity {
     }
     public void profil(){
         Intent i = new Intent(DetailPesananActivity.this, DetailCGActivity.class);
+        i.putExtra("id", Rid_cg);
         i.putExtra("urlgambar", Surlgambar);
         i.putExtra("nama" , Snamacg);
         i.putExtra("umur", Rumurcg);
@@ -272,6 +310,7 @@ public class DetailPesananActivity extends AppCompatActivity {
         i.putExtra("rating", Rratingcg);
         i.putExtra("gender", Rgendercg);
         i.putExtra("gaji", Rgajicg);
+        i.putExtra("cgstatus", Rcgstatus);
         startActivity(i);
         finish();
     }

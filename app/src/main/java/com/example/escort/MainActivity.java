@@ -1,7 +1,6 @@
 package com.example.escort;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Layout;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +24,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.JsonElement;
@@ -39,7 +36,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -69,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar prgs;
     String kelamin = null;
     ImageView icsearch;
+
+    static String reload = null;
 
 
     @Override
@@ -123,15 +121,16 @@ public class MainActivity extends AppCompatActivity {
                         kelamin = "P";
                         break;
                 }
+                filter();
             }
-        });
+        });;
 
-        control();
+        control(this);
 
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                control();
+                control(MainActivity.this);
             }
         });
 
@@ -238,8 +237,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void control(){
-        if(GetSess()){
+    public void control(Context context){
+        if(GetSess(context)){
             swipe.setRefreshing(true);
             GetCust();
             GetCg();
@@ -249,8 +248,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public Boolean GetSess(){
-        if(!SessionLog.GetStatus(this) || SessionLog.GetToken(this) == null) {
+    public void onResume() {
+        super.onResume();
+        if(reload != null){
+            rggender.clearCheck();
+            filter.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
+            swipe.setVisibility(View.VISIBLE);
+            search.setVisibility(View.VISIBLE);
+            icsearch.setVisibility(View.VISIBLE);
+            control(MainActivity.this);
+            reload = null;
+        }
+    }
+
+
+    public Boolean GetSess(Context context){
+        if(!SessionLog.GetStatus(context) || SessionLog.GetToken(context) == null) {
             return false;
         }else{
             return true;
@@ -308,23 +322,35 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     List<CGdata> data = null;
                     try {
-                        JSONObject jsonObject = new JSONObject(response.body().toString());
-                        String b = jsonObject.getString("data");
-                        JSONArray jsonArray = new JSONArray(b);
-                        Log.d("TAG", "onResponse: " + b);
+                        JSONObject a = new JSONObject(response.body().toString());
+                        String b = a.getString("data");
+                        String b2 = a.getString("dalam_proses");
+                        JSONObject c = new JSONObject(b);
+                        String d = c.getString("data");
+                        JSONArray e = new JSONArray(d);
+                        JSONArray e2 = new JSONArray(b2);
                         data = new ArrayList<>();
-                        for (int i = 0 ; i < jsonArray.length(); i++){
-                            JSONObject a = jsonArray.getJSONObject(i);
+                        for (int i = 0 ; i < e.length(); i++){
+                            JSONObject f = e.getJSONObject(i);
+                            String id = f.getString("id");
+                            String idgunaguna = "available";
+                            for (int i2 = 0 ; i2 < e2.length(); i2++){
+                                String idguna =  String.valueOf(e2.get(i2));
+                                if(idguna.equals(id)){
+                                    idgunaguna = "unavailable";
+                                }
+                            }
                             data.add(new CGdata(
-                                    a.getString("id"),
-                                    "http://40.88.4.113/esccortPhotos/" + a.getString("photo"),
-                                    a.getString("name"),
-                                    a.getString("age"),
-                                    a.getString("gender"),
-                                    a.getString("keahlian"),
-                                    a.getString("address"),
-                                    a.getString("salary"),
-                                    a.getString("rating")
+                                    id,
+                                    "http://40.88.4.113/esccortPhotos/" + f.getString("photo"),
+                                    f.getString("name"),
+                                    f.getString("age"),
+                                    f.getString("gender"),
+                                    f.getString("keahlian"),
+                                    f.getString("address"),
+                                    f.getString("salary"),
+                                    f.getString("rating"),
+                                    idgunaguna
                             ));
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
@@ -333,6 +359,7 @@ public class MainActivity extends AppCompatActivity {
                         recyclerView.setAdapter(adapter);
                         err = true;
                         hand();
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                         err = false;
@@ -352,9 +379,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void filter(){
-        if(valid()){
-            String umur1 = etumur1.getText().toString();
-            String umur2 = etumur2.getText().toString();
+        //if(valid()){
             error1.setVisibility(View.GONE);
             error2.setVisibility(View.GONE);
             icsearch.setVisibility(View.GONE);
@@ -374,64 +399,68 @@ public class MainActivity extends AppCompatActivity {
             back3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    rggender.clearCheck();
                     filter.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.GONE);
                     swipe.setVisibility(View.VISIBLE);
                     search.setVisibility(View.VISIBLE);
                     icsearch.setVisibility(View.VISIBLE);
-                    control();
+                    control(MainActivity.this);
                 }
             });
-            agetv2.setText("|  " + umur1 + " - " + umur2 + " Tahun");
-            Call<JsonElement> call = apIinterface.getfilter(kelamin, umur1, umur2);
+            Call<JsonElement> call = apIinterface.getfilter(kelamin, "", "");
             call.enqueue(new Callback<JsonElement>() {
                 @Override
                 public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-                    Log.d("TAG", "onResponse: " + response.code());
-                    int i;
                     if (response.isSuccessful()){
-                        List<CGdata> data = null;
+                        List<CGdata> datas = null;
                         try {
-                            JSONObject jsonObject = new JSONObject(response.body().toString());
-                            String b = jsonObject.getString("data");
-                            JSONArray jsonArray = new JSONArray(b);
-                            Log.d("TAG", "onResponse: " + b);
-                            data = new ArrayList<>();
-                            for ( i = 0 ; i < jsonArray.length(); i++){
-                                JSONObject a = jsonArray.getJSONObject(i);
-                                data.add(new CGdata(
-                                        a.getString("id"),
-                                        "http://40.88.4.113/esccortPhotos/" + a.getString("photo"),
-                                        a.getString("name"),
-                                        a.getString("age"),
-                                        a.getString("gender"),
-                                        a.getString("keahlian"),
-                                        a.getString("address"),
-                                        a.getString("salary"),
-                                        a.getString("rating")
+                            JSONObject ba = new JSONObject(response.body().toString());
+                            String bb = ba.getString("success");
+                            String bb2 = ba.getString("dalam_proses");
+                            JSONArray bc = new JSONArray(bb);
+                            JSONArray bc2 = new JSONArray(bb2);
+                            datas = new ArrayList<>();
+                            for (int i = 0 ; i < bc.length(); i++){
+                                JSONObject bf = bc.getJSONObject(i);
+                                String bid = bf.getString("id");
+                                String bidgunaguna = "available";
+                                for (int i2 = 0 ; i2 < bc2.length(); i2++){
+                                    String bidguna =  String.valueOf(bc2.get(i2));
+                                    if(bidguna.equals(bid)){
+                                        bidgunaguna = "unavailable";
+                                    }
+                                }
+                                datas.add(new CGdata(
+                                        bid,
+                                        "http://40.88.4.113/esccortPhotos/" + bf.getString("photo"),
+                                        bf.getString("name"),
+                                        bf.getString("age"),
+                                        bf.getString("gender"),
+                                        bf.getString("keahlian"),
+                                        bf.getString("address"),
+                                        bf.getString("salary"),
+                                        "",
+                                        bidgunaguna
                                 ));
+                            }
+                            recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                            recyclerView2.setVisibility(View.VISIBLE);
+                            Collections.shuffle(datas);
+                            adapter = new Adapter(getBaseContext(), datas);
+                            recyclerView2.setAdapter(adapter);
 
-                            }
-                            prgs.setVisibility(View.GONE);
-                            if(i < 1){
-                                error1.setVisibility(View.VISIBLE);
-                            }else {
-                                recyclerView2.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                                recyclerView2.setVisibility(View.VISIBLE);
-                                Collections.shuffle(data);
-                                adapter = new Adapter(getBaseContext(), data);
-                                recyclerView2.setAdapter(adapter);
-                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            error1.setVisibility(View.VISIBLE);
                             prgs.setVisibility(View.GONE);
-                            error2.setVisibility(View.VISIBLE);
                         }
                     }else{
+                        error1.setVisibility(View.VISIBLE);
                         prgs.setVisibility(View.GONE);
-                        error2.setVisibility(View.VISIBLE);
                     }
                 }
+
                 @Override
                 public void onFailure(Call<JsonElement> call, Throwable t) {
                     prgs.setVisibility(View.GONE);
@@ -439,9 +468,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-        }
+        //}
 
     }
+    /*
     public boolean valid(){
         boolean valid = true;
         if(etumur1.getText().length()<1){
@@ -475,6 +505,8 @@ public class MainActivity extends AppCompatActivity {
 
         return valid;
     }
+
+     */
 
     public void hand(){
         if(err){

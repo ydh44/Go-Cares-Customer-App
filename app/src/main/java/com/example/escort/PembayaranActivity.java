@@ -3,13 +3,9 @@ package com.example.escort;
 import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,33 +16,38 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 
-import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.logging.Logger;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PembayaranActivity extends AppCompatActivity {
     private static final int PERMISIION_CODE = 1000;
     private static final int IMAGE_CAPTURE_CODE = 0;
     private static final int IMAGE_PICK_CODE = 1;
 
-    String currentPhotoPath, id, total;
+    String currentPhotoPath, id, total, idcg;
 
     TextView totalTv, rkning;
     ImageButton back;
@@ -55,6 +56,9 @@ public class PembayaranActivity extends AppCompatActivity {
     Boolean pil;
     Uri photoURI;
     File photoFile = null;
+    ConstraintLayout constraintLayoutp, constraintLayout2;
+    CardView card2;
+    ProgressBar progress;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +70,10 @@ public class PembayaranActivity extends AppCompatActivity {
         totalTv = findViewById(R.id.total);
         back = findViewById(R.id.btnBack);
         rkning = findViewById(R.id.status);
+        constraintLayoutp = findViewById(R.id.pembayaran);
+        constraintLayout2 = findViewById(R.id.rekening);
+        card2 = findViewById(R.id.card2);
+        progress = findViewById(R.id.progress);
 
         rkning.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -91,8 +99,11 @@ public class PembayaranActivity extends AppCompatActivity {
         });
 
         Intent i = getIntent();
+        idcg = i.getStringExtra("idcg");
         id = i.getStringExtra("id");
         total = i.getStringExtra("total");
+
+        getCgStatus();
 
         Locale localeid = new Locale("in", "ID");
         NumberFormat format = NumberFormat.getCurrencyInstance(localeid);
@@ -156,6 +167,37 @@ public class PembayaranActivity extends AppCompatActivity {
                 }
         });
 
+    }
+    public void onResume() {
+        super.onResume();
+        getCgStatus();
+    }
+    public void getCgStatus(){
+        APIinterface apIinterface = APIClient.GetClient().create(APIinterface.class);
+        Call<ResponseBody> call = apIinterface.getstatus(idcg);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("TAG", "onResponse: "+ response.code() + idcg);
+                if(response.code() == 200){
+                    Toast.makeText(PembayaranActivity.this, "CareGiver dalam pesanan lain, jika Anda sudah melakukan pembayaran, silahkan hubungi admin di halaman kontak.", Toast.LENGTH_LONG).show();
+                    finish();
+                    Log.d("TAG", "onResponse1: ");
+                }else if (response.code() == 401){
+                   constraintLayout2.setVisibility(View.VISIBLE);
+                   card2.setVisibility(View.VISIBLE);
+                   progress.setVisibility(View.GONE);
+                    Log.d("TAG", "onResponse2: ");
+                }else {
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                finish();
+            }
+        });
     }
 
     private void pickImageFromGallery() {
@@ -236,6 +278,7 @@ public class PembayaranActivity extends AppCompatActivity {
                     String uri = photoURI.toString();
                     Intent i = new Intent(PembayaranActivity.this, ImageprevActivity.class);
                     i.putExtra("image", uri);
+                    i.putExtra("idcg", idcg);
                     i.putExtra("id", id);
                     i.putExtra("path", photoFile.getPath());
                     startActivity(i);
@@ -250,6 +293,7 @@ public class PembayaranActivity extends AppCompatActivity {
                     Intent i = new Intent(PembayaranActivity.this, ImageprevActivity.class);
                     i.putExtra("image", uri);
                     i.putExtra("id", id);
+                    i.putExtra("idcg", idcg);
                     startActivity(i);
                     finish();
                 }

@@ -22,13 +22,11 @@ public class TentangPagerAdapter extends FragmentStateAdapter {
                 return new FragTentang3();
             case 3:
                 return new FragTentang4();
-            case 4:
-                return new FragTentang5();
         }
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 4;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.escort;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -23,6 +24,8 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,11 +56,12 @@ public class ImageprevActivity extends AppCompatActivity {
         finish();
     }
 
-    String id, path;
+    String id, path, idcg;
 
     Uri img;
 
     File file;
+    ConstraintLayout constraintLayout;
 
     @SuppressLint("WrongThread")
     @Override
@@ -69,11 +73,13 @@ public class ImageprevActivity extends AppCompatActivity {
         upload = findViewById(R.id.btnUp);
         preview = findViewById(R.id.cv2);
         prgbar = findViewById(R.id.progressbar);
+        constraintLayout = findViewById(R.id.cons);
 
         Intent i = getIntent();
         String imgs = i.getStringExtra("image");
         path = i.getStringExtra("path");
         id = i.getStringExtra("id");
+        idcg = i.getStringExtra("idcg");
         img = Uri.parse(imgs);
 
         if(path!=null){
@@ -114,13 +120,36 @@ public class ImageprevActivity extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                up();
+                getCgStatus();
             }
         });
 
     }
-    public void up(){
+    public void getCgStatus(){
         prgbar.setVisibility(View.VISIBLE);
+        APIinterface apIinterface = APIClient.GetClient().create(APIinterface.class);
+        Call<ResponseBody> call = apIinterface.getstatus(idcg);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.code() == 200){
+                    Toast.makeText(ImageprevActivity.this, "CareGiver dalam pesanan lain, jika Anda sudah melakukan pembayaran, silahkan hubungi admin di halaman kontak.", Toast.LENGTH_LONG).show();
+                    finish();
+                }else if (response.code() == 401){
+                    up();
+                }else {
+                    Toast.makeText(ImageprevActivity.this, "CareGiver dalam pesanan lain, jika Anda sudah melakukan pembayaran, silahkan hubungi admin di halaman kontak.", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                finish();
+            }
+        });
+    }
+    public void up(){
         AndroidNetworking.upload("http://40.88.4.113/api/uploadbukti")
                 .addMultipartFile("bukti_foto",file)
                 .addMultipartParameter("id", id)

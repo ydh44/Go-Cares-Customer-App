@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     tools:context=".MainActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -283,35 +283,34 @@
                 style="?android:attr/borderlessButtonStyle"/>
             <RadioGroup
                 android:id="@+id/genderEdtx"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:orientation="vertical"
                 app:layout_constrainedWidth="true"
                 app:layout_constrainedHeight="true"
                 android:layout_marginTop="15dp"
-                app:layout_constraintHeight_percent=".05"
+                app:layout_constraintWidth_percent="0.4"
                 app:layout_constraintTop_toBottomOf="@id/gendertv"
                 app:layout_constraintLeft_toRightOf="@id/rver1">
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/radio0"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:minWidth="55dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="2dp"
-                    android:background="@drawable/cstmradio"
-                    android:button="@drawable/cstmradio"
-                    android:text="L" />
-                <androidx.appcompat.widget.AppCompatRadioButton
-                    android:gravity="center"
-                    android:id="@+id/radio1"
-                    android:layout_width="wrap_content"
-                    android:minWidth="55dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cstmradio"
-                    android:button="@drawable/cstmradio"
-                    android:text="P" />
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radio0"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:minWidth="55dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/cstmradio"
+                        android:button="@drawable/cstmradio"
+                        android:text="Laki-laki"/>
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radio1"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:minWidth="55dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/cstmradio"
+                        android:button="@drawable/cstmradio"
+                        android:text="Perempuan" />
             </RadioGroup>
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/menrhor2"
@@ -329,6 +328,7 @@
                 app:layout_constraintTop_toBottomOf="@id/menrhor2"
                 app:layout_constraintRight_toRightOf="parent"
                 android:gravity="start"
+                android:visibility="gone"
                 android:fontFamily="@font/helvetica_hv"
                 app:layout_constraintHeight_percent=".028"
                 android:textColor="@color/darkgray"
@@ -344,6 +344,7 @@
                 android:layout_height="0dp"
                 android:inputType="number"
                 android:maxLength="2"
+                android:visibility="gone"
                 android:fontFamily="@font/helvetica_light"
                 android:textSize="16sp"
                 android:gravity="center"
@@ -359,6 +360,7 @@
                 android:id="@+id/etumur2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:visibility="gone"
                 app:layout_constraintHeight_min="25dp"
                 android:inputType="number"
                 android:maxLength="2"
@@ -381,6 +383,7 @@
                 app:layout_constraintRight_toLeftOf="@id/etumur2"
                 android:textAlignment="gravity"
                 android:gravity="center"
+                android:visibility="gone"
                 app:layout_constraintHeight_percent=".04"
                 android:fontFamily="@font/helvetica_bold"
                 android:textColor="@color/darkgray"
@@ -402,6 +405,7 @@
                 android:background="@drawable/circlewhite"
                 android:src="@drawable/search"
                 android:scaleType="centerCrop"
+                android:visibility="gone"
                 android:padding="15dp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintDimensionRatio="1:1"

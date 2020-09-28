@@ -108,4 +108,9 @@ public interface APIinterface
             @Field("age1") String age1,
             @Field("age2") String age2
     );
+
+    @GET("getdetailcg/{idcg}")
+    Call<ResponseBody> getstatus(
+            @Path("idcg") String cgid
+    );
 }
