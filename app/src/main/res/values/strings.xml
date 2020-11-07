@@ -1,22 +1,11 @@
 <resources>
     <string name="app_name">Go Cares</string>
-    <string name="email">EMAIL</string>
-    <string name="password">PASSWORD</string>
-    <string name="masuk">MASUK</string>
-    <string name="belum_punya_akun">Belum punya akun ?</string>
-    <string name="lupa_password">Lupa password</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_pembayaran">PembayaranActivity</string>
+    <string name="email">Email</string>
+    <string name="masuk">Masuk</string>
+    <string name="gambar_grafis">Gambar Grafis</string>
+    <string name="gambar_logo">Gambar Logo</string>
+    <string name="gambar_icon">Gambar Icon</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="teks_visi_kompetensi_ps">Terwujudnya tenaga kerja di bidang lansia dan homecare yang memenuhi tuntutan dunia industri, unggul, berkarakter, berdaya saing, dan berwawasan lingkungan."</string>
     <string name="teks_misi_ps1">1.Menyelenggarakan pembelajaran yang mempersiapkan lulusan memiliki ketaqwaan terhadap Tuhan Yang Maha Esa, berahlak mulia, berdisplin, bertanggung jawab, beretos kerja tinggi, dan berkopeten di pekerjaan sosial.</string>
     <string name="teks_misi_ps2">2.Menyelenggarakan pembelajaran yang mempersiapkan lulusan memiliki kemampuan berkompetensi merebut pasar kerja.</string>
@@ -34,4 +23,20 @@
     <string name="teks_panduan_penggunaan11">Proses Merawat Lansia dilakukan satu hari setelah admin mengkonfirmasi pembayaran.</string>
     <string name="teks_lingkup_pekerjaan">LINGKUP PEKERJAAN TENAGA PROFESIONAL PENDAMPING LANSIA (CAREGIVER)</string>
     <string name="riwayat_penyakit">Riwayat penyakit</string>
+    <string name="welcomemssg">Selamat Datang di Go Cares</string>
+    <string name="thanksmssg">Terima kasih telah memilih layanan ini.</string>
+    <string name="enjoymssg">Nikmati pemesanan pendamping lansia yang cepat dan mudah dalam genggaman.</string>
+    <string name="daftar_sekarang">DAFTAR SEKARANG</string>
+    <string name="back">Kembali</string>
+    <string name="nama">Nama</string>
+    <string name="name">Name</string>
+    <string name="umur">Umur</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+	<string name="load">Tunggu Sebentar ...</string>
+	<string name="telepon">Telepon</string>
+    <string name="alamat">Alamat</string>
+	<string name="password">Password</string>
+    <string name="ulang_password">Ulang Password</string>
+    <string name="daftar">Daftar</string>
 </resources>

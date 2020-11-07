@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cons"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000">
+    <RelativeLayout
+        android:id="@+id/progressbar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:translationZ="20dp"
+        android:elevation="30dp"
+        android:visibility="gone"
+        android:background="@drawable/backbluebig3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/prgs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            style="?android:attr/progressBarStyleLarge"/>
+    </RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardhor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/btnhor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/btn2hor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.025" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/btn2hor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardhor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardver1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.045" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cardver2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.955" />
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_max="90dp"
+        android:background="@drawable/backblue2"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#FFFFFF"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@id/cv2"
+        app:layout_constraintTop_toBottomOf="@id/btnhor1"
+        app:layout_constraintWidth_max="120dp"
+        app:layout_constraintWidth_percent=".125" />
+
+    <LinearLayout
+        android:id="@+id/imgback"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintHeight_percent=".025"
+        app:layout_constraintLeft_toLeftOf="@id/btnBack"
+        app:layout_constraintRight_toRightOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="@id/btnBack">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
+            app:srcCompat="@drawable/back" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hshor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".038" />
+
+
+    <ImageView
+        android:id="@+id/cv2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintDimensionRatio="1:1.2"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profilecg"
+        app:layout_constraintTop_toBottomOf="@id/cardhor1"
+        app:layout_constraintLeft_toRightOf="@id/cardver1"
+        app:layout_constraintRight_toLeftOf="@id/cardver2"
+        app:layout_constraintBottom_toTopOf="@id/cardhor2"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cdver1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cdver2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cdhor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/cdhor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".95" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backblue3"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#FFFFFF"
+        android:padding="15dp"
+        android:textSize="19sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constrainedHeight="true"
+        android:text="Unggah Bukti pembayaran"
+        app:layout_constraintBottom_toTopOf="@id/cdhor2"
+        app:layout_constraintLeft_toRightOf="@id/cdver1"
+        app:layout_constraintTop_toBottomOf="@id/cdhor1"
+        app:layout_constraintRight_toLeftOf="@id/cdver2"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

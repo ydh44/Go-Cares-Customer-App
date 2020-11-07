@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "733729945091",
+    "firebase_url": "https://gocares-4bb51.firebaseio.com",
+    "project_id": "gocares-4bb51",
+    "storage_bucket": "gocares-4bb51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733729945091:android:a630a941aa6af5af71c036",
+        "android_client_info": {
+          "package_name": "com.caregiver.gocares"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733729945091-l52vshqbq63jm8ne5p8ter22kgqa8v1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAixjCvihoR0RrVUXtOSzrfByX3avQQx2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733729945091-l52vshqbq63jm8ne5p8ter22kgqa8v1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

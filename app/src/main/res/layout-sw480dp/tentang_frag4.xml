@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:padding="5dp"
+        android:id="@+id/satu"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="2.5:1"
+        android:background="@drawable/bordergreen2">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="15dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bg_snapan"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnMaps"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_max="90dp"
+        android:background="@drawable/backblue2white"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#FFFFFF"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toRightOf="@id/Imageview1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/Imageview1"
+        app:layout_constraintWidth_max="120dp"
+        app:layout_constraintWidth_percent=".12" />
+
+    <LinearLayout
+        android:id="@+id/imgback"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".04"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="@id/btnMaps"
+        app:layout_constraintLeft_toLeftOf="@id/btnMaps"
+        app:layout_constraintRight_toRightOf="@id/btnMaps"
+        app:layout_constraintTop_toTopOf="@id/btnMaps">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
+            app:srcCompat="@drawable/maps" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/Imageview1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".15"
+        android:src="@drawable/grafis2"
+        app:layout_constraintRight_toRightOf="@id/satu"
+        app:layout_constraintLeft_toLeftOf="@id/satu"
+        app:layout_constraintBottom_toBottomOf="@id/satu"
+        app:layout_constraintTop_toTopOf="@id/satu"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/hor"
+        app:layout_constraintGuide_percent="0.05"/>
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:text="SMK Negeri 8 Semarang"
+        android:textSize="25sp"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/helvetica_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/ver4"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintTop_toBottomOf="@id/satu"
+        app:layout_constraintVertical_bias="0.074"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginBottom="368dp"
+        android:text="Alamat    : "
+        android:textSize="16dp"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/roboto_light"
+        android:layout_marginTop="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Jl.Pandanaran II No 12, Kelurahan Mugassari, Kecamatan Semarang Selatan "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedWidth="true"
+        android:fontFamily="@font/roboto_light"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintEnd_toEndOf="@id/ver4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        android:text="Kodepos :  "
+        android:layout_marginTop="7dp"
+        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="@font/roboto_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.05" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        android:text="50249 "
+        android:layout_marginTop="7dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/tvtv"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.05" />
+
+        <TextView
+            android:id="@+id/tvtv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="296dp"
+            android:text="Telepon   :  "
+            android:layout_marginTop="7dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/roboto_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/tvtv"
+            app:layout_constraintVertical_bias="0.05" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="296dp"
+            android:text="0248312190"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/tvtv"
+            app:layout_constraintTop_toTopOf="@+id/tvtv2" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:text="Kontak"
+            android:textSize="25sp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/colorBlack"
+            android:fontFamily="@font/helvetica_medium"
+            app:layout_constraintBottom_toBottomOf="@id/hor1"
+            app:layout_constraintStart_toStartOf="@id/ver1"
+            app:layout_constraintVertical_bias="0.074"
+            tools:ignore="MissingConstraints" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".08"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".4"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".7"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".95"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".6"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/ver4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".92"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintWidth_min="100dp"
+        app:layout_constraintDimensionRatio="1:1.3"
+        app:layout_constraintBottom_toTopOf="@id/hor2"
+        app:layout_constraintTop_toBottomOf="@id/hor1"
+        app:layout_constraintLeft_toRightOf="@id/ver1"
+        app:layout_constraintRight_toLeftOf="@id/ver2">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHeight_percent=".70"
+                android:background="@drawable/backgreen"/>
+            <ImageView
+                android:layout_width="63dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logowa"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@id/imageButton2"
+                app:layout_constraintStart_toStartOf="@id/imageButton2"
+                app:layout_constraintTop_toTopOf="@id/imageButton2"
+                app:layout_constraintBottom_toBottomOf="@id/imageButton2"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="WHATSSAPP"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:gravity="center"
+                app:layout_constraintHeight_percent=".15"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageButton2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintWidth_min="100dp"
+        app:layout_constraintDimensionRatio="1:1.3"
+        app:layout_constraintBottom_toTopOf="@id/hor2"
+        app:layout_constraintTop_toBottomOf="@id/hor1"
+        app:layout_constraintLeft_toRightOf="@id/ver3"
+        app:layout_constraintRight_toLeftOf="@id/ver4">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHeight_percent=".70"
+                android:background="@drawable/backred"/>
+            <ImageView
+                android:layout_width="63dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logogmail"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@id/imageButton3"
+                app:layout_constraintStart_toStartOf="@id/imageButton3"
+                app:layout_constraintTop_toTopOf="@id/imageButton3"
+                app:layout_constraintBottom_toBottomOf="@id/imageButton3"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="GMAIL"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent=".15"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageButton3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

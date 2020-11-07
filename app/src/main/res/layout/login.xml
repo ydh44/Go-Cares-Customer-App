@@ -1,357 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/cons"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_constraintHeight_default="percent"
-    app:layout_constraintWidth_default="percent">
-    <RelativeLayout
-        android:id="@+id/progressbar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:translationZ="20dp"
-        android:elevation="30dp"
-        android:visibility="gone"
-        android:background="@drawable/backbluebig3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
-        <androidx.core.widget.ContentLoadingProgressBar
-            android:id="@+id/prgs"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="15dp"
-            style="?android:attr/progressBarStyleLarge"/>
-    </RelativeLayout>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/backhor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
-    <RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity">
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8pt"
-        android:background="@drawable/backbluewhite"
-        android:elevation="4dp"
-        app:layout_constraintBottom_toTopOf="@id/backhor"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/logohor1"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.13" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/logohor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.34" />
-
-    <ImageView
-        android:id="@+id/logo"
-        android:translationZ="4dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:1"
-        android:contentDescription="@string/app_name"
-        app:layout_constrainedHeight="true"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintRight_toRightOf="@id/cv2"
-        app:layout_constraintLeft_toLeftOf="@id/cv2"
-        app:layout_constraintBottom_toTopOf="@id/logohor2"
-        app:layout_constraintTop_toBottomOf="@id/logohor1"
-        app:srcCompat="@drawable/logo" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cardhor1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cardhor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cardver1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.078125" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/cardver2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv2"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintDimensionRatio="1:0.85"
-        android:maxHeight="20dp"
-        android:maxWidth="350dp"
-        app:layout_constrainedHeight="true"
-        app:layout_constrainedWidth="true"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/cardhor1"
-        app:layout_constraintLeft_toRightOf="@id/cardver1"
-        app:layout_constraintRight_toLeftOf="@id/cardver2"
-        app:layout_constraintBottom_toTopOf="@id/cardhor2">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingStart="0dp"
+        android:paddingEnd="5dp"
+        android:background="@color/white"
+        style="@style/Widget.AppCompat.Button.Borderless">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/appbar1"
+            android:paddingTop="2dp"
+            android:paddingBottom="8dp"
+            android:background="@android:color/transparent"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="125dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:contentDescription="@string/gambar_logo"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/logohorizontal"
+                android:fitsSystemWindows="true"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/cons"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="0dp"
+           android:src="@drawable/grafis2"
+           app:layout_constraintHeight_percent="0.3"
+           android:scaleType="fitEnd"
+           android:contentDescription="@string/gambar_grafis"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent"/>
+       <RelativeLayout
+           android:id="@+id/progressbar"
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:visibility="gone"
+           android:background="@drawable/backbluebig3"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           >
+           <com.github.ybq.android.spinkit.SpinKitView
+               android:id="@+id/spin_kit"
+               style="@style/SpinKitView.Large.MultiplePulse"
+               android:layout_width="70dp"
+               android:layout_height="70dp"
+               android:layout_gravity="center"
+               android:layout_centerInParent="true"
+               app:SpinKit_Color="@color/colorAccent" />
+       </RelativeLayout>
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.1" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdver2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.93" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdver1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.07" />
-
-
-            <TextView
-                android:id="@+id/emailTv"
-                android:labelFor="@id/emailEdtx"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:paddingStart="8sp"
-                android:paddingEnd="8sp"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true"
-                android:fontFamily="@font/roboto_light"
-                android:text="@string/email"
-                android:textColor="#000"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/cdhor1"
-                app:layout_constraintLeft_toRightOf="@id/cdver1"
-                app:layout_constraintBottom_toTopOf="@id/cdhor2"
-                app:layout_constraintRight_toRightOf="@id/cdver2" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.19" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.205" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.335" />
-            <EditText
-                android:id="@+id/emailEdtx"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constrainedWidth="true"
-                android:autofillHints="email"
-                android:background="@drawable/borderblue"
-                android:fontFamily="@font/helvetica_light"
-                android:paddingVertical="2dp"
-                android:textSize="16sp"
-                android:paddingHorizontal="8sp"
-                android:inputType="textEmailAddress"
-                app:layout_constrainedHeight="true"
-                app:layout_constraintTop_toBottomOf="@id/cdhor3"
-                app:layout_constraintLeft_toRightOf="@id/cdver1"
-                app:layout_constraintRight_toLeftOf="@id/cdver2"
-                app:layout_constraintBottom_toTopOf="@id/cdhor4"/>
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.375" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.465" />
-            <TextView
-                android:id="@+id/passTv"
-                android:labelFor="@id/passEdtx"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:paddingStart="8sp"
-                android:paddingEnd="8sp"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true"
-                android:fontFamily="@font/roboto_light"
-                android:text="@string/password"
-                android:textColor="#000"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/cdhor5"
-                app:layout_constraintLeft_toRightOf="@id/cdver1"
-                app:layout_constraintBottom_toTopOf="@id/cdhor6"
-                app:layout_constraintRight_toRightOf="@id/cdver2"/>
-            <EditText
-                android:id="@+id/passEdtx"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constrainedWidth="true"
-                android:autofillHints="password"
-                android:background="@drawable/borderblue"
-                android:fontFamily="@font/helvetica_light"
-                android:paddingVertical="2dp"
-                android:textSize="16sp"
-                android:paddingHorizontal="8sp"
-                android:inputType="textPassword"
-                app:layout_constrainedHeight="true"
-                app:layout_constraintTop_toBottomOf="@id/cdhor7"
-                app:layout_constraintLeft_toRightOf="@id/cdver1"
-                app:layout_constraintRight_toLeftOf="@id/cdver2"
-                app:layout_constraintBottom_toTopOf="@id/cdhor8"/>
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.48"/>
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.61"/>
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.68"/>
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.92"/>
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/buttonlog"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/backblue2"
-                app:layout_constraintDimensionRatio="1:1"
-                android:fontFamily="@font/roboto_bold"
-                android:paddingHorizontal="88dp"
-                app:layout_constraintRight_toLeftOf="@id/cdver2"
-                app:layout_constraintTop_toBottomOf="@id/cdhor9"
-                app:layout_constraintBottom_toTopOf="@id/cdhor10"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:fontFamily="@font/helvetica_bold"
-                app:layout_constraintHeight_percent=".1"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:text="MASUK"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="@id/buttonlog"
-                app:layout_constraintRight_toRightOf="@id/buttonlog"
-                app:layout_constraintTop_toTopOf="@id/buttonlog"
-                app:layout_constraintBottom_toBottomOf="@id/buttonlog"/>
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.705"/>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.78" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonreg"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                style="?android:attr/borderlessButtonStyle"
-                android:padding="0dp"
-                app:layout_constrainedHeight="true"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/roboto_light"
-                android:text="@string/belum_punya_akun"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/cdhor11"
-                app:layout_constraintBottom_toTopOf="@id/cdhor12"
-                app:layout_constraintLeft_toRightOf="@id/cdver1"
-                android:textAllCaps="false"/>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.825"/>
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/cdhor14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.895"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                style="?android:attr/borderlessButtonStyle"
-                android:padding="0dp"
-                android:id="@+id/lupa"
-                app:layout_constrainedHeight="true"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/roboto_light"
-                android:text="@string/lupa_password"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/cdhor13"
-                app:layout_constraintBottom_toTopOf="@id/cdhor14"
-                app:layout_constraintLeft_toRightOf="@id/cdver1"
-                android:textAllCaps="false"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+       <androidx.appcompat.widget.LinearLayoutCompat
+           android:id="@+id/container"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:paddingHorizontal="20dp"
+           android:layout_marginTop="10dp"
+           android:orientation="vertical"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintLeft_toLeftOf="parent">
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/ilEmail"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="@string/email"
+               app:boxStrokeErrorColor="@color/colorRed"
+               app:boxStrokeColor="@color/colorPrimary"
+               app:boxStrokeWidthFocused="2dp"
+               app:boxStrokeWidth="1dp"
+               app:startIconDrawable="@drawable/email"
+               app:startIconTint="@color/gray2"
+               app:errorIconTint="@color/colorRed"
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/etEmail"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:inputType="textEmailAddress"
+                   android:paddingVertical="10dp"
+                   android:autofillHints="@string/email"
+                   android:fontFamily="@font/helvetica_light"
+                   android:paddingHorizontal="10sp"
+                   android:textSize="16sp" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/ilPass"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:hint="@string/password"
+               app:boxStrokeColor="@color/colorPrimary"
+               app:boxStrokeErrorColor="@color/colorRed"
+               app:startIconDrawable="@drawable/pass"
+               app:startIconTint="@color/gray2"
+               app:errorIconTint="@color/colorRed"
+               app:endIconMode="password_toggle"
+               app:boxStrokeWidthFocused="2dp"
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/etPass"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:inputType="textPassword"
+                   android:paddingVertical="10dp"
+                   android:autofillHints="@string/email"
+                   android:fontFamily="@font/helvetica_light"
+                   android:paddingHorizontal="10sp"
+                   android:textSize="16sp" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/buttonlog"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:text="@string/masuk"
+               android:fontFamily="@font/lato"
+               />
+       </androidx.appcompat.widget.LinearLayoutCompat>
+   </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
