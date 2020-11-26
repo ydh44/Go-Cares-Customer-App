@@ -1,6 +1,7 @@
 package com.caregiver.gocares;
 
 import com.google.gson.JsonElement;
+import com.google.gson.internal.$Gson$Preconditions;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

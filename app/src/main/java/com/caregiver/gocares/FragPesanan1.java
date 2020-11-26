@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.caregiver.gocares.utils.SessionLog;
 import com.google.gson.JsonElement;
 
 import org.json.JSONArray;
@@ -81,7 +82,6 @@ public class FragPesanan1 extends Fragment implements Callback<JsonElement> {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
 
         }
 

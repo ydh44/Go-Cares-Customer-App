@@ -14,8 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
 
+import com.caregiver.gocares.utils.SessionLog;
+import com.caregiver.gocares.views.activity.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -174,7 +175,6 @@ public class DetailCGActivity extends AppCompatActivity {
             }else{
                 finish();
             }
-            MainActivity.reload = "reload";
         }else {
             if (cgstatus.equals("unavailable")){
                 cgstatusTv.setText("Tidak Tersedia");

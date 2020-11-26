@@ -21,6 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.caregiver.gocares.utils.SessionLog;
+
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import org.json.JSONException;

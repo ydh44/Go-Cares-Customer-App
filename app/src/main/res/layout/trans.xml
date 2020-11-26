@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		tools:context=".views.fragment.TransFragment"
+		android:background="@color/white">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_centerInParent="true">
+			<com.github.ybq.android.spinkit.SpinKitView
+					android:id="@+id/load"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					app:SpinKit_Color="@color/colorAccent"
+					style="@style/SpinKitView.Large.Wave"/>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="15dp"
+				android:textSize="16sp"
+				android:fontFamily="@font/lato"
+				android:textColor="@color/colorPrimary"
+				app:layout_constraintTop_toBottomOf="@id/load"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintLeft_toLeftOf="parent"
+				android:text="Tunggu Ya"/>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

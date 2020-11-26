@@ -27,7 +27,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     Context contexts;
 
 
-    Adapter(Context context, List<CGdata>Data){
+    public Adapter(Context context, List<CGdata> Data){
         contexts = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.Data = Data;

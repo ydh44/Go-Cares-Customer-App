@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.caregiver.gocares.utils.SessionLog;
+import com.caregiver.gocares.views.activity.LoginActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

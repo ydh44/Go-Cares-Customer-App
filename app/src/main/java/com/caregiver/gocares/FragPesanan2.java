@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.caregiver.gocares.utils.SessionLog;
 import com.google.gson.JsonElement;
 
 import org.json.JSONArray;

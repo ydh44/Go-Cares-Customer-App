@@ -47,63 +47,68 @@
           app:layout_constraintVertical_bias="1"
           app:layout_constraintBottom_toTopOf="@id/container"
           android:src="@drawable/grafis1"/>
-      <LinearLayout
-          android:id="@+id/container"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:layout_constraintBottom_toBottomOf="parent"
-          android:paddingHorizontal="20dp"
-          android:orientation="vertical">
+     <ScrollView
+         android:id="@+id/container"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:layout_constraintBottom_toBottomOf="parent"
+         android:orientation="vertical">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingHorizontal="20dp"
+             android:orientation="vertical">
 
-          <TextView
-              android:id="@+id/welcome"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="35dp"
-              android:fontFamily="@font/lato_bold"
-              android:text="@string/welcomemssg"
-              android:textColor="@color/colorBlack"
-              android:textSize="22sp" />
+             <TextView
+                 android:id="@+id/welcome"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="35dp"
+                 android:fontFamily="@font/lato_bold"
+                 android:text="@string/welcomemssg"
+                 android:textColor="@color/colorBlack"
+                 android:textSize="22sp" />
 
-          <TextView
-              android:id="@+id/thanks"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="10dp"
-              android:fontFamily="@font/lato_light"
-              android:text="@string/thanksmssg"
-              android:textColor="@color/colorBlack"
-              android:textSize="16sp"
-              app:layout_constraintLeft_toRightOf="@id/ver1"
-              app:layout_constraintRight_toRightOf="parent"
-              app:layout_constraintTop_toBottomOf="@id/welcome" />
-          <TextView
-              android:id="@+id/enjoy"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:fontFamily="@font/lato_light"
-              android:text="@string/enjoymssg"
-              android:layout_marginTop="4dp"
-              android:textSize="16sp"
-              android:textColor="@color/colorBlack"/>
+             <TextView
+                 android:id="@+id/thanks"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="10dp"
+                 android:fontFamily="@font/lato_light"
+                 android:text="@string/thanksmssg"
+                 android:textColor="@color/colorBlack"
+                 android:textSize="16sp"
+                 app:layout_constraintLeft_toRightOf="@id/ver1"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toBottomOf="@id/welcome" />
+             <TextView
+                 android:id="@+id/enjoy"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:fontFamily="@font/lato_light"
+                 android:text="@string/enjoymssg"
+                 android:layout_marginTop="4dp"
+                 android:textSize="16sp"
+                 android:textColor="@color/colorBlack"/>
 
-          <com.google.android.material.button.MaterialButton
-              android:id="@+id/buttonreg"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="15dp"
-              android:fontFamily="@font/lato"
-              android:text="@string/daftar_sekarang" />
-          <com.google.android.material.button.MaterialButton
-              android:id="@+id/buttonlog"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="8dp"
-              android:layout_marginBottom="35dp"
-              android:fontFamily="@font/lato"
-              style="@style/Widget.AppCompat.Button.Borderless"
-              android:text="@string/masuk"
-              android:textColor="@color/colorPrimary"/>
-      </LinearLayout>
+             <com.google.android.material.button.MaterialButton
+                 android:id="@+id/buttonreg"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="15dp"
+                 android:fontFamily="@font/lato"
+                 android:text="@string/daftar_sekarang" />
+             <com.google.android.material.button.MaterialButton
+                 android:id="@+id/buttonlog"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="8dp"
+                 android:layout_marginBottom="35dp"
+                 android:fontFamily="@font/lato"
+                 style="@style/Widget.AppCompat.Button.Borderless"
+                 android:text="@string/masuk"
+                 android:textColor="@color/colorPrimary"/>
+         </LinearLayout>
+     </ScrollView>
   </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
