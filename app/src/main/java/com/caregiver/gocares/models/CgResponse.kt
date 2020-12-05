@@ -4,14 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class CgResponse(
 
-	@field:SerializedName("data")
-	val data: Data? = null,
+				@field:SerializedName("data")
+				val data: Data? = null,
 
-	@field:SerializedName("dalam_proses")
-	val dalamProses: List<Int?>? = null
+				@field:SerializedName("dalam_proses")
+				val dalamProses: List<Int?>? = null
 )
 
-data class DataItem(
+data class Caregiver(
 
 	@field:SerializedName("address")
 	val address: String? = null,
@@ -47,5 +47,5 @@ data class DataItem(
 data class Data(
 
 	@field:SerializedName("data")
-	val data: List<DataItem?>? = null
+	val cg: List<Caregiver?>? = null
 )

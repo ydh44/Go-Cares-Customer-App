@@ -24,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
 
         int SPLASH_SCREEN_TIME = 550;
          Log.d("xx", "in: " + SessionLog.GetFcm(this));
+      Log.d("xx", "in: " + SessionLog.GetFcmUploaded(this));
 
 
         new Handler().postDelayed(new Runnable() {

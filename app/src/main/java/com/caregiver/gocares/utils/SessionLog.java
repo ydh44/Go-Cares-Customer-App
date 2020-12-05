@@ -8,6 +8,38 @@ public class SessionLog {
     private static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
+
+    public static void SaveDalamPesanan(Context context, boolean dalamPesanan){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putBoolean(Key.KEY_DALAM_PESANAN,  dalamPesanan);
+        editor.apply();
+    }
+
+    public static boolean GetDalamPesanan(Context context){
+        return getSharedPreference(context).getBoolean(Key.KEY_DALAM_PESANAN, false);
+    }
+
+    public static void SaveHomeMessage(Context context, boolean homeMessage){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putBoolean(Key.KEY_HOME_MESSAGE,  homeMessage);
+        editor.apply();
+    }
+
+    public static boolean GetHomeMessage(Context context){
+        return getSharedPreference(context).getBoolean(Key.KEY_HOME_MESSAGE, false);
+    }
+
+
+    public static void SaveHomeRefresh(Context context, boolean homeRefresh){
+        SharedPreferences.Editor editor = getSharedPreference(context).edit();
+        editor.putBoolean(Key.KEY_HOME_REFRESH,  homeRefresh);
+        editor.apply();
+    }
+
+    public static boolean GetHomeRefresh(Context context){
+        return getSharedPreference(context).getBoolean(Key.KEY_HOME_REFRESH, false);
+    }
+
     public static void SaveFcm(Context context, String fcm){
         SharedPreferences.Editor editor = getSharedPreference(context).edit();
         String cek = getSharedPreference(context).getString(Key.KEY_FCM, null);

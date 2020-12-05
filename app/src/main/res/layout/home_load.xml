@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/cons"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:fitsSystemWindows="true"
+		android:overScrollMode="never">
+
+
+	<LinearLayout
+			android:id="@+id/content"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/errorconn"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="50dp"
+				android:visibility="gone">
+
+			<ImageView
+					app:layout_constraintDimensionRatio="1:1"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintWidth_percent="0.5"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:src="@drawable/grafis10" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<androidx.cardview.widget.CardView
+				android:id="@+id/cardTop"
+				app:cardCornerRadius="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="20dp">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@color/light_gray">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintWidth_percent="0.5"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:background="@android:color/transparent"
+						android:clickable="true"
+						android:focusable="true">
+
+					<LinearLayout
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginHorizontal="10dp"
+							android:layout_marginVertical="20dp"
+							android:orientation="vertical">
+
+						<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:fontFamily="@font/lato_light"
+								android:text="Profil"
+								android:textColor="@android:color/transparent"
+								android:textSize="16sp" />
+
+						<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:fontFamily="@font/lato_light"
+								android:text="Saya"
+								android:textColor="@android:color/transparent"
+								android:textSize="16sp" />
+					</LinearLayout>
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+						app:layout_constraintRight_toRightOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						app:layout_constraintWidth_percent="0.5"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:background="@android:color/transparent"
+						android:clickable="true"
+						android:focusable="true">
+
+
+					<LinearLayout
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginHorizontal="10dp"
+							android:layout_marginVertical="20dp"
+							android:orientation="vertical">
+
+						<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:fontFamily="@font/lato_light"
+								android:text="Riwayat"
+								android:textColor="@android:color/transparent"
+								android:textSize="16sp" />
+
+						<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:fontFamily="@font/lato_light"
+								android:text="Pesanan"
+								android:textColor="@android:color/transparent"
+								android:textSize="16sp" />
+					</LinearLayout>
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.cardview.widget.CardView>
+
+		<LinearLayout
+				android:id="@+id/layanan"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingVertical="15dp">
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:fontFamily="@font/lato_bold"
+					android:text="Layanan"
+					android:background="@color/light_gray"
+					android:textColor="@android:color/transparent"
+					android:textSize="22sp" />
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:layout_marginTop="3dp"
+					android:fontFamily="@font/lato"
+					android:text="Layanan yang di sediakan untuk Anda"
+					android:background="@color/light_gray"
+					android:textColor="@android:color/transparent"
+					android:textSize="14sp" />
+
+			<androidx.cardview.widget.CardView
+
+					app:cardCornerRadius="15dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:layout_marginTop="15dp">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+						android:id="@+id/layananBtn"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@color/light_gray"
+						android:clickable="true"
+						android:focusable="true">
+
+
+
+					<LinearLayout
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintLeft_toLeftOf="parent"
+							app:layout_constraintTop_toTopOf="parent"
+							app:layout_constraintWidth_percent="0.5"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginHorizontal="10dp"
+							android:layout_marginVertical="20dp"
+							android:orientation="vertical">
+
+						<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:fontFamily="@font/lato"
+								android:text="Perawatan Lansia"
+								android:textColor="@android:color/transparent"
+								android:textSize="20sp" />
+
+						<TextView
+								android:id="@+id/jumlahcg"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="10dp"
+								android:layout_marginRight="10dp"
+								android:fontFamily="@font/lato_light"
+								android:textColor="@color/white"
+								android:textSize="14sp"
+								android:visibility="gone" />
+
+						<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="15dp"
+								android:fontFamily="@font/lato_bold"
+								android:text="Pesan Sekarang"
+								android:textColor="@android:color/transparent"
+								android:textSize="16sp" />
+					</LinearLayout>
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.cardview.widget.CardView>
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/berlangsung"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingVertical="15dp">
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:fontFamily="@font/lato_bold"
+					android:text="Berlangsung"
+					android:textColor="@android:color/transparent"
+					android:background="@color/light_gray"
+					android:textSize="22sp" />
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:layout_marginTop="3dp"
+					android:fontFamily="@font/lato"
+					android:text="Pesanan Anda yang sedang berlangsung"
+					android:textColor="@android:color/transparent"
+					android:background="@color/light_gray"
+					android:textSize="14sp" />
+
+		</LinearLayout>
+
+		<LinearLayout
+				android:id="@+id/pelajari"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingVertical="15dp">
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:fontFamily="@font/lato_bold"
+					android:text="Pelajari"
+					android:textColor="@android:color/transparent"
+					android:background="@color/light_gray"
+					android:textSize="22sp" />
+
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:layout_marginTop="3dp"
+					android:fontFamily="@font/lato"
+					android:text="Pelajari lebih lanjut tentang aplikasi ini"
+					android:textColor="@android:color/transparent"
+					android:background="@color/light_gray"
+					android:textSize="14sp" />
+
+			<androidx.cardview.widget.CardView
+					app:cardCornerRadius="15dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="20dp"
+					android:layout_marginTop="15dp">
+
+				<HorizontalScrollView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content">
+
+				</HorizontalScrollView>
+			</androidx.cardview.widget.CardView>
+		</LinearLayout>
+	</LinearLayout>
+</androidx.core.widget.NestedScrollView>

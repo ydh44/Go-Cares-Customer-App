@@ -21,6 +21,9 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class RegActivity extends AppCompatActivity {
 
@@ -41,10 +44,9 @@ public class RegActivity extends AppCompatActivity {
         busy();
 
         MaterialAutoCompleteTextView etGender = findViewById(R.id.etGender);
-        String[] pilgender = new String[] {
-                "Laki-laki",
-                "Perempuan"
-        };
+        List<String> pilgender = new ArrayList<>();
+        pilgender.add("Laki - laki");
+        pilgender.add("Perempuan");
         ArrayAdapter<String> adapgender = new ArrayAdapter<>(
                 this,
                 R.layout.dropdown_item,

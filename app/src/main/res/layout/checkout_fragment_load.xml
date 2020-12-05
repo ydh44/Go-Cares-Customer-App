@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		xmlns:app="http://schemas.android.com/apk/res-auto">
+	<LinearLayout
+			android:id="@+id/dataLansia"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:background="@color/white"
+			android:paddingHorizontal="15dp"
+			android:paddingVertical="20dp">
+
+		<androidx.appcompat.widget.AppCompatTextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/lato_bold"
+				android:text="Data Lansia"
+				android:textColor="@android:color/transparent"
+				android:background="@color/light_gray"
+				android:textSize="22sp" />
+		<View
+				android:id="@+id/view1"
+				android:layout_width="match_parent"
+				android:layout_height="0.5dp"
+				android:layout_marginTop="15dp"
+				android:background="@color/lightblack" />
+
+		<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/ilNama"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="15dp"
+				android:textDirection="firstStrong"
+				app:boxStrokeColor="@color/colorPrimary"
+				app:boxStrokeErrorColor="@color/colorRed"
+				app:boxStrokeWidth="1dp"
+				app:boxStrokeWidthFocused="2dp">
+
+			<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/etNama"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/helvetica_light"
+					android:textCursorDrawable="@null"
+					android:inputType="none"
+					android:paddingHorizontal="10sp"
+					android:paddingVertical="12dp"
+					android:textColor="@android:color/transparent"
+					android:textColorHint="@android:color/transparent"
+					android:background="@color/light_gray"
+					android:textSize="16sp" />
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="15dp">
+
+			<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/ilUmur"
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:boxStrokeColor="@color/colorPrimary"
+					app:boxStrokeErrorColor="@color/colorRed"
+					app:boxStrokeWidth="1dp"
+					app:boxStrokeWidthFocused="2dp"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintWidth_percent="0.475">
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/etUmur"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:autofillHints="@string/age"
+						android:fontFamily="@font/helvetica_light"
+						android:inputType="none"
+						android:maxLength="2"
+						android:singleLine="true"
+						android:paddingHorizontal="10sp"
+						android:paddingVertical="12dp"
+						android:background="@color/light_gray"
+						android:textSize="16sp" />
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/ilGender"
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					app:boxStrokeColor="@color/colorPrimary"
+					app:boxStrokeErrorColor="@color/colorRed"
+					app:boxStrokeWidth="1dp"
+					app:boxStrokeWidthFocused="2dp"
+					app:layout_constraintRight_toRightOf="parent"
+					android:background="@color/light_gray"
+					app:layout_constraintTop_toTopOf="@id/ilUmur"
+					app:layout_constraintWidth_percent="0.475">
+
+				<com.google.android.material.textfield.MaterialAutoCompleteTextView
+						android:id="@+id/etGender"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:autofillHints="@string/gender"
+						android:fontFamily="@font/helvetica_light"
+						android:paddingHorizontal="10sp"
+						android:paddingVertical="12dp"
+						android:singleLine="true"
+						android:background="@color/light_gray"
+						android:textCursorDrawable="@null"
+						android:inputType="none"
+						android:textSize="16sp" />
+			</com.google.android.material.textfield.TextInputLayout>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/ilHobi"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="15dp"
+				android:textDirection="firstStrong"
+				app:boxStrokeColor="@color/colorPrimary"
+				app:boxStrokeErrorColor="@color/colorRed"
+				app:boxStrokeWidth="1dp"
+				app:boxStrokeWidthFocused="2dp">
+
+			<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/etHobi"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:autofillHints="hobi"
+					android:fontFamily="@font/helvetica_light"
+					android:background="@color/light_gray"
+					android:textCursorDrawable="@null"
+					android:inputType="none"
+					android:paddingHorizontal="10sp"
+					android:paddingVertical="12dp"
+					android:textSize="16sp" />
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/ilRiwayat"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="15dp"
+				android:textDirection="firstStrong"
+				app:boxStrokeColor="@color/colorPrimary"
+				app:boxStrokeErrorColor="@color/colorRed"
+				app:boxStrokeWidth="1dp"
+				app:boxStrokeWidthFocused="2dp">
+
+			<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/etRiwayat"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:autofillHints="@string/riwayat_penyakit"
+					android:fontFamily="@font/helvetica_light"
+					android:textCursorDrawable="@null"
+					android:inputType="none"
+					android:paddingHorizontal="10sp"
+					android:paddingVertical="12dp"
+					android:background="@color/light_gray"
+
+					android:textSize="16sp" />
+		</com.google.android.material.textfield.TextInputLayout>
+	</LinearLayout>
+</LinearLayout>

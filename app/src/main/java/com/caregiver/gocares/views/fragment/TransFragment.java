@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.caregiver.gocares.R;
+import com.caregiver.gocares.repositories.GetUser;
 import com.caregiver.gocares.utils.CekConnection;
-import com.caregiver.gocares.utils.GetUser;
 import com.caregiver.gocares.views.activity.MainActivity;
 
 import static android.content.ContentValues.TAG;
@@ -69,7 +69,7 @@ public class TransFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.trans, container, false);
+		View view = inflater.inflate(R.layout.trans_fragment, container, false);
 		new CekConnection(getContext(), true).status.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
 			@Override
 			public void onChanged(Boolean aBoolean) {
@@ -80,7 +80,7 @@ public class TransFragment extends Fragment {
 										public void onChanged(Boolean Boolean) {
 											if(Boolean){
 												Intent intent = new Intent(getActivity(), MainActivity.class);
-												intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+												intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 												startActivity(intent);
 											}else if(aBoolean == null){
 												getActivity().finish();

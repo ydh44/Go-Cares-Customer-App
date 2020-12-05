@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+				name="pembayaranModel"
+				type="com.caregiver.gocares.viewmodels.PembayaranViewModel" />
+	</data>
+
+	<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+		<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/gray"
+				android:orientation="vertical"
+				android:paddingBottom="20dp">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/xmlbg6"
+					android:paddingTop="30dp"
+					android:paddingBottom="20dp">
+
+				<TextView
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="15dp"
+						android:fontFamily="@font/lato_bold"
+						android:text="Terima Kasih."
+						android:textColor="@color/white"
+						android:textSize="22sp"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintRight_toRightOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="20dp"
+					android:background="@color/white"
+					android:orientation="vertical"
+					android:paddingHorizontal="15dp"
+					android:paddingVertical="20dp">
+
+				<TextView
+						android:id="@+id/text1"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:fontFamily="@font/lato"
+						android:text="Silahkan lanjutkan pembayaran sejumlah"
+						android:textColor="@color/black"
+						android:textSize="16sp" />
+
+				<TextView
+						android:id="@+id/jumalah"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:fontFamily="@font/lato_bold"
+						android:text="@{pembayaranModel.jumlahBayar}"
+						android:textColor="@color/black"
+						android:textSize="18sp" />
+
+				<View
+						android:id="@+id/view1"
+						android:layout_width="match_parent"
+						android:layout_height="0.5dp"
+						android:layout_marginTop="25dp"
+						android:background="@color/lightblack" />
+
+				<TextView
+						android:id="@+id/text3"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:fontFamily="@font/lato_bold"
+						android:gravity="center"
+						android:text="Bank Jateng"
+						android:textColor="@color/black"
+						android:textSize="16sp" />
+
+				<TextView
+						android:id="@+id/text4"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:fontFamily="@font/lato_bold"
+						android:gravity="center"
+						android:text="3-034-10747-4"
+						android:textColor="@color/black"
+						android:textSize="18sp" />
+
+				<com.google.android.material.button.MaterialButton
+						style="@style/Widget.AppCompat.Button.Borderless"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="5dp"
+						android:gravity="center"
+						android:text="Salin Rekening"
+						android:onClick="@{() -> pembayaranModel.salin()}"
+						android:textColor="@color/colorPrimary" />
+
+				<TextView
+						android:id="@+id/text5"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:fontFamily="@font/lato"
+						android:gravity="right"
+						android:text="a/n Sri Sulistianti"
+						android:textColor="@color/black"
+						android:textSize="16sp" />
+
+				<View
+						android:id="@+id/view2"
+						android:layout_width="match_parent"
+						android:layout_height="0.5dp"
+						android:layout_marginTop="15dp"
+						android:background="@color/lightblack" />
+			</LinearLayout>
+
+			<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="20dp"
+					android:background="@color/white"
+					android:orientation="vertical"
+					android:paddingHorizontal="15dp"
+					android:paddingVertical="20dp">
+				<TextView
+						android:id="@+id/text6"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:fontFamily="@font/lato"
+						android:text="Segera unggah bukti pembayaran anda disini"
+						android:textColor="@color/black"
+						android:textSize="16sp" />
+
+				<View
+						android:id="@+id/view3"
+						android:layout_width="match_parent"
+						android:layout_height="0.5dp"
+						android:layout_marginTop="15dp"
+						android:background="@color/lightblack" />
+				<com.google.android.material.button.MaterialButton
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:gravity="center"
+						android:onClick="@{() -> pembayaranModel.ambilFoto()}"
+						android:text="Ambil Dari Kamera" />
+				<com.google.android.material.button.MaterialButton
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="15dp"
+						android:gravity="center"
+						android:onClick="@{() -> pembayaranModel.ambilGaleri()}"
+						android:layout_marginBottom="15dp"
+						android:text="Ambil Dari Galeri" />
+			</LinearLayout>
+
+			<com.google.android.material.button.MaterialButton
+					style="@style/Widget.AppCompat.Button.Borderless"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginVertical="25dp"
+					android:gravity="center"
+					android:text="Kembali Ke Beranda"
+					android:onClick="@{() -> pembayaranModel.home()}"
+					android:textColor="@color/colorPrimary" />
+		</LinearLayout>
+	</androidx.core.widget.NestedScrollView>
+</layout>

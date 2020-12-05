@@ -54,7 +54,7 @@ public class RegViewModel extends ViewModel {
 		regUser.setNama(nama.getValue());
 		regUser.setUmur(umur.getValue());
 		if(gender.getValue() != null){
-			if(gender.getValue().equals("Laki-laki")){
+			if(gender.getValue().equals("Laki - laki")){
 				regUser.setGender("L");
 			}else if(gender.getValue().equals("Perempuan")){
 				regUser.setGender("P");

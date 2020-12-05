@@ -1,104 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:tools="http://schemas.android.com/tools"
-		package="com.caregiver.gocares">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.caregiver.gocares">
 
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.CAMERA" />
-	<uses-permission android:name="android.permission.VIBRATE" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-feature
-			android:name="android.hardware.camera"
-			android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-	<application
-			android:icon="@mipmap/ic_launcher"
-			android:label="@string/app_name"
-			android:roundIcon="@mipmap/ic_launcher_round"
-			android:theme="@style/AppTheme"
-			android:usesCleartextTraffic="true"
-			tools:targetApi="m">
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
-		<service android:name=".utils.FirebaseCloudMessagingService">
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name=".views.activity.TopMenuActivity"
+            android:label="@string/title_activity_top_menu" />
 
-			<intent-filter>
-				<action android:name="com.google.firebase.MESSAGING_EVENT" />
-			</intent-filter>
-		</service> <!-- Icon pada notif -->
-		<meta-data
-				android:name="com.google.firebase.messaging.default_notification_icon"
-				android:resource="@drawable/logo2" /> <!-- warna text notifikasi -->
-		<meta-data
-				android:name="com.google.firebase.messaging.default_notification_color"
-				android:resource="@color/colorAccent" />
+        <activity
+            android:name=".views.activity.TransaksiActivity"
+            android:label="@string/title_activity_transaksi"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
 
-		<activity android:name=".views.activity.WelcomeActivity" />
-		<activity android:name=".LupapassActtivity" />
-		<activity android:name=".DetailLansiaActivity" />
+        <service android:name=".utils.FirebaseCloudMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service> <!-- Icon pada notif -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo2" /> <!-- warna text notifikasi -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
 
-		<provider
-				android:name="androidx.core.content.FileProvider"
-				android:authorities="com.caregiver.gocares.provider"
-				android:exported="false"
-				android:grantUriPermissions="true">
-			<meta-data
-					android:name="android.support.FILE_PROVIDER_PATHS"
-					android:resource="@xml/provider_paths" />
-		</provider>
+        <activity android:name=".views.activity.WelcomeActivity" />
 
-		<activity
-				android:name=".ImageprevActivity"
-				android:screenOrientation="portrait" />
-		<activity
-				android:name=".PembayaranActivity"
-				android:screenOrientation="portrait"  />
-		<activity
-				android:name=".DetailPesananActivity"
-				android:screenOrientation="portrait"  />
-		<activity
-				android:name=".TentangActivity"
-				android:screenOrientation="portrait" />
-		<activity
-				android:name=".ProfileActivity"
-				android:screenOrientation="portrait" />
-		<activity
-				android:name=".PesananActivity"
-				android:screenOrientation="portrait"  />
-		<activity
-				android:name=".DetailCGActivity"
-				android:screenOrientation="portrait"  />
-		<activity
-				android:name=".CheckoutActivity"
-				android:screenOrientation="portrait"
-			 android:windowSoftInputMode="adjustResize" />
-		<activity
-				android:name=".views.activity.SplashActivity"
-				android:screenOrientation="portrait"
-		    android:theme="@style/Theme.AppCompat.Light.NoActionBar.Fullscreen">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.caregiver.gocares.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-		<activity
-				android:name=".views.activity.MainActivity"
-				android:screenOrientation="portrait"  />
-		<activity
-				android:name=".views.activity.RegActivity"
-				android:screenOrientation="portrait"
-				android:windowSoftInputMode="adjustResize" />
-		<activity
-				android:name=".views.activity.LoginActivity"
-				android:screenOrientation="portrait"   />
+        <activity
+            android:name=".views.activity.PelajariActivity"
+            android:screenOrientation="portrait" />
 
-		<meta-data
-				android:name="preloaded_fonts"
-				android:resource="@array/preloaded_fonts"
-				android:screenOrientation="portrait" />
-	</application>
+        <activity
+            android:name=".views.activity.ImageprevActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.activity.RegActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".views.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts"
+            android:screenOrientation="portrait" />
+    </application>
+
 </manifest>

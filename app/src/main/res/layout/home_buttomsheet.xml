@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto">
+	<data>
+		<variable
+				name="MainModelsec"
+				type="com.caregiver.gocares.viewmodels.MainViewModel" />
+	</data>
+	<FrameLayout
+			android:id="@+id/bottomsheet"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/bottomsheet"
+			android:translationZ="5dp"
+			app:behavior_hideable="true"
+			app:layout_behavior="@string/bottom_sheet_behavior">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+			<ImageView
+					android:id="@+id/close"
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_marginTop="20dp"
+					app:layout_constraintDimensionRatio="20:1"
+					app:layout_constraintWidth_percent="0.15"
+					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toRightOf="parent"
+					android:src="@drawable/horline"/>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/top"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="20dp"
+					android:paddingHorizontal="20dp"
+					app:layout_constraintTop_toBottomOf="@id/close" >
+
+				<com.google.android.material.textfield.TextInputLayout
+						android:id="@+id/ilKota"
+						style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:hint="Kota"
+						app:boxStrokeColor="@color/colorPrimary"
+						app:boxStrokeErrorColor="@color/colorRed"
+						app:boxStrokeWidth="1dp"
+						app:boxStrokeWidthFocused="2dp"
+						app:layout_constraintLeft_toLeftOf="parent"
+						app:layout_constraintTop_toTopOf="@id/ilGender"
+						app:layout_constraintWidth_percent="0.475">
+
+					<com.google.android.material.textfield.MaterialAutoCompleteTextView
+							android:id="@+id/etKota"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:autofillHints="city"
+							android:fontFamily="@font/helvetica_light"
+							android:inputType="none"
+							android:paddingHorizontal="10sp"
+							android:paddingVertical="12dp"
+							android:text="@={MainModelsec.kotaField}"
+							android:singleLine="true"
+							android:textCursorDrawable="@null"
+							android:textSize="16sp" />
+				</com.google.android.material.textfield.TextInputLayout>
+
+				<com.google.android.material.textfield.TextInputLayout
+						android:id="@+id/ilGender"
+						style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:hint="@string/gender"
+						app:boxStrokeColor="@color/colorPrimary"
+						app:boxStrokeErrorColor="@color/colorRed"
+						app:boxStrokeWidth="1dp"
+						app:boxStrokeWidthFocused="2dp"
+						app:layout_constraintRight_toRightOf="parent"
+						app:layout_constraintTop_toTopOf="@id/ilKota"
+						app:layout_constraintWidth_percent="0.475">
+
+					<com.google.android.material.textfield.MaterialAutoCompleteTextView
+							android:id="@+id/etGender"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:autofillHints="@string/gender"
+							android:fontFamily="@font/helvetica_light"
+							android:inputType="none"
+							android:paddingHorizontal="10sp"
+							android:paddingVertical="12dp"
+							android:text="@={MainModelsec.genderField}"
+							android:singleLine="true"
+							android:textCursorDrawable="@null"
+							android:textSize="16sp" />
+				</com.google.android.material.textfield.TextInputLayout>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<androidx.core.widget.NestedScrollView
+					android:id="@+id/scroll"
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_marginTop="15dp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/top">
+
+				<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/recyclerview"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+				</androidx.recyclerview.widget.RecyclerView>
+			</androidx.core.widget.NestedScrollView>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+	</FrameLayout>
+</layout>
